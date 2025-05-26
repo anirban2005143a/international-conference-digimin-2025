@@ -50,7 +50,7 @@ const Navbar = () => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
-      setIsVisible(currentScrollY < lastScrollY.current || currentScrollY < 10);
+      setIsVisible(currentScrollY < lastScrollY.current || currentScrollY < 50);
       lastScrollY.current = currentScrollY;
     };
 
