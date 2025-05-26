@@ -1,8 +1,8 @@
 "use client"
 import React from 'react';
 import { motion } from 'framer-motion';
-import { fadeInUp, staggerContainer } from '../../../utils/animations';
-import { ORGANIZERS } from '../../../constants/conferenceData';
+import { fadeInUp, staggerContainer } from '@/utils/animations';
+import { ORGANIZERS } from '@/constants/conferenceData';
 
 const socialIcons = [
   {

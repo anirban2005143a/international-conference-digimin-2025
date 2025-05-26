@@ -1,7 +1,7 @@
 "use client"
 import React from 'react';
 import { motion } from 'framer-motion';
-import { fadeIn, fadeInUp, buttonHover } from '../../../utils/animations';
+import { fadeIn, fadeInUp, buttonHover } from '@/utils/animations';
 import { FileText } from 'lucide-react';
 
 const CallForPapersSection = () => {

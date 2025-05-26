@@ -1,8 +1,8 @@
 "use client"
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { fadeIn, scaleIn } from '../../../utils/animations';
-import { CONFERENCE_START_DATE } from '../../../constants/conferenceData';
+import { fadeIn, scaleIn } from '@/utils/animations';
+import { CONFERENCE_START_DATE } from '@/constants/conferenceData';
 
 const CountdownTimer = () => {
   const [timeLeft, setTimeLeft] = useState({

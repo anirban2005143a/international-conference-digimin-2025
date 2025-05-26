@@ -1,71 +1,111 @@
-"use client"
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+'use client';
+
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { NAVIGATION_LINKS, CONFERENCE_ACRONYM } from '../../constants/conferenceData';
 
-const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+// Framer Motion variants
+const menuVariants = {
+  hidden: { opacity: 0, y: -20 },
+  visible: (i) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: 0.3 + i * 0.1 }
+  }),
+};
 
+
+const NavLink = ({ link, index }) => (
+  
+  <motion.div
+    variants={menuVariants}
+    initial="hidden"
+    animate="visible"
+    custom={index}
+    className="relative group"
+  >
+    <motion.a
+      href={link.href}
+      className="text-sm font-medium text-gray-800 group-hover:text-indigo-600 transition-colors"
+    >
+      {link.name}
+      <motion.span
+        layoutId="underline"
+        className="absolute left-0 -bottom-1 h-0.5 w-full bg-indigo-600 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"
+      />
+    </motion.a>
+  </motion.div>
+);
+
+
+
+const Navbar = () => {
+  const [isVisible, setIsVisible] = useState(true);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const lastScrollY = useRef(0);
+
+  // Scroll behavior for sticky and hide/show
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      const currentScrollY = window.scrollY;
+
+      setIsVisible(currentScrollY < lastScrollY.current || currentScrollY < 10);
+      lastScrollY.current = currentScrollY;
     };
-    
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    const throttled = () => {
+      requestAnimationFrame(handleScroll);
+    };
+
+    window.addEventListener('scroll', throttled);
+    return () => window.removeEventListener('scroll', throttled);
   }, []);
 
   return (
-    <motion.header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
-        isScrolled ? 'bg-white shadow-md' : 'bg-transparent'
-      }`}
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
+    <motion.header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 backdrop-blur-md `}
+      animate={{ y: isVisible ? 0 : -100 }}
+      transition={{ duration: 0.2, ease: "linear" }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
-          <div className="flex items-center">
-            <a href="#home" className="flex items-center">
-              <span className={` text-xl font-bold ${isScrolled ? 'text-indigo-900' : 'text-white'}`}>
-                {CONFERENCE_ACRONYM}
-              </span>
-            </a>
-          </div>
+          {/* Logo */}
+          <motion.a
+            href="#home"
+            className="text-xl font-bold"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <span className={`text-indigo-900`}>
+              {CONFERENCE_ACRONYM}
+            </span>
+          </motion.a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-6">
-            {NAVIGATION_LINKS.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className={`text-sm font-medium transition-colors hover:text-indigo-600 ${
-                  isScrolled ? 'text-gray-800' : 'text-white'
-                }`}
-              >
-                {link.name}
-              </a>
+          <nav className="hidden md:flex space-x-6 items-center">
+            {NAVIGATION_LINKS.map((link, index) => (
+              <NavLink key={index} link={link} index={index} />
             ))}
-            <a
+            <motion.a
               href="#register"
               className="px-4 py-2 rounded-md bg-indigo-700 text-white text-sm font-medium hover:bg-indigo-800 transition-colors"
+              variants={menuVariants}
+              initial="hidden"
+              animate="visible"
+              custom={NAVIGATION_LINKS.length}
             >
               Register Now
-            </a>
+            </motion.a>
           </nav>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden">
             <button
-              type="button"
-              aria-label="Toggle menu"
-              className={`inline-flex items-center justify-center p-2 rounded-md ${
-                isScrolled ? 'text-gray-800' : 'text-white'
-              } hover:bg-gray-100 hover:text-gray-500 focus:outline-none`}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className={`p-2 rounded-md text-gray-800 hover:bg-gray-100 hover:text-gray-500 transition`}
+              aria-label="Toggle Menu"
             >
               {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -74,35 +114,37 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Navigation */}
-      {mobileMenuOpen && (
-        <motion.div 
-          className="md:hidden bg-white shadow-lg"
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: 'auto' }}
-          exit={{ opacity: 0, height: 0 }}
-          transition={{ duration: 0.2 }}
-        >
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            {NAVIGATION_LINKS.map((link) => (
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            className="md:hidden bg-white shadow-lg"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            <div className="px-4 py-4 space-y-2">
+              {NAVIGATION_LINKS.map((link, index) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className="block text-base font-medium text-gray-800 hover:text-indigo-600"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {link.name}
+                </a>
+              ))}
               <a
-                key={link.name}
-                href={link.href}
-                className="block px-3 py-2 text-base font-medium text-gray-800 hover:bg-gray-100 hover:text-indigo-600"
+                href="#register"
+                className="block w-full text-center px-4 py-2 rounded-md bg-indigo-700 text-white font-medium hover:bg-indigo-800"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                {link.name}
+                Register Now
               </a>
-            ))}
-            <a
-              href="#register"
-              className="block w-full text-center px-3 py-2 rounded-md bg-indigo-700 text-white text-base font-medium hover:bg-indigo-800"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Register Now
-            </a>
-          </div>
-        </motion.div>
-      )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.header>
   );
 };

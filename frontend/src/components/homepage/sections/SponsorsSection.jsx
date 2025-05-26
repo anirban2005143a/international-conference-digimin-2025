@@ -1,8 +1,8 @@
 "use client"
 import React from 'react';
 import { motion } from 'framer-motion';
-import { fadeInUp } from '../../../utils/animations';
-import { SPONSORS } from '../../../constants/conferenceData';
+import { fadeInUp } from '@/utils/animations';
+import { SPONSORS } from '@/constants/conferenceData';
 
 const SponsorsSection = () => {
   const sponsorsByTier = SPONSORS.reduce((acc, sponsor) => {

@@ -1,8 +1,8 @@
 "use client"
 import React from 'react';
 import { motion } from 'framer-motion';
-import { fadeInUp, fadeInRight } from '../../../utils/animations';
-import { ABOUT_CONFERENCE } from '../../../constants/conferenceData';
+import { fadeInUp, fadeInRight } from '@/utils/animations';
+import { ABOUT_CONFERENCE } from '@/constants/conferenceData';
 
 const AboutSection = () => {
   return (
