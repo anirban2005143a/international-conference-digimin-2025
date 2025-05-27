@@ -1,7 +1,7 @@
 "use client"
 
-import { useState, useEffect, useMemo } from "react"
-import { motion, useScroll, useAnimation, } from "framer-motion"
+import { useEffect, useMemo } from "react"
+import { motion, useAnimation, } from "framer-motion"
 import Image from "next/image"
 import { ChevronDown, Award, Calendar, MapPin, Sparkles, TrendingUp, Globe, Zap } from "lucide-react"
 
@@ -73,7 +73,7 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen bg-gray-50 relative overflow-hidden">
       {/* Hero Section */}
-      <section className="relative min-h-[100dvh] pt-[80px] flex items-start justify-center bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden px-6 sm:px-12 lg:px-24">
+      <section className="relative min-h-[100dvh] h-auto py-[80px] flex items-start justify-center bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden px-6 sm:px-12 lg:px-24">
 
         {/* Floating circles */}
         <motion.div
@@ -150,22 +150,24 @@ export default function AboutPage() {
               Global Ranking #20
             </div>
           </motion.div>
+          {/* Scroll Down Arrow */}
+          <motion.div
+            className="cursor-pointer flex justify-center my-10"
+            animate={{
+              y: [0, 12, 0],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          >
+            <ChevronDown className="w-10 h-10 text-gray-500 opacity-70 hover:opacity-100 transition-opacity duration-300" />
+          </motion.div>
         </motion.div>
 
-        {/* Scroll Down Arrow */}
-        <motion.div
-          className="absolute bottom-12 left-1/2 transform -translate-x-1/2 cursor-pointer"
-          animate={{
-            y: [0, 12, 0],
-          }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        >
-          <ChevronDown className="w-10 h-10 text-gray-500 opacity-70 hover:opacity-100 transition-opacity duration-300" />
-        </motion.div>
+
+
       </section>
 
       {/* Main Content */}
@@ -451,6 +453,8 @@ export default function AboutPage() {
             </div>
           </div>
         </motion.section>
+
+
 
       </div>
     </div>

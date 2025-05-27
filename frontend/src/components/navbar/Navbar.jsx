@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, easeInOut } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { NAVIGATION_LINKS, CONFERENCE_ACRONYM } from '../../constants/conferenceData';
 import Link from 'next/link';
@@ -17,27 +17,39 @@ const menuVariants = {
 };
 
 
-const NavLink = ({ link, index }) => (
-  
-  <motion.div
-    variants={menuVariants}
-    initial="hidden"
-    animate="visible"
-    custom={index}
-    className="relative group"
-  >
-    <Link
-      href={link.href}
-      className="text-sm font-medium text-gray-800 group-hover:text-indigo-600 transition-colors"
+const NavLink = ({ link, index }) => {
+
+  const [isHovered, setisHovered] = useState(false)
+  return (
+    <motion.div
+      variants={menuVariants}
+      initial="hidden"
+      animate="visible"
+      custom={index}
+      className="relative"
     >
-      {link.name}
-      <motion.span
-        layoutId="underline"
-        className="absolute left-0 -bottom-1 h-0.5 w-full bg-indigo-600 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"
-      />
-    </Link>
-  </motion.div>
-);
+      <Link
+        onMouseOver={() => {
+          setisHovered(true)
+        }}
+        onMouseLeave={() => {
+          setisHovered(false)
+        }}
+        href={link.href}
+        className="text-sm font-medium text-gray-800 hover:text-indigo-600 transition-colors"
+      >
+        {link.name}
+        <motion.span
+          layoutId="underline"
+          className="absolute left-1/2 -bottom-1 h-0.5 w-full bg-indigo-600 -translate-x-1/2 "
+          initial={{scaleX:0}}
+          animate={{scaleX : isHovered ? 1 : 0}}
+          transition={{duration:0.2 , ease:easeInOut}}
+        />
+      </Link>
+    </motion.div>
+  )
+};
 
 
 
