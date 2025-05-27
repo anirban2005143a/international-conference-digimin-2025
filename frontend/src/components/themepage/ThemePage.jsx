@@ -1,41 +1,17 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import { Cpu, Bot, Brain, Map, Shield, Zap, ChevronRight, Sparkles, ArrowRight, CheckCircle } from "lucide-react"
+import { useState, useEffect, useMemo } from "react"
+import { Cpu, Bot, Brain, Map, Shield, Zap, ChevronRight, Sparkles, ArrowRight, CheckCircle, ShieldAlert, Network, Recycle, Database, Building } from "lucide-react"
+import { motion } from "framer-motion"
+import { KEY_THEMES } from "@/constants/conferenceData"
 
 export default function ThemesPage() {
-  const [isVisible, setIsVisible] = useState({})
-  const [activeTheme, setActiveTheme] = useState(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVisible((prev) => ({
-              ...prev,
-              [entry.target.id]: true,
-            }))
-          }
-        })
-      },
-      { threshold: 0.1 },
-    )
-
-    const elements = document.querySelectorAll("[data-animate]")
-    elements.forEach((el) => observer.observe(el))
-
-    return () => observer.disconnect()
-  }, [])
 
   const themes = [
     {
       id: 1,
       title: "Digital Foundations for Smart Mining",
       icon: Cpu,
-      color: "blue",
-      gradient: "from-blue-500 to-cyan-500",
-      bgGradient: "from-blue-50 to-cyan-50",
       description: "Building the technological backbone for next-generation mining operations",
       points: [
         "Integration of IoT, cloud, and edge computing in mine operations",
@@ -43,14 +19,14 @@ export default function ThemesPage() {
         "Secure communication networks for mining infrastructure",
         "Digital twin technology for mine planning and optimization",
       ],
+      bgColor: "bg-blue-400",
+      borderColor: "border-blue-400",
+      textColor: "text-blue-600",
     },
     {
       id: 2,
       title: "Robotics and Automation in Harsh Environments",
       icon: Bot,
-      color: "purple",
-      gradient: "from-purple-500 to-pink-500",
-      bgGradient: "from-purple-50 to-pink-50",
       description: "Advanced robotic systems designed for challenging mining conditions",
       points: [
         "Autonomous drilling, blasting, and hauling systems",
@@ -58,14 +34,14 @@ export default function ThemesPage() {
         "Human-robot collaboration in underground and confined spaces",
         "Adaptive robotics for variable terrain and conditions",
       ],
+      bgColor: "bg-indigo-400",
+      borderColor: "border-indigo-400",
+      textColor: "text-indigo-600",
     },
     {
       id: 3,
       title: "Edge AI and Real-Time Analytics",
       icon: Brain,
-      color: "emerald",
-      gradient: "from-emerald-500 to-teal-500",
-      bgGradient: "from-emerald-50 to-teal-50",
       description: "Intelligent systems for immediate decision-making and process optimization",
       points: [
         "Low-latency AI applications for critical mine operations",
@@ -73,14 +49,14 @@ export default function ThemesPage() {
         "Federated learning in distributed mine networks",
         "Predictive analytics for equipment maintenance and safety",
       ],
+      bgColor: "bg-teal-400",
+      borderColor: "border-teal-400",
+      textColor: "text-teal-600",
     },
     {
       id: 4,
       title: "Geospatial Intelligence and Mapping",
       icon: Map,
-      color: "orange",
-      gradient: "from-orange-500 to-red-500",
-      bgGradient: "from-orange-50 to-red-50",
       description: "Advanced mapping and spatial analysis for comprehensive mine understanding",
       points: [
         "AI-powered remote sensing and satellite imaging",
@@ -88,14 +64,14 @@ export default function ThemesPage() {
         "Integration of GIS, drones, and ground-penetrating radar",
         "Real-time geological mapping and resource estimation",
       ],
+      bgColor: "bg-amber-400",
+      borderColor: "border-amber-400",
+      textColor: "text-amber-600",
     },
     {
       id: 5,
       title: "Digital Resilience and Disaster Management",
       icon: Shield,
-      color: "red",
-      gradient: "from-red-500 to-rose-500",
-      bgGradient: "from-red-50 to-rose-50",
       description: "Comprehensive systems for risk management and emergency response",
       points: [
         "Design of intelligent operation centers",
@@ -103,14 +79,14 @@ export default function ThemesPage() {
         "Enabling remote decision-making with digital twins",
         "Emergency response systems and evacuation protocols",
       ],
+      bgColor: "bg-rose-400",
+      borderColor: "border-rose-400",
+      textColor: "text-rose-600",
     },
     {
       id: 6,
       title: "Energy Efficiency and Process Optimization",
       icon: Zap,
-      color: "yellow",
-      gradient: "from-yellow-500 to-amber-500",
-      bgGradient: "from-yellow-50 to-amber-50",
       description: "Sustainable mining through intelligent energy management and optimization",
       points: [
         "AI for optimizing crushing, grinding, and material handling",
@@ -118,258 +94,574 @@ export default function ThemesPage() {
         "CPS-enabled real-time energy monitoring and reduction strategies",
         "Renewable energy integration and smart grid systems",
       ],
+      bgColor: "bg-lime-400",
+      borderColor: "border-lime-400",
+      textColor: "text-lime-600",
     },
-  ]
+  ];
+
+
+  const themeCardVariants = useMemo(() => {
+    return ({
+      hidden: { opacity: 0, y: 30 },
+      visible: (i) => ({
+        opacity: 1,
+        y: 0,
+        transition: {
+          delay: i * 0.15,
+          duration: 0.6,
+          ease: "easeOut",
+        },
+      }),
+    })
+  }, [])
+
+  const detailCardVariants = useMemo(() => {
+    return ({
+      hidden: { opacity: 0, y: 40 },
+      visible: (i) => ({
+        opacity: 1,
+        y: 0,
+        transition: {
+          delay: i * 0.2,
+          duration: 0.6,
+          ease: "easeOut",
+        },
+      }),
+    })
+  }, [])
+
+  const iconMap = {
+    ShieldAlert: <ShieldAlert size={25} className="text-indigo-600" aria-hidden="true" />,
+    Bot: <Bot size={25} className="text-indigo-600" aria-hidden="true" />,
+    Network: <Network size={25} className="text-indigo-600" aria-hidden="true" />,
+    Recycle: <Recycle size={25} className="text-indigo-600" aria-hidden="true" />,
+    Database: <Database size={25} className="text-indigo-600" aria-hidden="true" />,
+    Building: <Building size={25} className="text-indigo-600" aria-hidden="true" />,
+  };
+
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 15
+      }
+    }
+  };
+
+  const hoverVariants = {
+    rest: { scale: 1 },
+    hover: { scale: 1.03 }
+  };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl animate-blob"></div>
-        <div className="absolute top-0 right-0 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-2000"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-4000"></div>
-      </div>
+    <div className="min-h-screen relative overflow-hidden">
 
       {/* Hero Section */}
-      <div className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900">
-        <div className="absolute inset-0opacity-20"></div>
-        
-        {/* Floating Tech Elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/4 left-1/4 w-3 h-3 bg-blue-400 rounded-full animate-float"></div>
-          <div className="absolute top-1/3 right-1/3 w-2 h-2 bg-purple-300 rounded-full animate-float animation-delay-1000"></div>
-          <div className="absolute bottom-1/4 left-1/3 w-4 h-4 bg-cyan-300 rounded-full animate-float animation-delay-2000"></div>
-          <div className="absolute bottom-1/3 right-1/4 w-3 h-3 bg-pink-300 rounded-full animate-float animation-delay-3000"></div>
+      <div className="relative overflow-hidden text-slate-800 bg-gradient-to-br from-slate-100 via-blue-50 to-indigo-200 ">
+        {/* Soft overlay for slight contrast */}
+        <div className="absolute inset-0 "></div>
+
+        {/* Floating motion elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <motion.div
+            className="absolute top-1/4 left-1/4 w-3 h-3 bg-indigo-300 rounded-full"
+            animate={{ y: [0, -20, 0] }}
+            transition={{ duration: 6, repeat: Infinity }}
+          />
+          <motion.div
+            className="absolute top-1/3 right-1/3 w-2 h-2 bg-blue-200 rounded-full"
+            animate={{ y: [0, -22, 0] }}
+            transition={{ duration: 8, repeat: Infinity, delay: 1 }}
+          />
+          <motion.div
+            className="absolute bottom-1/4 left-1/3 w-4 h-4 bg-indigo-200 rounded-full"
+            animate={{ y: [0, -24, 0] }}
+            transition={{ duration: 10, repeat: Infinity, delay: 2 }}
+          />
+          <motion.div
+            className="absolute bottom-1/3 right-1/4 w-3 h-3 bg-rose-200 rounded-full"
+            animate={{ y: [0, -26, 0] }}
+            transition={{ duration: 9, repeat: Infinity, delay: 3 }}
+          />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center text-white">
-          <div className="space-y-8 animate-fade-in-up">
-            <div className="inline-flex items-center px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 text-sm font-medium">
-              <Sparkles className="w-4 h-4 mr-2 text-cyan-300" />
+        {/* Main content */}
+        <div className="relative z-10 max-w-7xl mx-auto px-6 py-32 text-center">
+          <motion.div
+            className="space-y-8"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="inline-flex items-center px-6 py-2.5 bg-indigo-50 backdrop-blur-md rounded-full border border-indigo-100 text-sm font-medium text-indigo-700 shadow">
+              <Sparkles className="w-4 h-4 mr-2 text-indigo-500" />
               Technical Focus Areas
             </div>
-            
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight">
-              <span className="block bg-gradient-to-r from-white via-cyan-100 to-blue-200 bg-clip-text text-transparent">
+
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-slate-900">
+              <motion.span
+                className="block bg-gradient-to-r from-slate-800 via-indigo-600 to-blue-700 bg-clip-text text-transparent"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.4, duration: 0.5 }}
+              >
                 Conference
-              </span>
-              <span className="block text-3xl md:text-4xl lg:text-5xl font-bold text-cyan-300 mt-2">
+              </motion.span>
+              <motion.span
+                className="block text-3xl md:text-4xl lg:text-5xl font-semibold text-indigo-600 mt-2"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.6, duration: 0.5 }}
+              >
                 Themes
-              </span>
+              </motion.span>
             </h1>
-            
-            <p className="text-xl md:text-2xl font-light max-w-4xl mx-auto leading-relaxed text-blue-100">
+
+            <motion.p
+              className="text-lg md:text-xl font-normal max-w-4xl mx-auto text-slate-600 leading-relaxed"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1, duration: 0.5 }}
+            >
               Exploring cutting-edge technologies and innovations
-              <span className="block text-lg md:text-xl mt-2 text-blue-200">
-                shaping the future of mining industry
+              <span className="block text-sm md:text-base mt-2 text-slate-500">
+                shaping the future of the mining industry.
               </span>
-            </p>
-            
-            <div className="flex flex-wrap justify-center gap-4 mt-12">
-              <div className="flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20">
-                <Brain className="w-5 h-5 mr-2 text-cyan-300" />
-                <span className="text-sm font-medium">AI & Machine Learning</span>
+            </motion.p>
+
+            <motion.div
+              className="flex flex-wrap justify-center gap-4 mt-10"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1, duration: 0.3 }}
+            >
+              <div className="flex items-center px-4 py-2 bg-white shadow rounded-lg border border-slate-200">
+                <Brain className="w-5 h-5 mr-2 text-indigo-500" />
+                <span className="text-sm font-medium text-slate-700">AI & Machine Learning</span>
               </div>
-              <div className="flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20">
-                <Bot className="w-5 h-5 mr-2 text-purple-300" />
-                <span className="text-sm font-medium">Robotics & Automation</span>
+              <div className="flex items-center px-4 py-2 bg-white shadow rounded-lg border border-slate-200">
+                <Bot className="w-5 h-5 mr-2 text-indigo-500" />
+                <span className="text-sm font-medium text-slate-700">Robotics & Automation</span>
               </div>
-              <div className="flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20">
-                <Zap className="w-5 h-5 mr-2 text-yellow-300" />
-                <span className="text-sm font-medium">Energy Optimization</span>
+              <div className="flex items-center px-4 py-2 bg-white shadow rounded-lg border border-slate-200">
+                <Zap className="w-5 h-5 mr-2 text-yellow-500" />
+                <span className="text-sm font-medium text-slate-700">Energy Optimization</span>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
 
       {/* Main Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-        
-        {/* Themes Overview */}
-        <section className="mb-24">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Six Pillars of Innovation
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              DIGMIN-2025 focuses on six critical areas that will define the future of intelligent mining operations
-            </p>
-          </div>
 
-          {/* Themes Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-            {themes.map((theme, index) => (
-              <div
-                key={theme.id}
-                className={`group relative cursor-pointer transition-all duration-500 hover:scale-105 ${
-                  isVisible['themes-overview'] ? 'animate-fade-in-up' : 'opacity-0'
-                }`}
-                style={{ animationDelay: `${index * 100}ms` }}
-                onClick={() => setActiveTheme(activeTheme === theme.id ? null : theme.id)}
+        {/* Themes Overview */}
+        <section id="themes-overview" className="py-16 md:py-24 bg-gradient-to-b from-gray-50 to-white">
+          <div className="max-w-7xl mx-auto ">
+            {/* Header with appearing animation */}
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-50px" }}
+              variants={{
+                hidden: { opacity: 0, y: 30 },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: {
+                    type: "spring",
+                    stiffness: 100,
+                    damping: 15,
+                    delay: 0.1
+                  }
+                }
+              }}
+              className="text-center mb-12 md:mb-20"
+            >
+              <motion.span
+                className="inline-block text-sm font-semibold text-indigo-600 mb-2 tracking-wider uppercase"
               >
-                <div className={`absolute -inset-1 bg-gradient-to-r ${theme.gradient} rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-500`}></div>
-                <div className="relative bg-white rounded-2xl p-6 shadow-xl border border-gray-100/50 backdrop-blur-sm h-full">
-                  <div className={`w-12 h-12 bg-gradient-to-r ${theme.gradient} rounded-xl flex items-center justify-center mb-4`}>
-                    <theme.icon className="w-6 h-6 text-white" />
-                  </div>
-                  
-                  <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-gray-700 transition-colors">
-                    {theme.title}
-                  </h3>
-                  
-                  <p className="text-sm text-gray-600 mb-4">
-                    {theme.description}
-                  </p>
-                  
-                  <div className="flex items-center text-sm font-medium text-gray-500 group-hover:text-gray-700 transition-colors">
-                    <span>Learn more</span>
-                    <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-                  </div>
-                </div>
-              </div>
-            ))}
+                Focus Areas
+              </motion.span>
+              <motion.h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                Key <span className="text-indigo-700">Themes</span>
+              </motion.h2>
+              <motion.div
+                className="w-24 h-1.5 bg-indigo-600 mx-auto mb-6 rounded-full"
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+              />
+              <motion.p
+                className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              >
+                Explore the cutting-edge topics that will shape the future of mining and industrial networks
+              </motion.p>
+            </motion.div>
+
+            {/* Cards grid with staggered appearing animation */}
+            <motion.div
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px 0px -100px 0px" }}
+              variants={containerVariants}
+            >
+              {KEY_THEMES.map((theme) => (
+                <motion.div
+                  key={theme.title}
+                  className="group relative"
+                  initial="hidden"
+                  whileInView="visible"
+                  variants={itemVariants}
+                  whileHover={{ y: -5 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-indigo-100 to-indigo-50 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
+
+                  <motion.div
+                    className="h-full  rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col"
+                    whileHover="hover"
+                    initial="rest"
+                    variants={hoverVariants}
+                  >
+                    <div className="p-6 md:p-7 flex-1">
+                      <div className="flex items-start mb-5">
+                        <motion.div
+                          className="p-3 bg-indigo-50 rounded-lg mr-4"
+                          initial={{ scale: 0.8, opacity: 0 }}
+                          whileInView={{ scale: 1, opacity: 1 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: 0.2 }}
+                        >
+                          {iconMap[theme.icon] || iconMap['ShieldAlert']}
+                        </motion.div>
+                        <motion.h3
+                          className="text-lg md:text-xl font-semibold text-gray-800 mt-2"
+                          initial={{ opacity: 0, x: 10 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: 0.3 }}
+                        >
+                          {theme.title}
+                        </motion.h3>
+                      </div>
+                      <motion.p
+                        className="text-gray-600 md:text-lg leading-relaxed"
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.4 }}
+                      >
+                        {theme.description}
+                      </motion.p>
+                    </div>
+
+                    <motion.div
+                      className="px-6 pb-6 md:px-7 md:pb-7 "
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.5 }}
+                    >
+                      <span className="inline-block text-indigo-600 font-medium hover:text-indigo-800 hover:translate-x-2 transition-all cursor-pointer">
+                        Learn more →
+                      </span>
+                    </motion.div>
+                  </motion.div>
+                </motion.div>
+              ))}
+            </motion.div>
           </div>
         </section>
 
         {/* Detailed Themes */}
-        <section 
-          id="themes-overview"
-          data-animate
-          className="space-y-24"
-        >
-
-
+        <section id="themes-overview" className="space-y-20 py-16 lg:w-[80%] mx-auto">
           {themes.map((theme, index) => (
-            <div
+            <motion.div
               key={theme.id}
               id={`theme-${theme.id}`}
-              data-animate
-              className={`transition-all duration-1000 ${
-                isVisible[`theme-${theme.id}`] 
-                  ? 'opacity-100 translate-y-0' 
-                  : 'opacity-0 translate-y-20'
-              }`}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={{
+                hidden: { opacity: 0, y: 40 },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: {
+                    duration: 0.5,
+                    delay: index * 0.15,
+                    ease: [0.16, 1, 0.3, 1]
+                  }
+                }
+              }}
+              className="relative"
             >
+
               <div className="group relative">
-                <div className={`absolute -inset-1 bg-gradient-to-r ${theme.gradient} rounded-3xl blur opacity-25 group-hover:opacity-40 transition duration-1000`}></div>
-                <div className="relative bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100/50 backdrop-blur-sm">
-                  <div className={`absolute top-0 left-0 w-full h-2 bg-gradient-to-r ${theme.gradient}`}></div>
-                  
-                  <div className="p-8 lg:p-16">
-                    <div className="flex items-start space-x-6 mb-8">
-                      <div className={`p-4 bg-gradient-to-r ${theme.gradient} rounded-2xl flex-shrink-0`}>
-                        <theme.icon className="w-10 h-10 text-white" />
+                {/* Animated border */}
+
+                <div className="relative bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+                  {/* Animated top bar */}
+                  <motion.div
+                    className={`h-1 ${theme.bgColor}`}
+                    initial={{ scaleX: 0 }}
+                    whileInView={{ scaleX: 1 }}
+                    transition={{ delay: index * 0.15, duration: 0.5, ease: "easeOut" }}
+                    viewport={{ once: true }}
+                  />
+
+                  <div className="py-6 px-2 md:p-10 lg:p-12">
+                    <motion.div
+                      className="flex flex-col sm:flex-row items-start sm:items-center gap-6 mb-6"
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      transition={{ delay: index * 0.15 + 0.2, duration: 0.6 }}
+                      viewport={{ once: true }}
+                    >
+                      <div className={`p-3 ${theme.bgColor} rounded-xl shadow-sm`}>
+                        <theme.icon className="w-8 h-8 text-white" />
                       </div>
-                      
+
                       <div className="flex-1">
-                        <div className="flex items-center mb-4">
-                          <span className={`inline-block px-4 py-2 bg-gradient-to-r ${theme.bgGradient} text-${theme.color}-800 rounded-full text-sm font-semibold mr-4`}>
+                        <div className="flex items-center mb-3 flex-wrap gap-2">
+                          <motion.span
+                            className={`inline-block px-3 py-1 ${theme.bgColor}/10 text-sm font-medium ${theme.textColor} rounded-full border ${theme.borderColor}/30`}
+                            initial={{ scale: 0.8, opacity: 0 }}
+                            whileInView={{ scale: 1, opacity: 1 }}
+                            transition={{ delay: index * 0.15 + 0.3, duration: 0.5 }}
+                            viewport={{ once: true }}
+                          >
                             Theme {theme.id}
-                          </span>
-                          <div className={`w-8 h-8 bg-gradient-to-r ${theme.gradient} rounded-full flex items-center justify-center`}>
-                            <span className="text-white font-bold text-sm">{theme.id}</span>
-                          </div>
+                          </motion.span>
+                          <motion.div
+                            className={`w-7 h-7 ${theme.bgColor} rounded-full flex items-center justify-center text-white font-bold text-xs`}
+                            initial={{ rotate: -90, scale: 0 }}
+                            whileInView={{ rotate: 0, scale: 1 }}
+                            transition={{ delay: index * 0.15 + 0.4, duration: 0.6 }}
+                            viewport={{ once: true }}
+                          >
+                            {theme.id}
+                          </motion.div>
                         </div>
-                        
-                        <h2 className="text-3xl lg:text-4xl font-black text-gray-900 mb-4 leading-tight">
+
+                        <motion.h2
+                          className="text-2xl lg:text-3xl font-bold text-gray-800 leading-snug"
+                          initial={{ y: 10, opacity: 0 }}
+                          whileInView={{ y: 0, opacity: 1 }}
+                          transition={{ delay: index * 0.15 + 0.5, duration: 0.6 }}
+                          viewport={{ once: true }}
+                        >
                           {theme.title}
-                        </h2>
-                        
-                        <p className="text-xl text-gray-600 leading-relaxed mb-8">
+                        </motion.h2>
+
+                        <motion.p
+                          className="text-base lg:text-lg text-gray-600 leading-relaxed mt-2"
+                          initial={{ y: 10, opacity: 0 }}
+                          whileInView={{ y: 0, opacity: 1 }}
+                          transition={{ delay: index * 0.15 + 0.6, duration: 0.6 }}
+                          viewport={{ once: true }}
+                        >
                           {theme.description}
-                        </p>
+                        </motion.p>
                       </div>
-                    </div>
-                    
-                    <div className={`bg-gradient-to-r ${theme.bgGradient} rounded-2xl p-8 border-l-4 border-${theme.color}-500`}>
-                      <h3 className={`text-xl font-bold text-${theme.color}-900 mb-6 flex items-center`}>
-                        <CheckCircle className={`w-6 h-6 text-${theme.color}-600 mr-2`} />
+                    </motion.div>
+
+                    <motion.div
+                      className={`${theme.bgColor}/10 rounded-xl md:p-6 py-6 px-2 border-l-4 ${theme.borderColor} shadow-sm`}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.15 + 0.7, duration: 0.6 }}
+                      viewport={{ once: true }}
+                    >
+                      <h3 className={`text-lg font-semibold ${theme.textColor} mb-4 flex items-center`}>
+                        <CheckCircle className={`w-5 h-5 ${theme.textColor} mr-2`} />
                         Key Focus Areas
                       </h3>
-                      
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         {theme.points.map((point, pointIndex) => (
-                          <div
+                          <motion.div
                             key={pointIndex}
-                            className="flex items-start space-x-3 p-4 bg-white/60 backdrop-blur-sm rounded-xl border border-white/50"
+                            className="flex items-start gap-3 p-3 bg-white/90 backdrop-blur-sm rounded-lg border border-gray-200 hover:shadow-md transition-shadow"
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{
+                              delay: index * 0.15 + 0.8 + (pointIndex * 0.1),
+                              duration: 0.5
+                            }}
+                            viewport={{ once: true }}
                           >
-                            <ArrowRight className={`w-5 h-5 text-${theme.color}-600 flex-shrink-0 mt-0.5`} />
-                            <span className="text-gray-700 font-medium leading-relaxed">
+                            <ArrowRight className={`w-4 h-4 ${theme.textColor} mt-1`} />
+                            <span className="text-sm text-gray-700 font-medium">
                               {point}
                             </span>
-                          </div>
+                          </motion.div>
                         ))}
                       </div>
-                    </div>
-                    
+                    </motion.div>
+
                     {/* Technical Highlights */}
-                    <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
-                      <div className="text-center p-6 bg-gray-50 rounded-2xl border border-gray-200">
-                        <div className={`w-12 h-12 bg-gradient-to-r ${theme.gradient} rounded-xl flex items-center justify-center mx-auto mb-3`}>
-                          <Cpu className="w-6 h-6 text-white" />
-                        </div>
-                        <h4 className="font-bold text-gray-900 mb-1">Advanced Tech</h4>
-                        <p className="text-sm text-gray-600">Cutting-edge solutions</p>
-                      </div>
-                      
-                      <div className="text-center p-6 bg-gray-50 rounded-2xl border border-gray-200">
-                        <div className={`w-12 h-12 bg-gradient-to-r ${theme.gradient} rounded-xl flex items-center justify-center mx-auto mb-3`}>
-                          <Brain className="w-6 h-6 text-white" />
-                        </div>
-                        <h4 className="font-bold text-gray-900 mb-1">AI Integration</h4>
-                        <p className="text-sm text-gray-600">Intelligent automation</p>
-                      </div>
-                      
-                      <div className="text-center p-6 bg-gray-50 rounded-2xl border border-gray-200">
-                        <div className={`w-12 h-12 bg-gradient-to-r ${theme.gradient} rounded-xl flex items-center justify-center mx-auto mb-3`}>
-                          <Shield className="w-6 h-6 text-white" />
-                        </div>
-                        <h4 className="font-bold text-gray-900 mb-1">Safety Focus</h4>
-                        <p className="text-sm text-gray-600">Risk mitigation</p>
-                      </div>
-                    </div>
+                    <motion.div
+                      className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4"
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      transition={{ delay: index * 0.15 + 0.5, duration: 0.6 }}
+                      viewport={{ once: true }}
+                    >
+                      {[
+                        { icon: Cpu, title: "Advanced Tech", desc: "Cutting-edge solutions" },
+                        { icon: Brain, title: "AI Integration", desc: "Intelligent automation" },
+                        { icon: Shield, title: "Safety Focus", desc: "Risk mitigation" }
+                      ].map((item, itemIndex) => (
+                        <motion.div
+                          key={itemIndex}
+                          className="text-center p-4 bg-gray-50 rounded-xl border border-gray-200 hover:shadow-md transition-shadow"
+                          whileHover={{ y: -5 }}
+                          initial={{ opacity: 0, y: 20 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          transition={{
+                            delay: index * 0.15 + 0.2 + (itemIndex * 0.15),
+                            duration: 0.5
+                          }}
+                          viewport={{ once: true }}
+                        >
+                          <div className={`w-10 h-10 ${theme.bgColor} rounded-lg flex items-center justify-center mx-auto mb-2`}>
+                            <item.icon className="w-5 h-5 text-white" />
+                          </div>
+                          <h4 className="font-semibold text-gray-800 mb-1 text-sm">{item.title}</h4>
+                          <p className="text-xs text-gray-600">{item.desc}</p>
+                        </motion.div>
+                      ))}
+                    </motion.div>
                   </div>
                 </div>
               </div>
-            </div>)
-            )}
+            </motion.div>
+          ))}
         </section>
 
         {/* Call to Action */}
-        <section className="text-center py-16 mt-24">
-          <div className="relative group">
-            <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
-            <div className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-purple-700 rounded-3xl p-12 text-white shadow-2xl overflow-hidden">
-              <div className="absolute inset-0  opacity-20"></div>
-              
+        <section className="text-center py-20 mt-32 sm:px-4 md:px-8">
+          <motion.div
+            className="relative group max-w-5xl mx-auto"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            viewport={{ once: true, margin: "-100px" }}
+          >
+            {/* Animated background glow */}
+            <motion.div
+              className="absolute -inset-1 bg-gradient-to-r from-blue-800 to-indigo-900 rounded-3xl blur opacity-0 group-hover:opacity-20"
+              initial={{ scale: 0.95, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 0.1 }}
+              whileHover={{ opacity: 0.2 }}
+              transition={{ duration: 1, delay: 0.2 }}
+            />
+
+            {/* Main card */}
+            <motion.div
+              className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-3xl py-8 px-4 sm:px-8 md:p-12 text-white shadow-xl overflow-hidden border border-gray-700"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+            >
+            
               <div className="relative z-10">
-                <div className="flex items-center justify-center mb-6">
-                  <Sparkles className="w-8 h-8 text-blue-200 mr-3" />
-                  <h3 className="text-2xl lg:text-3xl font-black">
-                    Join the Innovation
-                  </h3>
-                  <Sparkles className="w-8 h-8 text-blue-200 ml-3" />
-                </div>
-                
-                <p className="text-lg lg:text-xl opacity-95 max-w-3xl mx-auto leading-relaxed font-medium mb-8">
-                  Be part of the technological revolution that will transform mining operations worldwide. 
-                  Connect with industry leaders, researchers, and innovators at DIGMIN-2025.
-                </p>
-                
-                <div className="flex flex-wrap justify-center gap-4">
-                  <button className="px-8 py-4 bg-white text-blue-700 rounded-full font-bold hover:bg-blue-50 transition-colors duration-300 flex items-center">
+                {/* Header with staggered animation */}
+                <motion.div
+                  className="flex flex-col sm:flex-row items-center justify-center mb-6 gap-2 sm:gap-4"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ staggerChildren: 0.1 }}
+                >
+                  <motion.div
+                    initial={{ scale: 0, rotate: -45 }}
+                    whileInView={{ scale: 1, rotate: 0 }}
+                    transition={{ duration: 0.6, delay: 0.4 }}
+                  >
+                    <Sparkles className="w-6 h-6 text-blue-400" />
+                  </motion.div>
+
+                  <motion.h3
+                    className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight"
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.5 }}
+                  >
+                    Join the Innovation Movement
+                  </motion.h3>
+
+                  <motion.div
+                    initial={{ scale: 0, rotate: 45 }}
+                    whileInView={{ scale: 1, rotate: 0 }}
+                    transition={{ duration: 0.6, delay: 0.6 }}
+                  >
+                    <Sparkles className="w-6 h-6 text-blue-400" />
+                  </motion.div>
+                </motion.div>
+
+                {/* Description */}
+                <motion.p
+                  className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed font-medium mb-10"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ duration: 0.8, delay: 0.7 }}
+                >
+                  Step into the future of mining and digital transformation at <strong className="text-white">DIGMIN-2025</strong>. Engage with experts, researchers, and industry leaders driving impactful change across the global mining ecosystem.
+                </motion.p>
+
+                {/* CTA Buttons with hover animations */}
+                <motion.div
+                  className="flex flex-col sm:flex-row justify-center items-center gap-4"
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.5 }}
+                >
+                  <motion.button
+                    className="w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 bg-white text-gray-900 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 flex items-center justify-center shadow-md hover:shadow-lg"
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
                     Register Now
-                    <ArrowRight className="w-5 h-5 ml-2" />
-                  </button>
-                  <button className="px-8 py-4 bg-white/20 backdrop-blur-sm rounded-full border border-white/30 font-bold hover:bg-white/30 transition-colors duration-300">
+                    <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
+                  </motion.button>
+
+                  <motion.button
+                    className="w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 bg-white/10 text-white backdrop-blur-sm rounded-full border border-white/20 font-semibold hover:bg-white/20 transition-all duration-300 shadow-sm hover:shadow-md"
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
                     Learn More
-                  </button>
-                </div>
+                  </motion.button>
+                </motion.div>
               </div>
-            </div>
-          </div>
+
+            </motion.div>
+          </motion.div>
         </section>
+
       </div>
     </div>
   )
