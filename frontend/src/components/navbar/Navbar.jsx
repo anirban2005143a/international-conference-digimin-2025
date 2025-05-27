@@ -72,7 +72,7 @@ const Navbar = () => {
         <div className="flex justify-between h-16 items-center">
           {/* Logo */}
           <motion.a
-            href="#home"
+            href="/"
             className="text-xl font-bold"
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}

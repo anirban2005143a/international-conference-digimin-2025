@@ -1,435 +1,457 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useMemo } from "react"
+import { motion, useScroll, useAnimation, } from "framer-motion"
 import Image from "next/image"
 import { ChevronDown, Award, Calendar, MapPin, Sparkles, TrendingUp, Globe, Zap } from "lucide-react"
 
 export default function AboutPage() {
-  const [isVisible, setIsVisible] = useState({})
-  const [scrollY, setScrollY] = useState(0)
+  const controls = useAnimation()
+
+  // Section animation variants
+  const sectionVariants = useMemo(() => {
+    return ({
+      hidden: { opacity: 0, y: 50 },
+      visible: {
+        opacity: 1,
+        y: 0,
+        transition: {
+          duration: 0.8,
+          ease: "easeOut"
+        }
+      }
+    })
+  }, [])
+
+  // Hero content animation
+  const floatVariants = useMemo(() => {
+    return ({
+      initial: { y: 0 },
+      animate: {
+        y: [0, -10, 0], // gentle float
+        transition: {
+          duration: 5,
+          repeat: Infinity,
+          ease: "easeInOut",
+        },
+      },
+    })
+  }, []);
+
+  const containerVariants = useMemo(() => {
+    return ({
+      hidden: { opacity: 0, y: 20 },
+      visible: {
+        opacity: 1,
+        y: 0,
+        transition: {
+          staggerChildren: 0.25,
+          ease: "easeOut",
+          duration: 0.6,
+        },
+      },
+    })
+  }, [])
+
+  const itemVariants = useMemo(() => {
+    return ({
+      hidden: { opacity: 0, y: 20 },
+      visible: { opacity: 1, y: 0 },
+    })
+  }, [])
 
   useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY)
+    const handleScroll = () => {
+      if (window.scrollY > 100) {
+        controls.start("visible")
+      }
+    }
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVisible((prev) => ({
-              ...prev,
-              [entry.target.id]: true,
-            }))
-          }
-        })
-      },
-      { threshold: 0.1 },
-    )
-
-    const elements = document.querySelectorAll("[data-animate]")
-    elements.forEach((el) => observer.observe(el))
-
-    return () => observer.disconnect()
-  }, [])
+  }, [controls])
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-gray-100 to-gray-200 relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-primary-500/10 rounded-full mix-blend-multiply filter blur-xl animate-blob"></div>
-        <div className="absolute top-0 right-0 w-96 h-96 bg-secondary-500/10 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-2000"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent-500/10 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-4000"></div>
-      </div>
-
+    <div className="min-h-screen bg-gray-50 relative overflow-hidden">
       {/* Hero Section */}
-      <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Animated Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700">
-          <div className="absolute inset-0 bg-primary-500/10 opacity-20"></div>
-        </div>
-        
-        {/* Floating Elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-accent-400 rounded-full animate-float"></div>
-          <div className="absolute top-1/3 right-1/3 w-3 h-3 bg-secondary-300 rounded-full animate-float animation-delay-1000"></div>
-          <div className="absolute bottom-1/4 left-1/3 w-2 h-2 bg-primary-300 rounded-full animate-float animation-delay-2000"></div>
-          <div className="absolute bottom-1/3 right-1/4 w-4 h-4 bg-accent-300 rounded-full animate-float animation-delay-3000"></div>
-        </div>
+      <section className="relative min-h-[100dvh] pt-[80px] flex items-start justify-center bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden px-6 sm:px-12 lg:px-24">
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
-          <div className="space-y-8 animate-fade-in-up">
-            <div className="inline-flex items-center px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 text-sm font-medium">
-              <Sparkles className="w-4 h-4 mr-2 text-accent-400" />
-              Centenary Celebrations 2025
+        {/* Floating circles */}
+        <motion.div
+          className="absolute top-1/4 left-1/4 w-5 h-5 bg-slate-300 rounded-full shadow-md opacity-70"
+          variants={floatVariants}
+          initial="initial"
+          animate="animate"
+          style={{ animationDelay: "0s" }}
+        />
+        <motion.div
+          className="absolute top-1/3 right-1/3 w-10 h-10 bg-slate-200 rounded-full shadow-md opacity-60"
+          variants={floatVariants}
+          initial="initial"
+          animate="animate"
+          style={{ animationDelay: "1.5s" }}
+        />
+        <motion.div
+          className="absolute bottom-1/4 left-1/3 w-5 h-5 bg-slate-300 rounded-full shadow-md opacity-70"
+          variants={floatVariants}
+          initial="initial"
+          animate="animate"
+          style={{ animationDelay: "3s" }}
+        />
+
+        {/* Main Content */}
+        <motion.div
+          className="relative z-10 max-w-4xl mx-auto text-center translate-y-[10%]"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <motion.div
+            className="inline-flex items-center px-5 py-2 bg-white border border-gray-300 rounded-full text-sm font-semibold text-gray-700 shadow-sm"
+            variants={itemVariants}
+          >
+            <Sparkles className="w-5 h-5 mr-2 text-yellow-500" />
+            Centenary Celebrations 2025
+          </motion.div>
+
+          <motion.h1
+            className="mt-8 font-extrabold tracking-tight text-5xl sm:text-6xl md:text-7xl text-gray-900"
+            variants={itemVariants}
+          >
+            DIGMIN
+            <span className="block mt-2 text-4xl sm:text-5xl font-bold text-slate-600">
+              2025
+            </span>
+          </motion.h1>
+
+          <motion.p
+            className="mt-6 max-w-3xl mx-auto text-lg sm:text-xl font-light text-gray-700 leading-relaxed"
+            variants={itemVariants}
+          >
+            Digital Intelligence for Green Mining
+            <span className="block mt-2 text-base sm:text-lg font-medium text-gray-600">
+              and Industrial Networks
+            </span>
+          </motion.p>
+
+          <motion.div
+            className="flex flex-wrap justify-center gap-4 mt-10"
+            variants={itemVariants}
+          >
+            <div className="flex items-center px-4 py-2 bg-white border border-gray-300 rounded-lg shadow-sm text-gray-700 text-sm font-medium">
+              <Calendar className="w-5 h-5 mr-2 text-blue-600" />
+              2025 Conference
             </div>
-            
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight">
-              <span className="block bg-gradient-to-r from-white via-gray-100 to-gray-200 bg-clip-text text-transparent">
-                DIGMIN
-              </span>
-              <span className="block text-4xl md:text-5xl lg:text-6xl font-bold text-primary-400 mt-2">
-                2025
-              </span>
-            </h1>
-            
-            <p className="text-xl md:text-2xl lg:text-3xl font-light max-w-4xl mx-auto leading-relaxed text-gray-300">
-              Digital Intelligence for Green Mining
-              <span className="block text-lg md:text-xl lg:text-2xl mt-2 text-gray-400">
-                and Industrial Networks
-              </span>
-            </p>
-            
-            <div className="flex flex-wrap justify-center gap-4 mt-12">
-              <div className="flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20">
-                <Calendar className="w-5 h-5 mr-2 text-primary-300" />
-                <span className="text-sm font-medium">2025 Conference</span>
-              </div>
-              <div className="flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20">
-                <MapPin className="w-5 h-5 mr-2 text-secondary-300" />
-                <span className="text-sm font-medium">IIT (ISM) Dhanbad</span>
-              </div>
-              <div className="flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20">
-                <Award className="w-5 h-5 mr-2 text-accent-300" />
-                <span className="text-sm font-medium">Global Ranking #20</span>
-              </div>
+            <div className="flex items-center px-4 py-2 bg-white border border-gray-300 rounded-lg shadow-sm text-gray-700 text-sm font-medium">
+              <MapPin className="w-5 h-5 mr-2 text-green-600" />
+              IIT (ISM) Dhanbad
             </div>
-          </div>
-          
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <ChevronDown className="w-8 h-8 text-white/60" />
-          </div>
-        </div>
-        
-        {/* Parallax Effect */}
-        <div 
-          className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"
-          style={{ transform: `translateY(${scrollY * 0.5}px)` }}
-        ></div>
-      </div>
+            <div className="flex items-center px-4 py-2 bg-white border border-gray-300 rounded-lg shadow-sm text-gray-700 text-sm font-medium">
+              <Award className="w-5 h-5 mr-2 text-yellow-600" />
+              Global Ranking #20
+            </div>
+          </motion.div>
+        </motion.div>
+
+        {/* Scroll Down Arrow */}
+        <motion.div
+          className="absolute bottom-12 left-1/2 transform -translate-x-1/2 cursor-pointer"
+          animate={{
+            y: [0, 12, 0],
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        >
+          <ChevronDown className="w-10 h-10 text-gray-500 opacity-70 hover:opacity-100 transition-opacity duration-300" />
+        </motion.div>
+      </section>
 
       {/* Main Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 space-y-32">
-        
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16">
         {/* Conference Concept Section */}
-        <section 
+        <motion.section
           id="conference-concept"
-          data-animate
-          className={`transition-all duration-1000 ${
-            isVisible['conference-concept'] 
-              ? 'opacity-100 translate-y-0' 
-              : 'opacity-0 translate-y-20'
-          }`}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={sectionVariants}
+          className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100"
         >
-          <div className="group relative">
-            <div className="absolute -inset-1 bg-gradient-to-r from-primary-600 to-secondary-600 rounded-3xl blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
-            <div className="relative bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100/50 backdrop-blur-sm">
-              <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-primary-500 via-secondary-500 to-accent-500"></div>
-              
-              <div className="lg:grid lg:grid-cols-5 lg:gap-0">
-                <div className="lg:col-span-3 p-8 lg:p-16">
-                  <div className="mb-8">
-                    <div className="flex items-center mb-6">
-                      <div className="p-3 bg-primary-100 rounded-xl mr-4">
-                        <Globe className="w-8 h-8 text-primary-600" />
-                      </div>
-                      <div>
-                        <span className="inline-block px-4 py-2 bg-gradient-to-r from-primary-100 to-secondary-100 text-primary-800 rounded-full text-sm font-semibold">
-                          Conference Overview
-                        </span>
-                      </div>
-                    </div>
-                    <h2 className="text-4xl lg:text-5xl font-black text-gray-900 mb-6 leading-tight">
-                      Conference
-                      <span className="block bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">
-                        Concept
-                      </span>
-                    </h2>
-                  </div>
-                  
-                  <div className="prose prose-xl text-gray-700 leading-relaxed space-y-6">
-                    <div className="bg-gradient-to-r from-primary-50 to-secondary-50 p-6 rounded-2xl border-l-4 border-primary-500">
-                      <p className="font-semibold text-primary-900 text-lg mb-2">
-                        Digital Intelligence for Green Mining and Industrial Networks (DIGMIN) – 2025
-                      </p>
-                      <p className="text-gray-700">
-                        India's flagship conference at the intersection of digitalization, intelligent automation, 
-                        and sustainable mining practices.
-                      </p>
-                    </div>
-                    
-                    <p className="text-lg">
-                      DIGMIN-2025 is envisioned as a premier conference focused on accelerating the digital transformation 
-                      of the mining sector. Anchored on the pillars of <strong className="text-primary-600">Digitalization, 
-                      Intelligent Systems, Green Technologies, Mining 5.0, Industrial Integration, and Next-generation 
-                      Infrastructure</strong>, the conference aims to bring together mining professionals, regulatory personnel, 
-                      academic researchers, technologists, sustainability experts, policymakers, and industry leaders.
-                    </p>
-                    
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4 my-8">
-                      {[
-                        { icon: Zap, label: "AI/ML Systems", color: "primary" },
-                        { icon: TrendingUp, label: "Mining 5.0", color: "secondary" },
-                        { icon: Globe, label: "Sustainability", color: "accent" }
-                      ].map((item, index) => (
-                        <div key={index} className={`p-4 bg-${item.color}-50 rounded-xl text-center border border-${item.color}-100`}>
-                          <item.icon className={`w-8 h-8 text-${item.color}-600 mx-auto mb-2`} />
-                          <span className={`text-sm font-semibold text-${item.color}-800`}>{item.label}</span>
-                        </div>
-                      ))}
-                    </div>
-                    
-                    <p className="text-lg">
-                      The goal is to unlock hidden opportunities in mining through smart digital systems, drive sustainable 
-                      resource management, and build a roadmap for a resilient, technology-integrated, and environmentally 
-                      responsible mining ecosystem in India.
-                    </p>
-                  </div>
+          <div className="lg:grid lg:grid-cols-5">
+            <div className="lg:col-span-2 relative h-48 sm:h-64 lg:h-auto order-1 lg:order-2">
+              <Image
+                loading="lazy"
+                src="/conference.avif"
+                alt="Conference Concept"
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+              <div className="absolute lg:bottom-4 bottom-2 left-4 right-4">
+                <div className="bg-white/90 backdrop-blur-sm rounded-lg px-3 lg:py-6 py-3 ">
+                  <h3 className="font-medium text-sm">Innovation Hub</h3>
+                  <p className="text-xs text-gray-600">Future of mining technology</p>
                 </div>
-                
-                <div className="lg:col-span-2 relative h-64 lg:h-auto">
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary-600/20 via-secondary-600/20 to-accent-600/20"></div>
-                  <Image
-                    src="/images/conference-concept.png"
-                    alt="Conference Concept"
-                    fill
-                    className="object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
-                  <div className="absolute bottom-6 left-6 right-6">
-                    <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4">
-                      <h3 className="font-bold text-gray-900 mb-1">Innovation Hub</h3>
-                      <p className="text-sm text-gray-600">Driving the future of mining technology</p>
+              </div>
+            </div>
+
+            <div className="lg:col-span-3 px-3 py-6 lg:p-6 order-2 lg:order-1">
+              <div className="flex items-center mb-4">
+                <div className="p-2 bg-blue-100 rounded-lg mr-3">
+                  <Globe className="w-5 h-5 text-blue-600" />
+                </div>
+                <span className="text-xs font-semibold px-3 py-1 bg-blue-100 text-blue-800 rounded-full">
+                  Conference Overview
+                </span>
+              </div>
+
+              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
+                Conference <span className="text-blue-600">Concept</span>
+              </h2>
+
+              <div className="space-y-4 text-gray-700">
+                <div className="bg-blue-50 p-4 rounded-xl border-l-4 border-blue-500">
+                  <p className="font-medium text-blue-900">
+                    Digital Intelligence for Green Mining and Industrial Networks (DIGMIN) – 2025
+                  </p>
+                  <p className="text-sm">
+                    India's flagship conference at the intersection of digitalization and sustainable mining.
+                  </p>
+                </div>
+
+                <p>
+                  DIGMIN-2025 focuses on accelerating digital transformation in mining through:
+                </p>
+
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                  {["AI/ML Systems", "Mining 5.0", "Sustainability"].map((item, i) => (
+                    <div key={i} className="p-3 bg-gray-50 rounded-lg text-center border border-gray-200">
+                      <div className="flex justify-center mb-1">
+                        {i === 0 ? <Zap className="w-5 h-5 text-blue-600" /> :
+                          i === 1 ? <TrendingUp className="w-5 h-5 text-green-600" /> :
+                            <Globe className="w-5 h-5 text-yellow-600" />}
+                      </div>
+                      <span className="text-xs font-medium">{item}</span>
                     </div>
-                  </div>
+                  ))}
                 </div>
               </div>
             </div>
           </div>
-        </section>
+        </motion.section>
 
-        {/* About IIT ISM Dhanbad Section */}
-        <section 
+        {/* About IIT ISM Section */}
+        <motion.section
           id="iit-dhanbad"
-          data-animate
-          className={`transition-all duration-1000 ${
-            isVisible['iit-dhanbad'] 
-              ? 'opacity-100 translate-y-0' 
-              : 'opacity-0 translate-y-20'
-          }`}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={sectionVariants}
+          className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100"
         >
-          <div className="group relative">
-            <div className="absolute -inset-1 bg-gradient-to-r from-secondary-600 to-primary-600 rounded-3xl blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
-            <div className="relative bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100/50 backdrop-blur-sm">
-              <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-secondary-500 via-primary-500 to-accent-500"></div>
-              
-              <div className="lg:grid lg:grid-cols-5 lg:gap-0">
-                <div className="lg:col-span-2 relative h-64 lg:h-auto order-2 lg:order-1">
-                  <div className="absolute inset-0 bg-gradient-to-br from-secondary-600/20 via-primary-600/20 to-accent-600/20"></div>
-                  <Image
-                    src="/images/iit-dhanbad.png"
-                    alt="IIT ISM Dhanbad Historical View"
-                    fill
-                    className="object-cover sepia"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-                  <div className="absolute bottom-6 left-6 right-6">
-                    <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4">
-                      <h3 className="font-bold text-gray-900 mb-1">Since 1926</h3>
-                      <p className="text-sm text-gray-600">Nearly a century of excellence</p>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="lg:col-span-3 p-8 lg:p-16 order-1 lg:order-2">
-                  <div className="mb-8">
-                    <div className="flex items-center mb-6">
-                      <div className="p-3 bg-secondary-100 rounded-xl mr-4">
-                        <Award className="w-8 h-8 text-secondary-600" />
-                      </div>
-                      <div>
-                        <span className="inline-block px-4 py-2 bg-gradient-to-r from-secondary-100 to-primary-100 text-secondary-800 rounded-full text-sm font-semibold">
-                          Institute Heritage
-                        </span>
-                      </div>
-                    </div>
-                    <h2 className="text-4xl lg:text-5xl font-black text-gray-900 mb-6 leading-tight">
-                      About IIT
-                      <span className="block bg-gradient-to-r from-secondary-600 to-primary-600 bg-clip-text text-transparent">
-                        (ISM) Dhanbad
-                      </span>
-                    </h2>
-                  </div>
-                  
-                  <div className="prose prose-xl text-gray-700 leading-relaxed space-y-6">
-                    <div className="bg-gradient-to-r from-secondary-50 to-primary-50 p-6 rounded-2xl border-l-4 border-secondary-500">
-                      <p className="font-semibold text-secondary-900 text-lg">
-                        Located in India's prime coking coal belt, 260 km from Kolkata
-                      </p>
-                    </div>
-                    
-                    <p className="text-lg">
-                      The Indian School of Mines was officially inaugurated on <strong className="text-secondary-600">December 9th, 1926</strong>, 
-                      by Lord Irwin, the then Viceroy of India, to meet the demand for trained manpower associated with mining 
-                      activities in the country, focusing on Mining and Applied Geology disciplines.
-                    </p>
-                    
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
-                      <div className="bg-gradient-to-br from-secondary-50 to-primary-50 p-6 rounded-2xl border border-secondary-200">
-                        <h4 className="font-bold text-secondary-900 mb-2">2016 Transformation</h4>
-                        <p className="text-gray-700 text-sm">Granted IIT status by the Government of India</p>
-                      </div>
-                      <div className="bg-gradient-to-br from-primary-50 to-accent-50 p-6 rounded-2xl border border-primary-200">
-                        <h4 className="font-bold text-primary-900 mb-2">Comprehensive Education</h4>
-                        <p className="text-gray-700 text-sm">B.Tech, M.Tech, MBA, and Ph.D. programs</p>
-                      </div>
-                    </div>
-                    
-                    <p className="text-lg">
-                      Since its inception, the institute has significantly broadened its scope of activities, evolving into 
-                      a comprehensive technology education institute. <strong className="text-secondary-600">IIT(ISM) Dhanbad has made 
-                      significant contributions to the advancement of mining, minerals, petroleum, and groundwater exploration in India.</strong>
-                    </p>
-                  </div>
+          <div className="lg:grid lg:grid-cols-5 lg:gap-0">
+            <div className="lg:col-span-2 relative h-48 sm:h-64 lg:h-auto order-1 ">
+              <Image
+                loading="lazy"
+                src="/iitism.jpg"
+                alt="IIT ISM Dhanbad"
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+              <div className="absolute bottom-2 lg:bottom-4 left-4 right-4">
+                <div className="bg-white/90 backdrop-blur-sm rounded-lg px-3 lg:py-6 py-3">
+                  <h3 className="font-medium text-sm">Since 1926</h3>
+                  <p className="text-xs text-gray-600">Century of excellence</p>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
 
-        {/* About Mining Engineering Department Section */}
-        <section 
-          id="mining-department"
-          data-animate
-          className={`transition-all duration-1000 ${
-            isVisible['mining-department'] 
-              ? 'opacity-100 translate-y-0' 
-              : 'opacity-0 translate-y-20'
-          }`}
-        >
-          <div className="group relative">
-            <div className="absolute -inset-1 bg-gradient-to-r from-accent-600 to-primary-600 rounded-3xl blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
-            <div className="relative bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100/50 backdrop-blur-sm">
-              <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-accent-500 via-primary-500 to-secondary-500"></div>
-              
-              <div className="lg:grid lg:grid-cols-5 lg:gap-0">
-                <div className="lg:col-span-3 p-8 lg:p-16">
-                  <div className="mb-8">
-                    <div className="flex items-center mb-6">
-                      <div className="p-3 bg-accent-100 rounded-xl mr-4">
-                        <TrendingUp className="w-8 h-8 text-accent-600" />
-                      </div>
-                      <div>
-                        <span className="inline-block px-4 py-2 bg-gradient-to-r from-accent-100 to-primary-100 text-accent-800 rounded-full text-sm font-semibold">
-                          Academic Excellence
-                        </span>
-                      </div>
-                    </div>
-                    <h2 className="text-4xl lg:text-5xl font-black text-gray-900 mb-6 leading-tight">
-                      Mining Engineering
-                      <span className="block bg-gradient-to-r from-accent-600 to-primary-600 bg-clip-text text-transparent">
-                        Department
-                      </span>
-                    </h2>
-                  </div>
-                  
-                  <div className="prose prose-xl text-gray-700 leading-relaxed space-y-6">
-                    <div className="bg-gradient-to-r from-accent-50 to-primary-50 p-6 rounded-2xl border-l-4 border-accent-500">
-                      <p className="font-semibold text-accent-900 text-lg">
-                        Founded in 1926 by Lord Irwin, Viceroy of India
-                      </p>
-                    </div>
-                    
-                    <p className="text-lg">
-                      Over the past <strong className="text-accent-600">99 years</strong>, it has developed and grown to become 
-                      the country's largest department of its kind, boasting excellent teaching and research facilities alongside 
-                      widespread activities in the coal, metalliferous mining, and construction sectors.
-                    </p>
-                    
-                    <div className="bg-gradient-to-br from-accent-50 via-primary-50 to-secondary-50 p-8 rounded-3xl border-2 border-accent-200 my-8">
-                      <div className="text-center mb-6">
-                        <h3 className="text-2xl font-bold text-accent-900 mb-2">Global Recognition</h3>
-                        <p className="text-accent-700">QS World University Rankings by Subject 2025</p>
-                      </div>
-                      
-                      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div className="text-center p-6 bg-white rounded-2xl shadow-lg border border-accent-100">
-                          <div className="text-4xl font-black text-accent-600 mb-2">20th</div>
-                          <div className="text-sm font-semibold text-accent-800">Global Ranking</div>
-                          <div className="text-xs text-gray-600 mt-1">Mineral & Mining Engineering</div>
-                        </div>
-                        <div className="text-center p-6 bg-white rounded-2xl shadow-lg border border-primary-100">
-                          <div className="text-4xl font-black text-primary-600 mb-2">#1</div>
-                          <div className="text-sm font-semibold text-primary-800">In India</div>
-                          <div className="text-xs text-gray-600 mt-1">Top Indian Institution</div>
-                        </div>
-                        <div className="text-center p-6 bg-white rounded-2xl shadow-lg border border-secondary-100">
-                          <div className="text-4xl font-black text-secondary-600 mb-2">99+</div>
-                          <div className="text-sm font-semibold text-secondary-800">Years Legacy</div>
-                          <div className="text-xs text-gray-600 mt-1">Since 1926</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+            <div className="lg:col-span-3 px-3 py-6 lg:p-6 order-2">
+              <div className="flex items-center mb-4">
+                <div className="p-2 bg-yellow-100 rounded-lg mr-3">
+                  <Award className="w-5 h-5 text-yellow-600" />
                 </div>
-                
-                <div className="lg:col-span-2 relative h-64 lg:h-auto">
-                  <div className="absolute inset-0 bg-gradient-to-br from-accent-600/20 via-primary-600/20 to-secondary-600/20"></div>
-                  <Image
-                    src="/images/department.png"
-                    alt="Mining Engineering Department Campus"
-                    fill
-                    className="object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
-                  <div className="absolute bottom-6 left-6 right-6">
-                    <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4">
-                      <h3 className="font-bold text-gray-900 mb-1">World-Class Facilities</h3>
-                      <p className="text-sm text-gray-600">Leading research and education</p>
-                    </div>
+                <span className="text-xs font-semibold px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full">
+                  Institute Heritage
+                </span>
+              </div>
+
+              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
+                About <span className="text-yellow-600">IIT (ISM) Dhanbad</span>
+              </h2>
+
+              <div className="space-y-4 text-gray-700">
+                <div className="bg-yellow-50 p-4 rounded-xl border-l-4 border-yellow-500">
+                  <p className="font-medium text-yellow-900">
+                    Located in India's prime coking coal belt, 260 km from Kolkata
+                  </p>
+                </div>
+
+                <p className="text-sm">
+                  The Indian School of Mines was officially inaugurated on <strong className="text-yellow-600">December 9th, 1926</strong>,
+                  by Lord Irwin, the then Viceroy of India.
+                </p>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div className="bg-yellow-50 px-3 py-6 rounded-lg border border-yellow-200">
+                    <h4 className="font-medium text-sm text-yellow-900 mb-1">2016 Transformation</h4>
+                    <p className="text-xs">Granted IIT status by Government of India</p>
+                  </div>
+                  <div className="bg-blue-50 px-3 py-6 rounded-lg border border-blue-200">
+                    <h4 className="font-medium text-sm text-blue-900 mb-1">Comprehensive Education</h4>
+                    <p className="text-xs">B.Tech, M.Tech, MBA, and Ph.D. programs</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </section>
+        </motion.section>
+
+        {/* about mining department section  */}
+        <motion.section
+          id="mining-department"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={sectionVariants}
+          className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 mt-10"
+        >
+          <div className="lg:grid lg:grid-cols-5 lg:gap-0">
+
+            {/* Image side */}
+            <div className="lg:col-span-2 relative h-48 sm:h-64 lg:h-auto order-1 lg:order-2">
+              <Image
+                loading="lazy"
+                src="/ism-mining.webp" // replace with your image path
+                alt="Mining Department"
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+              <div className="absolute bottom-2 lg:bottom-4 left-4 right-4">
+                <div className="bg-white/90 backdrop-blur-sm rounded-lg px-3 lg:py-6 py-3">
+                  <h3 className="font-medium text-sm text-blue-700">Mining Engineering Dept.</h3>
+                  <p className="text-xs text-gray-600">Excellence in mining education & research</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Content side */}
+            <div className="lg:col-span-3 px-3 py-6 lg:p-6 order-2 lg:order-1">
+              <div className="flex items-center mb-4">
+                <div className="p-2 bg-blue-100 rounded-lg mr-3">
+                  <Award className="w-5 h-5 text-blue-600" />
+                </div>
+                <span className="text-xs font-semibold px-3 py-1 bg-blue-100 text-blue-800 rounded-full">
+                  Department Highlights
+                </span>
+              </div>
+
+              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6">
+                About the <span className="text-blue-600">Mining Department</span>
+              </h2>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-gray-700">
+                {/* Card 1 */}
+                <div className="flex items-start space-x-4 bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500 shadow-sm">
+                  <Globe className="w-10 h-10 text-blue-600 mt-1" />
+                  <div>
+                    <h4 className="font-semibold text-blue-900">Established in 1926</h4>
+                    <p className="text-sm">
+                      Founded by Lord Irwin, the then Viceroy of India, the department has a rich legacy.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Card 2 */}
+                <div className="flex items-start space-x-4 bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500 shadow-sm">
+                  <Award className="w-10 h-10 text-blue-600 mt-1" />
+                  <div>
+                    <h4 className="font-semibold text-blue-900">IIT Status Since 2016</h4>
+                    <p className="text-sm">
+                      Became part of IIT (ISM) Dhanbad, enhancing its research and academic stature.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Card 3 */}
+                <div className="flex items-start space-x-4 bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500 shadow-sm">
+                  <Zap className="w-10 h-10 text-blue-600 mt-1" />
+                  <div>
+                    <h4 className="font-semibold text-blue-900">Largest Dept. of Its Kind</h4>
+                    <p className="text-sm">
+                      Extensive teaching, research, and industrial collaboration across mining sectors.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Card 4 */}
+                <div className="flex items-start space-x-4 bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500 shadow-sm">
+                  <TrendingUp className="w-10 h-10 text-blue-600 mt-1" />
+                  <div>
+                    <h4 className="font-semibold text-blue-900">Top Global Ranking</h4>
+                    <p className="text-sm">
+                      Ranked 20th worldwide in QS World University Rankings by Subject 2025 for Mineral & Mining Engineering.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.section>
+
+
 
         {/* Centenary Celebration Banner */}
-        <section className="text-center py-16">
-          <div className="relative group">
-            <div className="absolute -inset-1 bg-gradient-to-r from-primary-600 to-accent-600 rounded-3xl blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
-            <div className="relative bg-gradient-to-br from-primary-500 via-primary-600 to-accent-500 rounded-3xl p-12 text-white shadow-2xl overflow-hidden">
-              <div className="absolute inset-0 bg-white opacity-10"></div>
-              
-              <div className="relative z-10">
-                <div className="flex items-center justify-center mb-6">
-                  <Sparkles className="w-12 h-12 text-white mr-4" />
-                  <h3 className="text-3xl lg:text-4xl font-black">
-                    Centenary Celebrations
-                  </h3>
-                  <Sparkles className="w-12 h-12 text-white ml-4" />
+        <motion.section
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{
+            hidden: { opacity: 0, scale: 0.95 },
+            visible: {
+              opacity: 1,
+              scale: 1,
+              transition: {
+                duration: 0.6,
+                ease: "easeOut"
+              }
+            }
+          }}
+          className="text-center"
+        >
+          <div className="relative bg-gradient-to-r from-blue-100 via-sky-100 to-purple-100 rounded-2xl p-6 text-gray-800 shadow-md border border-gray-200 overflow-hidden">
+
+            <div className="relative z-10">
+              <div className="flex items-center justify-center mb-4">
+                <Sparkles className="w-7 h-7 text-yellow-500 mr-3" />
+                <h3 className="text-xl sm:text-2xl font-bold text-blue-900">
+                  Centenary Celebrations
+                </h3>
+                <Sparkles className="w-7 h-7 text-yellow-500 ml-3" />
+              </div>
+
+              <p className="text-sm sm:text-base max-w-3xl mx-auto mb-4 text-gray-700">
+                <strong className="text-blue-700">DIGMIN-2025</strong> will be a landmark conference organized as part of the
+                <strong className="text-blue-700"> Centenary Celebrations of IIT (ISM) Dhanbad</strong>,
+                commemorating 100 years of excellence.
+              </p>
+
+              <div className="flex flex-wrap justify-center gap-3">
+                <div className="px-4 py-1.5 bg-white rounded-full border border-gray-300 text-xs sm:text-sm text-gray-700 shadow-sm">
+                  1926 - 2026
                 </div>
-                
-                <p className="text-xl lg:text-2xl opacity-95 max-w-4xl mx-auto leading-relaxed font-medium">
-                  DIGMIN-2025 will be a landmark conference organized as part of the 
-                  <strong className="text-white"> Centenary Celebrations of IIT (ISM) Dhanbad</strong>, 
-                  commemorating 100 years of excellence in mining education and research.
-                </p>
-                
-                <div className="mt-8 flex flex-wrap justify-center gap-4">
-                  <div className="px-6 py-3 bg-white/20 backdrop-blur-sm rounded-full border border-white/30">
-                    <span className="font-semibold">1926 - 2026</span>
-                  </div>
-                  <div className="px-6 py-3 bg-white/20 backdrop-blur-sm rounded-full border border-white/30">
-                    <span className="font-semibold">100 Years of Excellence</span>
-                  </div>
+                <div className="px-4 py-1.5 bg-white rounded-full border border-gray-300 text-xs sm:text-sm text-gray-700 shadow-sm">
+                  100 Years of Excellence
                 </div>
               </div>
             </div>
           </div>
-        </section>
+        </motion.section>
+
       </div>
     </div>
   )

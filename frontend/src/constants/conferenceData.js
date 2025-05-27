@@ -119,8 +119,8 @@ export const SPONSORS = [
 ];
 
 export const NAVIGATION_LINKS = [
-  { name: "Home", href: "#home" },
-  { name: "About", href: "#about" },
+  { name: "Home", href: "/" },
+  { name: "About", href: "/about" },
   { name: "Themes", href: "#themes" },
   { name: "Call for Papers", href: "#call-for-papers" },
   { name: "Important Dates", href: "#dates" },
