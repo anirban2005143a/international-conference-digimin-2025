@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { NAVIGATION_LINKS, CONFERENCE_ACRONYM } from '../../constants/conferenceData';
+import Link from 'next/link';
 
 // Framer Motion variants
 const menuVariants = {
@@ -25,7 +26,7 @@ const NavLink = ({ link, index }) => (
     custom={index}
     className="relative group"
   >
-    <motion.a
+    <Link
       href={link.href}
       className="text-sm font-medium text-gray-800 group-hover:text-indigo-600 transition-colors"
     >
@@ -34,7 +35,7 @@ const NavLink = ({ link, index }) => (
         layoutId="underline"
         className="absolute left-0 -bottom-1 h-0.5 w-full bg-indigo-600 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"
       />
-    </motion.a>
+    </Link>
   </motion.div>
 );
 
@@ -71,7 +72,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           {/* Logo */}
-          <motion.a
+          <Link
             href="/"
             className="text-xl font-bold"
             initial={{ opacity: 0, x: -50 }}
@@ -81,14 +82,14 @@ const Navbar = () => {
             <span className={`text-indigo-900`}>
               {CONFERENCE_ACRONYM}
             </span>
-          </motion.a>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-6 items-center">
             {NAVIGATION_LINKS.map((link, index) => (
               <NavLink key={index} link={link} index={index} />
             ))}
-            <motion.a
+            <Link
               href="#register"
               className="px-4 py-2 rounded-md bg-indigo-700 text-white text-sm font-medium hover:bg-indigo-800 transition-colors"
               variants={menuVariants}
@@ -97,7 +98,7 @@ const Navbar = () => {
               custom={NAVIGATION_LINKS.length}
             >
               Register Now
-            </motion.a>
+            </Link>
           </nav>
 
           {/* Mobile Menu Button */}

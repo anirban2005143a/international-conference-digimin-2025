@@ -24,13 +24,13 @@ const ImportantDatesSection = () => {
         </motion.div>
 
         <motion.div
-          className="relative overflow-hidden shadow-md rounded-lg"
+          className="relative overflow-y-hidden shadow-md rounded-lg"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeInUp}
         >
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto overflow-y-hidden">
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-indigo-900 text-white">
                 <tr>

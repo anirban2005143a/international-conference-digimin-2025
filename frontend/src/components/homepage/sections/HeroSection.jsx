@@ -66,6 +66,8 @@ const HeroSection = () => {
             <Image
               width={200}
               height={200}
+              loading='lazy'
+              quality={50}
               src="/ism-logo.png"
               alt="IIT ISM Dhanbad Logo"
               className="h-28 w-28 object-contain text-white text-sm "
@@ -73,6 +75,8 @@ const HeroSection = () => {
             <Image
               width={200}
               height={200}
+              loading='lazy'
+              quality={50}
               src="/digimin-logo.png"
               alt="DIGMIN Conference Logo"
               className="h-28 w-28 object-contain text-white text-sm "
