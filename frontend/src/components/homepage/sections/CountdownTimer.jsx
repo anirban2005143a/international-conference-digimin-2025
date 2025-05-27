@@ -49,7 +49,7 @@ const CountdownTimer = () => {
     'bg-indigo-500',      // Primary blue
     'bg-teal-500',      // Complementary teal
     'bg-amber-500',     // Warm accent
-    'bg-violet-500'     // Sophisticated purple
+    'bg-blue-500'     // Sophisticated purple
   ];
 
   return (

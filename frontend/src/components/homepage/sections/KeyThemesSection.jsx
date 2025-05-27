@@ -105,8 +105,8 @@ const KeyThemesSection = () => {
             <motion.div
               key={theme.title}
               className="group relative"
-              // initial="hidden"
-              // whileInView="visible"
+              initial="hidden"
+              whileInView="visible"
               variants={itemVariants}
               whileHover={{ y: -5 }}
               transition={{ duration: 0.3 }}
@@ -131,7 +131,7 @@ const KeyThemesSection = () => {
                       {iconMap[theme.icon] || iconMap['ShieldAlert']}
                     </motion.div>
                     <motion.h3
-                      className="text-base md:text-xl font-semibold text-gray-800 mt-2"
+                      className="text-lg md:text-xl font-semibold text-gray-800 mt-2"
                       initial={{ opacity: 0, x: 10 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}

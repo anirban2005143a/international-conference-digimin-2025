@@ -63,7 +63,7 @@ const CallForPapersSection = () => {
           </motion.div>
           
           <motion.div
-            className="bg-indigo-800 rounded-lg p-8 shadow-lg"
+            className="bg-indigo-800 rounded-lg md:p-6 p-3 shadow-lg"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}

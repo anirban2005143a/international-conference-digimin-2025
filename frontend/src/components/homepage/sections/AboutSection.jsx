@@ -3,6 +3,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { fadeInUp, fadeInRight } from '@/utils/animations';
 import { ABOUT_CONFERENCE } from '@/constants/conferenceData';
+import Image from 'next/image';
 
 const AboutSection = () => {
   return (
@@ -17,7 +18,7 @@ const AboutSection = () => {
           >
             <h2 className="text-3xl font-bold mb-2 text-gray-900 ">About the Conference</h2>
             <div className="w-20 h-1 bg-indigo-700 mb-6"></div>
-            
+
             <div className="prose prose-lg text-gray-700">
               <p className="mb-4">{ABOUT_CONFERENCE}</p>
               <div className="mt-8">
@@ -42,22 +43,26 @@ const AboutSection = () => {
               </div>
             </div>
           </motion.div>
-          
+
           <motion.div
-            className="relative"
+            className="relative p-3"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeInUp}
           >
             <div className="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden shadow-xl">
-              <img 
-                src="https://images.pexels.com/photos/2157841/pexels-photo-2157841.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" 
+              <Image
+              loading='lazy'
+              quality={75} 
+                width={350}
+                height={500}
+                src="/green-mining.jpeg"
                 alt="Modern Mining Operation"
                 className="w-full h-full object-cover rounded-lg"
               />
             </div>
-            <div className="absolute -bottom-6 -left-6 bg-indigo-700 text-white p-6 rounded-lg shadow-lg max-w-xs">
+            <div className="absolute -bottom-6 -left-6 bg-indigo-700 text-white m-3  p-6 rounded-lg shadow-lg max-w-xs">
               <p className="font-bold text-lg mb-2">100 Years of Excellence</p>
               <p className="text-sm text-indigo-100">
                 Celebrating the Centenary of IIT (ISM) Dhanbad with groundbreaking discussions on the future of mining.

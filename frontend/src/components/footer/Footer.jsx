@@ -1,8 +1,8 @@
 "use client"
 import React from 'react';
 import { motion } from 'framer-motion';
-import { fadeInUp } from '../../utils/animations';
-import { CONFERENCE_ACRONYM, NAVIGATION_LINKS } from '../../constants/conferenceData';
+import { fadeInUp } from '@/utils/animations';
+import { CONFERENCE_ACRONYM, NAVIGATION_LINKS } from '@/constants/conferenceData';
 import { Mail, Phone, MapPin } from 'lucide-react';
 
 const Footer = () => {
