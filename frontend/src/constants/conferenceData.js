@@ -122,7 +122,7 @@ export const NAVIGATION_LINKS = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
   { name: "Themes", href: "/themes" },
-  { name: "Call for Papers", href: "#call-for-papers" },
+  { name: "Call for Papers", href: "/callforpapers" },
   { name: "Important Dates", href: "#dates" },
   { name: "Organizers", href: "#organizers" },
   { name: "Sponsors", href: "#sponsors" },

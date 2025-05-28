@@ -277,7 +277,7 @@ export default function ThemesPage() {
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: "-50px" }}
+              viewport={{ once: true }}
               variants={{
                 hidden: { opacity: 0, y: 30 },
                 visible: {

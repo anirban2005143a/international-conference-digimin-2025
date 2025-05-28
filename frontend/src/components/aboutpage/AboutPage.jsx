@@ -73,7 +73,7 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen bg-gray-50 relative overflow-hidden">
       {/* Hero Section */}
-      <section className="relative min-h-[100dvh] h-auto py-[80px] flex items-start justify-center bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden px-6 sm:px-12 lg:px-24">
+      <section className="relative h-auto py-[80px] flex items-start justify-center bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden px-6 sm:px-12 lg:px-24">
 
         {/* Floating circles */}
         <motion.div

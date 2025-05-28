@@ -19,7 +19,7 @@ const HeroSection = () => {
   return (
     <section
       id="home"
-      className="relative min-h-[100dvh] flex items-center justify-center py-20 overflow-hidden "
+      className="relative  flex items-center justify-center py-20 overflow-hidden "
     >
       {/* Particle animation background */}
       <HeroBackground />
