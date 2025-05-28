@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import { Mail, Calendar, FileText, ListChecks, ArrowRight, Send } from 'lucide-react';
-import { motion, useAnimation, useInView, stagger } from 'framer-motion';
+import { motion, useAnimation, useInView, stagger, delay } from 'framer-motion';
 
 // Animation variants
 const fadeInUp = {
@@ -10,9 +10,9 @@ const fadeInUp = {
   visible: (i = 1) => ({
     opacity: 1,
     y: 0,
-    transition: { 
-      delay: i * 0.15, 
-      duration: 0.6, 
+    transition: {
+      delay: i * 0.25,
+      duration: 1,
       ease: [0.16, 1, 0.3, 1],
     },
   }),
@@ -52,17 +52,7 @@ const item = {
   }
 };
 
-const scaleUp = {
-  hidden: { scale: 0.95, opacity: 0 },
-  visible: {
-    scale: 1,
-    opacity: 1,
-    transition: {
-      duration: 0.6,
-      ease: "easeOut"
-    }
-  }
-};
+
 
 export default function CallForPapers() {
   const controls = useAnimation();
@@ -87,7 +77,7 @@ export default function CallForPapers() {
           animate={controls}
         >
           <motion.div variants={item}>
-            <motion.div 
+            <motion.div
               className="inline-block bg-blue-100 text-blue-800 text-sm font-medium px-4 py-1.5 rounded-full mb-4"
               initial={{ opacity: 0, y: 20 }}
               animate={controls}
@@ -107,15 +97,15 @@ export default function CallForPapers() {
             </p>
           </motion.div>
           <motion.div variants={item} className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
-            <a 
-              href="#submission" 
+            <a
+              href="#submission"
               className="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-3 rounded-lg transition-all shadow-md hover:shadow-lg"
             >
               Submission Guidelines
               <ArrowRight className="w-4 h-4 ml-2" />
             </a>
-            <a 
-              href="#deadlines" 
+            <a
+              href="#deadlines"
               className="inline-flex items-center justify-center bg-white hover:bg-gray-50 text-blue-600 font-medium px-6 py-3 rounded-lg transition-all border border-blue-200 shadow-sm hover:shadow-md"
             >
               View Deadlines
@@ -128,12 +118,11 @@ export default function CallForPapers() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Section: Instructions to Authors */}
           <motion.section
-            className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
+            className="bg-white md:p-6 py-6 px-3 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
             variants={fadeInUp}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
-            custom={1}
           >
             <div className="flex items-center mb-4">
               <div className="bg-blue-100 p-3 rounded-full mr-4">
@@ -143,7 +132,7 @@ export default function CallForPapers() {
                 Instructions to Authors
               </h2>
             </div>
-            <div className="pl-16">
+            <div className="md:pl-16">
               <p className="text-gray-700 mb-4">
                 Submit your original technical paper related to the conference themes. Papers will be peer-reviewed by our technical committee.
               </p>
@@ -164,7 +153,7 @@ export default function CallForPapers() {
             variants={fadeInUp}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: "-50px" }}
             custom={2}
           >
             <div className="flex items-center mb-4">
@@ -175,7 +164,7 @@ export default function CallForPapers() {
                 Format Guidelines
               </h2>
             </div>
-            <div className="pl-16">
+            <div className="md:pl-16">
               <ul className="space-y-3">
                 <li className="flex">
                   <span className="font-medium text-gray-800 w-36">Title:</span>
@@ -215,11 +204,11 @@ export default function CallForPapers() {
 
           {/* Section: Deadlines - Full width */}
           <motion.section
-            className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow lg:col-span-2"
+            className="bg-white md:p-6 py-6 px-3 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow lg:col-span-2"
             variants={fadeInUp}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: "-50px" }}
             custom={3}
             id="deadlines"
           >
@@ -233,41 +222,39 @@ export default function CallForPapers() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
               {[
-                { 
-                  title: "Call for Abstracts", 
+                {
+                  title: "Call for Abstracts",
                   date: "01 June 2025",
                   icon: <Calendar className="w-5 h-5 text-blue-600" />
                 },
-                { 
-                  title: "Abstract Submission", 
+                {
+                  title: "Abstract Submission",
                   date: "30 June 2025",
                   icon: <Send className="w-5 h-5 text-blue-600" />
                 },
-                { 
-                  title: "Review Notification", 
+                {
+                  title: "Review Notification",
                   date: "15 July 2025",
                   icon: <FileText className="w-5 h-5 text-blue-600" />
                 },
-                { 
-                  title: "Full Paper Submission", 
+                {
+                  title: "Full Paper Submission",
                   date: "15 August 2025",
                   icon: <Send className="w-5 h-5 text-blue-600" />
                 },
-                { 
-                  title: "Final Acceptance", 
+                {
+                  title: "Final Acceptance",
                   date: "31 August 2025",
                   icon: <ListChecks className="w-5 h-5 text-blue-600" />
                 },
               ].map((deadline, index) => (
-                <motion.div 
+                <motion.div
                   key={index}
-                  className="bg-gradient-to-br from-blue-50 to-white p-5 rounded-xl border border-blue-100 hover:border-blue-200 transition-all"
-                  variants={scaleUp}
+                  className="bg-gradient-to-br from-blue-50 to-white p-5 rounded-xl border border-blue-100 hover:border-blue-200 shadow-sm"
                   initial="hidden"
                   whileInView="visible"
-                  viewport={{ once: true, margin: "-50px" }}
-                  custom={index + 4}
-                  whileHover={{ y: -5 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  whileHover={{ y: -5, boxShadow: "0 10px 20px rgba(0,0,0,0.1)" }}
                 >
                   <div className="bg-blue-100 w-10 h-10 rounded-full flex items-center justify-center mb-3">
                     {deadline.icon}
