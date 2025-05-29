@@ -102,7 +102,7 @@ const Navbar = () => {
               <NavLink key={index} link={link} index={index} />
             ))}
             <Link
-              href="#register"
+              href="/registration"
               className="px-4 py-2 rounded-md bg-indigo-700 text-white text-sm font-medium hover:bg-indigo-800 transition-colors"
               variants={menuVariants}
               initial="hidden"

@@ -124,7 +124,7 @@ export const NAVIGATION_LINKS = [
   { name: "Themes", href: "/themes" },
   { name: "Call for Papers", href: "/callforpapers" },
   { name: "Important Dates", href: "#dates" },
-  { name: "Organizers", href: "#organizers" },
-  { name: "Sponsors", href: "#sponsors" },
+  // { name: "Registration", href: "/registration" },
+  { name: "Sponsorship", href: "/sponsorship" },
   { name: "Contact", href: "#contact" }
 ];
