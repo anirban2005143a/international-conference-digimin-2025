@@ -72,103 +72,173 @@ export default function AboutPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 relative overflow-hidden">
-      {/* Hero Section */}
-      <section className="relative h-auto py-[80px] flex items-start justify-center bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden px-6 sm:px-12 lg:px-24">
+ {/* Hero Section */}
+<section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 via-white to-gray-100 overflow-hidden px-6 sm:px-12 lg:px-24 py-20">
 
-        {/* Floating circles */}
-        <motion.div
-          className="absolute top-1/4 left-1/4 w-5 h-5 bg-slate-300 rounded-full shadow-md opacity-70"
-          variants={floatVariants}
-          initial="initial"
-          animate="animate"
-          style={{ animationDelay: "0s" }}
-        />
-        <motion.div
-          className="absolute top-1/3 right-1/3 w-10 h-10 bg-slate-200 rounded-full shadow-md opacity-60"
-          variants={floatVariants}
-          initial="initial"
-          animate="animate"
-          style={{ animationDelay: "1.5s" }}
-        />
-        <motion.div
-          className="absolute bottom-1/4 left-1/3 w-5 h-5 bg-slate-300 rounded-full shadow-md opacity-70"
-          variants={floatVariants}
-          initial="initial"
-          animate="animate"
-          style={{ animationDelay: "3s" }}
-        />
+  {/* Animated Background Elements */}
+  <div className="absolute inset-0 overflow-hidden">
+    {/* Floating gradient circles */}
+    <motion.div
+      className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-blue-100 to-indigo-100 rounded-full opacity-40 blur-3xl"
+      initial={{ scale: 0.8, opacity: 0 }}
+      animate={{ scale: 1.2, opacity: 0.4 }}
+      transition={{
+        duration: 15,
+        repeat: Infinity,
+        repeatType: "reverse",
+        ease: "easeInOut"
+      }}
+    />
+    <motion.div
+      className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-gradient-to-r from-emerald-100 to-teal-100 rounded-full opacity-40 blur-3xl"
+      initial={{ scale: 0.8, opacity: 0 }}
+      animate={{ scale: 1.2, opacity: 0.4 }}
+      transition={{
+        duration: 15,
+        repeat: Infinity,
+        repeatType: "reverse",
+        ease: "easeInOut",
+        delay: 5
+      }}
+    />
 
-        {/* Main Content */}
-        <motion.div
-          className="relative z-10 max-w-4xl mx-auto text-center translate-y-[10%]"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          <motion.div
-            className="inline-flex items-center px-5 py-2 bg-white border border-gray-300 rounded-full text-sm font-semibold text-gray-700 shadow-sm"
-            variants={itemVariants}
-          >
-            <Sparkles className="w-5 h-5 mr-2 text-yellow-500" />
-            Centenary Celebrations 2025
-          </motion.div>
+    {/* Floating particles */}
+    {[...Array(8)].map((_, i) => (
+      <motion.div
+        key={i}
+        className={`absolute w-2 h-2 bg-indigo-300 rounded-full opacity-70`}
+        style={{
+          top: `${Math.random() * 100}%`,
+          left: `${Math.random() * 100}%`,
+        }}
+        initial={{ y: 0, opacity: 0 }}
+        animate={{ 
+          y: [0, -20, 0, -40, 0],
+          opacity: [0, 0.7, 0],
+        }}
+        transition={{
+          duration: 10 + Math.random() * 10,
+          repeat: Infinity,
+          ease: "linear"
+        }}
+      />
+    ))}
+  </div>
 
-          <motion.h1
-            className="mt-8 font-extrabold tracking-tight text-5xl sm:text-6xl md:text-7xl text-gray-900"
-            variants={itemVariants}
-          >
-            DIGMIN
-            <span className="block mt-2 text-4xl sm:text-5xl font-bold text-slate-600">
-              2025
-            </span>
-          </motion.h1>
+  {/* Main Content */}
+  <motion.div
+    className="relative z-10 max-w-6xl mx-auto text-center"
+    initial="hidden"
+    animate="visible"
+    variants={{
+      hidden: { opacity: 0 },
+      visible: {
+        opacity: 1,
+        transition: {
+          staggerChildren: 0.2,
+          delayChildren: 0.3
+        }
+      }
+    }}
+  >
+    {/* Badge */}
+    <motion.div
+      className="inline-flex items-center px-5 py-2.5 bg-white/80 backdrop-blur-sm border border-gray-200 rounded-full text-sm font-semibold text-gray-800 shadow-sm hover:shadow-md transition-all duration-300 mb-8"
+      initial={{ y: -20, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.8, ease: "backOut" }}
+      whileHover={{ scale: 1.05 }}
+    >
+      <Sparkles className="w-5 h-5 mr-2 text-yellow-500 animate-pulse" />
+      Centenary Celebrations 2025
+    </motion.div>
 
-          <motion.p
-            className="mt-6 max-w-3xl mx-auto text-lg sm:text-xl font-light text-gray-700 leading-relaxed"
-            variants={itemVariants}
-          >
-            Digital Intelligence for Green Mining
-            <span className="block mt-2 text-base sm:text-lg font-medium text-gray-600">
-              and Industrial Networks
-            </span>
-          </motion.p>
+    {/* Title */}
+    <motion.h1
+      className="mt-6 font-bold tracking-tight text-5xl md:text-6xl  text-gray-900"
+      initial={{ y: 40, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.8, ease: [0.16, 0.77, 0.47, 0.97] }}
+    >
+      <span className="bg-gradient-to-r from-indigo-600 to-blue-600 bg-clip-text text-transparent">
+        DIGMIN
+      </span>
+      <motion.span 
+        className="block mt-4 text-4xl sm:text-5xl font-bold text-gray-700"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.4, duration: 0.6 }}
+      >
+        2025
+      </motion.span>
+    </motion.h1>
 
-          <motion.div
-            className="flex flex-wrap justify-center gap-4 mt-10"
-            variants={itemVariants}
-          >
-            <div className="flex items-center px-4 py-2 bg-white border border-gray-300 rounded-lg shadow-sm text-gray-700 text-sm font-medium">
-              <Calendar className="w-5 h-5 mr-2 text-blue-600" />
-              2025 Conference
-            </div>
-            <div className="flex items-center px-4 py-2 bg-white border border-gray-300 rounded-lg shadow-sm text-gray-700 text-sm font-medium">
-              <MapPin className="w-5 h-5 mr-2 text-green-600" />
-              IIT (ISM) Dhanbad
-            </div>
-            <div className="flex items-center px-4 py-2 bg-white border border-gray-300 rounded-lg shadow-sm text-gray-700 text-sm font-medium">
-              <Award className="w-5 h-5 mr-2 text-yellow-600" />
-              Global Ranking #20
-            </div>
-          </motion.div>
-          {/* Scroll Down Arrow */}
-          <motion.div
-            className="cursor-pointer flex justify-center my-10"
-            animate={{
-              y: [0, 12, 0],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          >
-            <ChevronDown className="w-10 h-10 text-gray-500 opacity-70 hover:opacity-100 transition-opacity duration-300" />
-          </motion.div>
-        </motion.div>
+    {/* Tagline */}
+    <motion.div
+      className="mt-8 max-w-3xl mx-auto"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.6, duration: 0.8 }}
+    >
+      <p className="text-xl sm:text-2xl font-light text-gray-700 leading-relaxed">
+        <span className="font-medium text-indigo-500 ">
+          Digital Intelligence for Green Mining
+        </span>
+        <span className="block mt-3 text-lg sm:text-xl font-medium text-gray-600">
+          and Sustainable Industrial Networks
+        </span>
+      </p>
+    </motion.div>
 
+    {/* Info Badges */}
+    <motion.div
+      className="flex flex-wrap justify-center gap-4 mt-12"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.8, duration: 0.6 }}
+    >
+      <motion.div 
+        className="flex items-center px-5 py-2.5 bg-white/80 backdrop-blur-sm border border-gray-200 rounded-xl shadow-sm text-gray-700 text-sm font-medium hover:shadow-md transition-all"
+        whileHover={{ y: -5 }}
+      >
+        <Calendar className="w-5 h-5 mr-2 text-blue-600" />
+        <span>January 15-17, 2025</span>
+      </motion.div>
+      <motion.div 
+        className="flex items-center px-5 py-2.5 bg-white/80 backdrop-blur-sm border border-gray-200 rounded-xl shadow-sm text-gray-700 text-sm font-medium hover:shadow-md transition-all"
+        whileHover={{ y: -5 }}
+      >
+        <MapPin className="w-5 h-5 mr-2 text-green-600" />
+        <span>IIT (ISM) Dhanbad, India</span>
+      </motion.div>
+      <motion.div 
+        className="flex items-center px-5 py-2.5 bg-white/80 backdrop-blur-sm border border-gray-200 rounded-xl shadow-sm text-gray-700 text-sm font-medium hover:shadow-md transition-all"
+        whileHover={{ y: -5 }}
+      >
+        <Award className="w-5 h-5 mr-2 text-yellow-600" />
+        <span>QS World Ranking #20</span>
+      </motion.div>
+    </motion.div>
 
-
-      </section>
+    {/* Scroll Down Arrow */}
+    <motion.div
+      className="mt-20 flex justify-center"
+      initial={{ opacity: 0 }}
+      animate={{ 
+        opacity: [0, 1, 0],
+        y: [0, 10, 0]
+      }}
+      transition={{
+        duration: 2,
+        repeat: Infinity,
+        ease: "easeInOut",
+        delay: 1.5
+      }}
+    >
+      <ChevronDown className="w-8 h-8 text-indigo-500" />
+    </motion.div>
+  </motion.div>
+</section>
 
       {/* Main Content */}
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16">

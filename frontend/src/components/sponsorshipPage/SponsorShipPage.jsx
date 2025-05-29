@@ -77,11 +77,11 @@ export default function SponsorshipPage() {
 
         {/* Sponsorship Tiers */}
         <motion.section
-          className="bg-white p-8 sm:p-10 shadow-lg rounded-xl border-t-4 border-blue-600"
+          className="bg-white py-8 px-3 sm:p-10 shadow-lg rounded-xl border-t-4 border-blue-600"
           variants={fadeIn}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: "0px" }}
           transition={{ delay: 0.2 }}
         >
           <div className="flex items-center gap-4 mb-8">
@@ -123,7 +123,7 @@ export default function SponsorshipPage() {
               <motion.div 
                 key={tier.title}
                 variants={item}
-                className="border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow"
+                className="border border-gray-200 rounded-lg py-6 px-3 hover:shadow-md transition-shadow"
               >
                 <h3 className="text-xl font-semibold text-gray-800 mb-2">{tier.title}</h3>
                 <p className="text-blue-600 font-bold text-lg mb-4">{tier.price} <span className="text-gray-500 text-sm">+ GST</span></p>
@@ -203,7 +203,7 @@ export default function SponsorshipPage() {
 
         {/* Contact Section */}
         <motion.section
-          className="bg-gradient-to-r from-blue-600 to-blue-800 p-10 rounded-xl text-white"
+          className="bg-gradient-to-r from-blue-600 to-blue-800 md:p-10 py-5 px-4 rounded-xl text-white"
           variants={fadeIn}
           initial="hidden"
           whileInView="visible"

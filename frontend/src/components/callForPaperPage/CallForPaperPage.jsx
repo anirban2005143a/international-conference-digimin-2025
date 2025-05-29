@@ -7,11 +7,11 @@ import { motion, useAnimation, useInView, stagger, delay } from 'framer-motion';
 // Animation variants
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
-  visible: (i = 1) => ({
+  visible: () => ({
     opacity: 1,
     y: 0,
     transition: {
-      delay: i * 0.25,
+      delay: 0.25,
       duration: 1,
       ease: [0.16, 1, 0.3, 1],
     },
@@ -122,7 +122,8 @@ export default function CallForPapers() {
             variants={fadeInUp}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: "-50px" }}
+            custom={1}
           >
             <div className="flex items-center mb-4">
               <div className="bg-blue-100 p-3 rounded-full mr-4">
@@ -208,7 +209,7 @@ export default function CallForPapers() {
             variants={fadeInUp}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
+            viewport={{ once: true , margin:"-50px"}}
             custom={3}
             id="deadlines"
           >
