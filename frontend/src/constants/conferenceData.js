@@ -123,7 +123,7 @@ export const NAVIGATION_LINKS = [
   { name: "About", href: "/about" },
   { name: "Themes", href: "/themes" },
   { name: "Call for Papers", href: "/callforpapers" },
-  { name: "Important Dates", href: "#dates" },
+  { name: "Important Dates", href: "/importantdates" },
   // { name: "Registration", href: "/registration" },
   { name: "Sponsorship", href: "/sponsorship" },
   { name: "Contact", href: "#contact" }
