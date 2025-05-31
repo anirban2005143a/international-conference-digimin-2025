@@ -1,8 +1,9 @@
 "use client"
 
 import { useEffect, useRef } from 'react';
-import { Mail, Calendar, FileText, ListChecks, ArrowRight, Send } from 'lucide-react';
+import { Mail, Calendar, FileText, ListChecks, ArrowRight, Send, CheckCircle, AlertCircle, Circle, Type, Info } from 'lucide-react';
 import { motion, useAnimation, useInView, stagger, delay } from 'framer-motion';
+import Link from 'next/link';
 
 // Animation variants
 const fadeInUp = {
@@ -67,7 +68,7 @@ export default function CallForPapers() {
 
   return (
     <div className="bg-gradient-to-br from-white via-blue-50 to-blue-100 text-gray-900 min-h-screen font-sans">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 space-y-12 md:space-y-20">
+      <div className="max-w-6xl mx-auto px-4 py-12 md:py-20 space-y-12 md:space-y-20">
         {/* Hero Section */}
         <motion.section
           ref={ref}
@@ -97,109 +98,164 @@ export default function CallForPapers() {
             </p>
           </motion.div>
           <motion.div variants={item} className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
-            <a
-              href="#submission"
+            <Link
+              href="/callforpapers/#submission"
               className="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-3 rounded-lg transition-all shadow-md hover:shadow-lg"
             >
               Submission Guidelines
               <ArrowRight className="w-4 h-4 ml-2" />
-            </a>
-            <a
-              href="#deadlines"
+            </Link>
+            <Link
+              href="/callforpapers/#deadlines"
               className="inline-flex items-center justify-center bg-white hover:bg-gray-50 text-blue-600 font-medium px-6 py-3 rounded-lg transition-all border border-blue-200 shadow-sm hover:shadow-md"
             >
               View Deadlines
               <Calendar className="w-4 h-4 ml-2" />
-            </a>
+            </Link>
           </motion.div>
         </motion.section>
 
         {/* Grid Layout for Content Sections */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Section: Instructions to Authors */}
+        <section id='submission' className="grid grid-cols-1 lg:grid-cols-2 gap-8 space-y-5  ">
+          {/* Section: Paper Submission */}
           <motion.section
-            className="bg-white md:p-6 py-6 px-3 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
+            className="bg-gradient-to-br from-blue-50 to-sky-50 p-3 py-5 sm:p-5 rounded-2xl shadow-md border border-blue-100 hover:shadow-lg transition-shadow mx-2 sm:mx-0"
             variants={fadeInUp}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
             custom={1}
           >
-            <div className="flex items-center mb-4">
-              <div className="bg-blue-100 p-3 rounded-full mr-4">
-                <FileText className="w-5 h-5 text-blue-600" />
+            <div className="flex items-center mb-3 sm:mb-5">
+              <div className="bg-blue-100/80 p-2 rounded-xl mr-3 shadow-inner border border-blue-200">
+                <FileText className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600" />
               </div>
-              <h2 className="text-2xl font-semibold text-gray-900">
-                Instructions to Authors
+              <h2 className="text-lg sm:text-xl font-bold text-gray-800">
+                Paper Submission Guidelines
               </h2>
             </div>
-            <div className="md:pl-16">
-              <p className="text-gray-700 mb-4">
-                Submit your original technical paper related to the conference themes. Papers will be peer-reviewed by our technical committee.
-              </p>
-              <ul className="list-disc list-inside text-gray-700 space-y-2 pl-1">
-                <li>Papers must be original, unpublished work</li>
-                <li>Maximum length: 8 pages (including references)</li>
-                <li>All submissions must be in English</li>
-                <li>Submissions should follow the formatting guidelines</li>
-                <li>Include 3-5 keywords with your submission</li>
-                <li>Clearly state the contribution to the field</li>
-              </ul>
+
+            <div className="space-y-2 sm:space-y-3">
+              <div className="p-3 bg-white/90 rounded-lg border-l-4 border-blue-500 shadow-sm">
+                <p className="text-xs sm:text-sm text-gray-700">
+                  Technical papers on the Conference theme are invited for oral presentation.
+                  All submissions will undergo peer-review for publication in the Conference Proceedings.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 gap-2 sm:gap-3 sm:grid-cols-2">
+                <div className="bg-white p-2 sm:p-3 rounded-lg border border-blue-100 shadow-sm">
+                  <h3 className="font-semibold text-xs sm:text-sm text-blue-700 mb-1 flex items-center">
+                    <Mail className="w-3 h-3 sm:w-4 sm:h-4 mr-1" /> Submission Details
+                  </h3>
+                  <ul className="space-y-1 text-xs sm:text-sm text-gray-700">
+                    <li className="flex items-start">
+                      <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4 text-blue-500 mt-0.5 mr-1 flex-shrink-0" />
+                      <span>Email to: <span className="font-mono text-blue-600 break-all">sagarwal@littism.ac.in</span></span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4 text-blue-500 mt-0.5 mr-1 flex-shrink-0" />
+                      <span>Deadline: <span className="font-semibold">15 August 2025</span></span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4 text-blue-500 mt-0.5 mr-1 flex-shrink-0" />
+                      <span>Format: MS Word document</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="bg-white p-2 sm:p-3 rounded-lg border border-blue-100 shadow-sm">
+                  <h3 className="font-semibold text-xs sm:text-sm text-blue-700 mb-1 flex items-center">
+                    <AlertCircle className="w-3 h-3 sm:w-4 sm:h-4 mr-1" /> Important Notes
+                  </h3>
+                  <ul className="space-y-1 text-xs sm:text-sm text-gray-700">
+                    <li className="flex items-start">
+                      <Circle className="w-2 h-2 mt-1.5 mr-1 text-blue-500 flex-shrink-0" />
+                      <span>Original, unpublished work only</span>
+                    </li>
+                    <li className="flex items-start">
+                      <Circle className="w-2 h-2 mt-1.5 mr-1 text-blue-500 flex-shrink-0" />
+                      <span>Strict formatting compliance required</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </motion.section>
 
-          {/* Section: Format Guidelines */}
+          {/* Section: Format Specifications */}
           <motion.section
-            className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
+            className="bg-gradient-to-br from-sky-50 to-blue-50 p-3 sm:p-5 rounded-2xl shadow-md border border-blue-100 hover:shadow-lg transition-shadow mx-2 sm:mx-0 py-5"
             variants={fadeInUp}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
+            viewport={{ once: true }}
             custom={2}
           >
-            <div className="flex items-center mb-4">
-              <div className="bg-blue-100 p-3 rounded-full mr-4">
-                <ListChecks className="w-5 h-5 text-blue-600" />
+            <div className="flex items-center mb-3 sm:mb-5">
+              <div className="bg-blue-100/80 p-2 rounded-xl mr-3 shadow-inner border border-blue-200">
+                <Type className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600" />
               </div>
-              <h2 className="text-2xl font-semibold text-gray-900">
-                Format Guidelines
+              <h2 className="text-lg sm:text-xl font-bold text-gray-800">
+                Format Specifications
               </h2>
             </div>
-            <div className="md:pl-16">
-              <ul className="space-y-3">
-                <li className="flex">
-                  <span className="font-medium text-gray-800 w-36">Title:</span>
-                  <span className="text-gray-700">Times New Roman 12 bold</span>
-                </li>
-                <li className="flex">
-                  <span className="font-medium text-gray-800 w-36">Author Name:</span>
-                  <span className="text-gray-700">Times New Roman 10.5</span>
-                </li>
-                <li className="flex">
-                  <span className="font-medium text-gray-800 w-36">Affiliation:</span>
-                  <span className="text-gray-700">Times New Roman 10 italic</span>
-                </li>
-                <li className="flex">
-                  <span className="font-medium text-gray-800 w-36">Headings:</span>
-                  <span className="text-gray-700">Times New Roman 10 bold</span>
-                </li>
-                <li className="flex">
-                  <span className="font-medium text-gray-800 w-36">Sub-Headings:</span>
-                  <span className="text-gray-700">Times New Roman 12 bold</span>
-                </li>
-                <li className="flex">
-                  <span className="font-medium text-gray-800 w-36">Paragraphs:</span>
-                  <span className="text-gray-700">Times New Roman 10</span>
-                </li>
-                <li className="flex">
-                  <span className="font-medium text-gray-800 w-36">References:</span>
-                  <span className="text-gray-700">Chicago Style (alphabetical)</span>
-                </li>
-                <li className="flex">
-                  <span className="font-medium text-gray-800 w-36">Page Size:</span>
-                  <span className="text-gray-700">A4, single column</span>
-                </li>
-              </ul>
+
+            <div className="grid grid-cols-1 gap-2 sm:gap-3 sm:grid-cols-2">
+              <div className="bg-white p-2 sm:p-3 rounded-lg border border-blue-100 shadow-sm">
+                <h3 className="font-semibold text-xs sm:text-sm text-blue-700 mb-2 border-b pb-1">Typography</h3>
+                <ul className="space-y-1 sm:space-y-2">
+                  <li className="flex justify-between text-xs sm:text-sm">
+                    <span className="text-gray-600">Title:</span>
+                    <span className="font-medium">TNR 12 bold</span>
+                  </li>
+                  <li className="flex justify-between text-xs sm:text-sm">
+                    <span className="text-gray-600">Author:</span>
+                    <span className="font-medium">TNR 10.5</span>
+                  </li>
+                  <li className="flex justify-between text-xs sm:text-sm">
+                    <span className="text-gray-600">Affiliation:</span>
+                    <span className="font-medium">TNR 10 italic</span>
+                  </li>
+                  <li className="flex justify-between text-xs sm:text-sm">
+                    <span className="text-gray-600">Headings:</span>
+                    <span className="font-medium">TNR 10 bold</span>
+                  </li>
+                  <li className="flex justify-between text-xs sm:text-sm">
+                    <span className="text-gray-600">Sub-headings:</span>
+                    <span className="font-medium">TNR 12 bold</span>
+                  </li>
+                  <li className="flex justify-between text-xs sm:text-sm">
+                    <span className="text-gray-600">Body text:</span>
+                    <span className="font-medium">TNR 10</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="bg-white p-2 sm:p-3 rounded-lg border border-blue-100 shadow-sm">
+                <h3 className="font-semibold text-xs sm:text-sm text-blue-700 mb-2 border-b pb-1">Other Requirements</h3>
+                <ul className="space-y-1 sm:space-y-2">
+                  <li className="text-xs sm:text-sm">
+                    <div className="text-gray-600 mb-0.5">Figures/Tables:</div>
+                    <div className="font-medium">Label as Figure 1, Table 2, etc.</div>
+                    <div className="text-[0.65rem] sm:text-xs text-gray-500 mt-0.5">Place at text references</div>
+                  </li>
+                  <li className="text-xs sm:text-sm">
+                    <div className="text-gray-600 mb-0.5">References:</div>
+                    <div className="font-medium">Chicago style</div>
+                    <div className="text-[0.65rem] sm:text-xs text-gray-500 mt-0.5">Alphabetical order</div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="mt-2 sm:mt-3 bg-blue-50/50 p-1.5 sm:p-2 rounded-lg border border-blue-200">
+              <div className="flex items-start">
+                <Info className="w-3 h-3 sm:w-4 sm:h-4 text-blue-500 mt-0.5 mr-1 flex-shrink-0" />
+                <p className="text-[0.65rem] sm:text-xs text-gray-700">
+                  All formatting requirements are mandatory for paper acceptance. Use Times New Roman (TNR) font throughout.
+                </p>
+              </div>
             </div>
           </motion.section>
 
@@ -209,7 +265,7 @@ export default function CallForPapers() {
             variants={fadeInUp}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true , margin:"-50px"}}
+            viewport={{ once: true, margin: "-50px" }}
             custom={3}
             id="deadlines"
           >
@@ -266,7 +322,7 @@ export default function CallForPapers() {
               ))}
             </div>
           </motion.section>
-        </div>
+        </section>
 
         {/* Contact Section */}
         <motion.section
@@ -285,7 +341,7 @@ export default function CallForPapers() {
             Ready to Submit Your Paper?
           </h2>
           <p className="text-blue-100 mb-6 text-center max-w-2xl">
-            Submit your research paper via email with the subject line: "DIGM Conference Submission - [Your Paper Title]".
+            Submit your research paper via email with the subject line: "DIGMIN Conference Paper Submission - [Your Paper Title]".
             Include all authors' details and affiliations in the email body.
           </p>
           <motion.div
