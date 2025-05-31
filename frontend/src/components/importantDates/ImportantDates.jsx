@@ -77,11 +77,11 @@ const ImportantDates = () => {
   ];
 
   return (
-    <div ref={ref} className="bg-gradient-to-br from-[#f8fafc] to-[#f0f9ff] min-h-screen py-20 px-4">
+    <div ref={ref} className="bg-gradient-to-br from-[#f8fafc] to-[#f0f9ff] min-h-screen py-10 px-4">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <motion.header
-          className="text-center mb-16 py-20"
+          className="text-center mb-16 py-[80px]"
           initial={{ opacity: 0, y: 40 }}
           animate={controls}
           variants={{
@@ -149,7 +149,7 @@ const ImportantDates = () => {
         </motion.div>
 
         {/* Footer Note */}
-        <motion.div
+        {/* <motion.div
           className="mt-12 bg-blue-50 border border-blue-100 rounded-xl p-6 text-center"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -160,7 +160,7 @@ const ImportantDates = () => {
             <strong className="text-blue-600">Note:</strong> All deadlines are at 11:59 PM Indian Standard Time (IST). 
             Late submissions will not be considered.
           </p>
-        </motion.div>
+        </motion.div> */}
       </div>
     </div>
   );

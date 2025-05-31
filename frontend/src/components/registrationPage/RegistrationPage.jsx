@@ -27,10 +27,6 @@ export default function RegistrationPage() {
         useRef(null)
     ];
 
-    const inView = sectionRefs.map(ref =>
-        useInView(ref, { once: true, margin: '-100px' })
-    );
-
     const controls = [
         useAnimation(),
         useAnimation(),
@@ -38,11 +34,7 @@ export default function RegistrationPage() {
         useAnimation()
     ];
 
-    useEffect(() => {
-        inView.forEach((isInView, index) => {
-            if (isInView) controls[index].start('visible');
-        });
-    }, [inView]);
+ 
 
     return (
         <div ref={containerRef} className=" text-gray-800 min-h-[100dvh] ">
@@ -53,6 +45,7 @@ export default function RegistrationPage() {
                     className=" py-[120px] bg-gradient-to-br from-gray-50 to-indigo-100 px-4"
                     variants={fadeUp}
                     initial="hidden"
+                    whileInView="visible"
                     animate={controls[0]}
                     custom={0}
                 >
@@ -96,6 +89,7 @@ export default function RegistrationPage() {
                         className="bg-gray-50 border border-gray-200 rounded-xl p-8"
                         variants={fadeUp}
                         initial="hidden"
+                        whileInView="visible"
                         animate={controls[1]}
                         custom={1}
                     >
@@ -111,13 +105,13 @@ export default function RegistrationPage() {
                                 <thead>
                                     <tr className="bg-blue-50 text-left">
                                         <th className="py-3 px-6 font-medium text-blue-800 border-b border-gray-200">Category</th>
-                                        <th className="py-3 px-6 font-medium text-blue-800 border-b border-gray-200">Indian Delegates (INR)</th>
-                                        <th className="py-3 px-6 font-medium text-blue-800 border-b border-gray-200">Foreign Delegates (USD)</th>
+                                        <th className="py-3 px-6 font-medium text-blue-800 border-b border-gray-200">Indian currency  (INR)</th>
+                                        <th className="py-3 px-6 font-medium text-blue-800 border-b border-gray-200">Foreign currency  (USD)</th>
                                     </tr>
                                 </thead>
                                 <tbody className="divide-y divide-gray-200">
                                     <tr className="hover:bg-gray-100 transition-colors">
-                                        <td className="py-4 px-6 font-medium">Academics & Research Organizations</td>
+                                        <td className="py-4 px-6 font-medium">Delegates (Academics & Research Organization)</td>
                                         <td className="py-4 px-6">₹7,000</td>
                                         <td className="py-4 px-6">$150</td>
                                     </tr>
@@ -127,7 +121,7 @@ export default function RegistrationPage() {
                                         <td className="py-4 px-6">$50</td>
                                     </tr>
                                     <tr className="hover:bg-gray-100 transition-colors">
-                                        <td className="py-4 px-6 font-medium">Industry / Govt. Agencies</td>
+                                        <td className="py-4 px-6 font-medium">Delegates (Industry/ Govt. Agency)</td>
                                         <td className="py-4 px-6">₹10,000</td>
                                         <td className="py-4 px-6">$200</td>
                                     </tr>
@@ -135,6 +129,8 @@ export default function RegistrationPage() {
                             </table>
                         </div>
                     </motion.section>
+            
+
 
                     {/* Bank Details */}
                     <motion.section
@@ -142,6 +138,7 @@ export default function RegistrationPage() {
                         className="bg-gray-50 border border-gray-200 rounded-xl p-8"
                         variants={fadeUp}
                         initial="hidden"
+                        whileInView="visible"
                         animate={controls[2]}
                         custom={2}
                     >
@@ -162,7 +159,7 @@ export default function RegistrationPage() {
                                     </li>
                                     <li className="flex gap-3">
                                         <span className="text-gray-600 font-medium min-w-[120px]">Bank:</span>
-                                        <span>Canara Bank, Saraidhela Branch</span>
+                                        <span>Canara Bank, Saraidhela Branch, Dhanbad</span>
                                     </li>
                                     <li className="flex gap-3">
                                         <span className="text-gray-600 font-medium min-w-[120px]">Account No.:</span>
@@ -196,6 +193,7 @@ export default function RegistrationPage() {
                         className="bg-blue-50 border border-blue-100 rounded-xl p-8 text-center"
                         variants={fadeUp}
                         initial="hidden"
+                        whileInView="visible"
                         animate={controls[3]}
                         custom={3}
                     >
@@ -226,6 +224,7 @@ export default function RegistrationPage() {
                         className="text-center text-gray-500 text-sm"
                         variants={fadeUp}
                         initial="hidden"
+                        whileInView="visible"
                         animate={controls[3]}
                         custom={4}
                     >
