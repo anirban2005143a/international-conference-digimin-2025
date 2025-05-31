@@ -51,21 +51,23 @@ const AboutSection = () => {
             viewport={{ once: true }}
             variants={fadeInUp}
           >
-            <div className="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden shadow-xl">
+            <div className="aspect-w-16  h-[600px] aspect-h-9 rounded-lg overflow-hidden shadow-xl">
               <Image
               loading='lazy'
               quality={75} 
-                width={350}
-                height={500}
-                src="/green-mining.jpeg"
+                // width={350}
+                // height={500}
+                src="/conference.jpg"
                 alt="Modern Mining Operation"
-                className="w-full h-full object-cover rounded-lg"
+                fill={true}
+                className=" w-full h-full object-cover rounded-lg"
               />
             </div>
             <div className="absolute -bottom-6 -left-6 bg-indigo-700 text-white m-3  p-6 rounded-lg shadow-lg max-w-xs">
               <p className="font-bold text-lg mb-2">100 Years of Excellence</p>
               <p className="text-sm text-indigo-100">
                 Celebrating the Centenary of IIT (ISM) Dhanbad with groundbreaking discussions on the future of mining.
+
               </p>
             </div>
           </motion.div>

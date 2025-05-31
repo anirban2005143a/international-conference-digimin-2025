@@ -28,18 +28,20 @@ const CallForPapersSection = () => {
           >
             <h3 className="text-2xl font-semibold mb-4">Submit Your Research</h3>
             <p className="mb-6 text-indigo-100">
-              DIGMIN-2025 invites original research papers and case studies on digital transformation in mining and industrial networks. We welcome contributions from academics, industry professionals, policymakers, and innovators.
+              DIGMIN-2025 invites original research papers and case studies on digital transformation in mining and industrial networks. We welcome contributions from professionals, regulatory personnel, academic researchers, technologists, sustainability experts, policymakers, and industry leaders.
             </p>
             
-            <div className="mb-6">
+            {/* <div className="mb-6">
               <h4 className="text-xl font-semibold mb-3">Submission Guidelines:</h4>
               <ul className="space-y-2 text-indigo-100">
                 {[
-                  'Abstracts should be 300-500 words in length',
-                  'Full papers must be 6-8 pages following the conference template',
-                  'All submissions undergo rigorous peer review',
-                  'Accepted papers will be published in conference proceedings'
-                ].map((text, idx) => (
+  'Abstracts must include: Title (Times New Roman 12 bold), Author (Times New Roman 10.5), Affiliation (Times New Roman 10 italic)',
+  'Formatting: Headings (Times New Roman 10 bold), Sub-Headings (Times New Roman 12 bold), Paragraph text (Times New Roman 10)',
+  'Figures/Tables: Label as "Figure 1", "Table 2", etc., and place them within the text at their references',
+  'References: Must follow Chicago style, cited in-text and listed alphabetically under "References"',
+  'Submissions: Original technical documents in MS Word, sent via email to sagarwal@iitism.ac.in by 15 August 2025',
+  'Publication: Peer-reviewed papers will be published in the conference proceedings'
+].map((text, idx) => (
                   <li key={idx} className="flex items-start">
                     <svg className="h-6 w-6 text-indigo-300 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
@@ -48,7 +50,7 @@ const CallForPapersSection = () => {
                   </li>
                 ))}
               </ul>
-            </div>
+            </div> */}
             
             <motion.a
               href="#submit"

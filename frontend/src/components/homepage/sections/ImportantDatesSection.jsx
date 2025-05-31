@@ -91,7 +91,7 @@ const ImportantDatesSection = () => {
           </div>
         </motion.div>
 
-        <motion.div
+        {/* <motion.div
           className="mt-10 bg-indigo-50 rounded-lg p-6 shadow-sm"
           initial="hidden"
           whileInView="visible"
@@ -124,7 +124,7 @@ const ImportantDatesSection = () => {
               </div>
             </div>
           </div>
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
   );

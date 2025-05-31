@@ -4,132 +4,94 @@ import { useState, useEffect, useMemo } from "react"
 import { Cpu, Bot, Brain, Map, Shield, Zap, ChevronRight, Sparkles, ArrowRight, CheckCircle, ShieldAlert, Network, Recycle, Database, Building } from "lucide-react"
 import { motion } from "framer-motion"
 import { KEY_THEMES } from "@/constants/conferenceData"
+import Link from "next/link"
 
 export default function ThemesPage() {
 
-  const themes = [
-    {
-      id: 1,
-      title: "Digital Foundations for Smart Mining",
-      icon: Cpu,
-      description: "Building the technological backbone for next-generation mining operations",
-      points: [
-        "Integration of IoT, cloud, and edge computing in mine operations",
-        "Real-time data collection and processing systems",
-        "Secure communication networks for mining infrastructure",
-        "Digital twin technology for mine planning and optimization",
-      ],
-      bgColor: "bg-blue-400",
-      borderColor: "border-blue-400",
-      textColor: "text-blue-600",
-    },
-    {
-      id: 2,
-      title: "Robotics and Automation in Harsh Environments",
-      icon: Bot,
-      description: "Advanced robotic systems designed for challenging mining conditions",
-      points: [
-        "Autonomous drilling, blasting, and hauling systems",
-        "Swarm robotics for exploration and maintenance",
-        "Human-robot collaboration in underground and confined spaces",
-        "Adaptive robotics for variable terrain and conditions",
-      ],
-      bgColor: "bg-indigo-400",
-      borderColor: "border-indigo-400",
-      textColor: "text-indigo-600",
-    },
-    {
-      id: 3,
-      title: "Edge AI and Real-Time Analytics",
-      icon: Brain,
-      description: "Intelligent systems for immediate decision-making and process optimization",
-      points: [
-        "Low-latency AI applications for critical mine operations",
-        "Edge devices for environmental and structural monitoring",
-        "Federated learning in distributed mine networks",
-        "Predictive analytics for equipment maintenance and safety",
-      ],
-      bgColor: "bg-teal-400",
-      borderColor: "border-teal-400",
-      textColor: "text-teal-600",
-    },
-    {
-      id: 4,
-      title: "Geospatial Intelligence and Mapping",
-      icon: Map,
-      description: "Advanced mapping and spatial analysis for comprehensive mine understanding",
-      points: [
-        "AI-powered remote sensing and satellite imaging",
-        "3D subsurface modeling using LiDAR and hyperspectral data",
-        "Integration of GIS, drones, and ground-penetrating radar",
-        "Real-time geological mapping and resource estimation",
-      ],
-      bgColor: "bg-amber-400",
-      borderColor: "border-amber-400",
-      textColor: "text-amber-600",
-    },
-    {
-      id: 5,
-      title: "Digital Resilience and Disaster Management",
-      icon: Shield,
-      description: "Comprehensive systems for risk management and emergency response",
-      points: [
-        "Design of intelligent operation centers",
-        "Integration of AR/VR for remote inspections and diagnostics",
-        "Enabling remote decision-making with digital twins",
-        "Emergency response systems and evacuation protocols",
-      ],
-      bgColor: "bg-rose-400",
-      borderColor: "border-rose-400",
-      textColor: "text-rose-600",
-    },
-    {
-      id: 6,
-      title: "Energy Efficiency and Process Optimization",
-      icon: Zap,
-      description: "Sustainable mining through intelligent energy management and optimization",
-      points: [
-        "AI for optimizing crushing, grinding, and material handling",
-        "Dynamic control of furnaces and kilns using digital feedback",
-        "CPS-enabled real-time energy monitoring and reduction strategies",
-        "Renewable energy integration and smart grid systems",
-      ],
-      bgColor: "bg-lime-400",
-      borderColor: "border-lime-400",
-      textColor: "text-lime-600",
-    },
-  ];
-
-
-  const themeCardVariants = useMemo(() => {
-    return ({
-      hidden: { opacity: 0, y: 30 },
-      visible: (i) => ({
-        opacity: 1,
-        y: 0,
-        transition: {
-          delay: i * 0.15,
-          duration: 0.6,
-          ease: "easeOut",
-        },
-      }),
-    })
-  }, [])
-
-  const detailCardVariants = useMemo(() => {
-    return ({
-      hidden: { opacity: 0, y: 40 },
-      visible: (i) => ({
-        opacity: 1,
-        y: 0,
-        transition: {
-          delay: i * 0.2,
-          duration: 0.6,
-          ease: "easeOut",
-        },
-      }),
-    })
-  }, [])
+const themes = [
+  {
+    id: 1,
+    title: "Digital Foundations for Smart Mining",
+    icon: Cpu,
+    description: "Integration of IoT, cloud, and edge computing in mine operations",
+    points: [
+      "Integration of IoT, cloud, and edge computing in mine operations"
+    ],
+    bgColor: "bg-blue-400",
+    borderColor: "border-blue-400",
+    textColor: "text-blue-600",
+  },
+  {
+    id: 2,
+    title: "Robotics and Automation in Harsh Mining Environments",
+    icon: Bot,
+    description: "Advanced systems for autonomous mining operations",
+    points: [
+      "Autonomous drilling, blasting, and hauling systems",
+      "Swarm robotics for exploration and maintenance",
+      "Human-robot collaboration in underground and confined spaces"
+    ],
+    bgColor: "bg-indigo-400",
+    borderColor: "border-indigo-400",
+    textColor: "text-indigo-600",
+  },
+  {
+    id: 3,
+    title: "Edge AI and Real-Time Analytics in Mining",
+    icon: Brain,
+    description: "AI-powered solutions for immediate operational insights",
+    points: [
+      "Low-latency AI applications for critical mine operations",
+      "Edge devices for environmental and structural monitoring",
+      "Federated learning in distributed mine networks"
+    ],
+    bgColor: "bg-teal-400",
+    borderColor: "border-teal-400",
+    textColor: "text-teal-600",
+  },
+  {
+    id: 4,
+    title: "Geospatial Intelligence and Digital Mapping",
+    icon: Map,
+    description: "Advanced spatial analysis for mining operations",
+    points: [
+      "AI-powered remote sensing and satellite imaging",
+      "3D subsurface modeling using LiDAR and hyperspectral data",
+      "Integration of GIS, drones, and ground-penetrating radar"
+    ],
+    bgColor: "bg-amber-400",
+    borderColor: "border-amber-400",
+    textColor: "text-amber-600",
+  },
+  {
+    id: 5,
+    title: "Digital Resilience and Disaster Management in Mining",
+    icon: Shield,
+    description: "Technologies for enhanced safety and risk mitigation",
+    points: [
+      "Design of intelligent operation centers",
+      "Integration of AR/VR for remote inspections and diagnostics",
+      "Enabling remote decision-making with digital twins"
+    ],
+    bgColor: "bg-rose-400",
+    borderColor: "border-rose-400",
+    textColor: "text-rose-600",
+  },
+  {
+    id: 6,
+    title: "Energy Efficiency and Process Optimization",
+    icon: Zap,
+    description: "Sustainable approaches to mining operations",
+    points: [
+      "AI for optimizing crushing, grinding, and material handling",
+      "Dynamic control of furnaces and kilns using digital feedback",
+      "CPS-enabled real-time energy monitoring and reduction strategies"
+    ],
+    bgColor: "bg-lime-400",
+    borderColor: "border-lime-400",
+    textColor: "text-lime-600",
+  },
+];
 
   const iconMap = {
     ShieldAlert: <ShieldAlert size={25} className="text-indigo-600" aria-hidden="true" />,
@@ -169,10 +131,10 @@ export default function ThemesPage() {
   };
 
   return (
-    <div className="min-h-screen relative overflow-hidden">
+    <div className=" relative overflow-hidden">
 
       {/* Hero Section */}
-      <div className="relative overflow-hidden text-slate-800 bg-gradient-to-br from-slate-100 via-blue-50 to-indigo-200 ">
+      <div className="relative py-[150px] overflow-hidden text-slate-800 bg-gradient-to-br from-slate-100 via-blue-50 to-indigo-200 ">
         {/* Soft overlay for slight contrast */}
         <div className="absolute inset-0 "></div>
 
@@ -201,7 +163,7 @@ export default function ThemesPage() {
         </div>
 
         {/* Main content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-6 py-32 text-center">
+        <div className="relative z-10 max-w-7xl mx-auto px-6  text-center">
           <motion.div
             className="space-y-8"
             initial={{ opacity: 0, y: 30 }}
@@ -268,10 +230,10 @@ export default function ThemesPage() {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
 
         {/* Themes Overview */}
-        <section id="themes-overview" className="py-16 md:py-24 bg-gradient-to-b from-gray-50 to-white">
+        <section id="themes-overview" className=" bg-gradient-to-b from-gray-50 to-white">
           <div className="max-w-7xl mx-auto ">
             {/* Header with appearing animation */}
             <motion.div
@@ -293,11 +255,6 @@ export default function ThemesPage() {
               }}
               className="text-center mb-12 md:mb-20"
             >
-              <motion.span
-                className="inline-block text-sm font-semibold text-indigo-600 mb-2 tracking-wider uppercase"
-              >
-                Focus Areas
-              </motion.span>
               <motion.h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4">
                 Key <span className="text-indigo-700">Themes</span>
               </motion.h2>
@@ -327,7 +284,7 @@ export default function ThemesPage() {
               viewport={{ once: true, margin: "-100px 0px -100px 0px" }}
               variants={containerVariants}
             >
-              {KEY_THEMES.map((theme) => (
+              {KEY_THEMES.map((theme , index) => (
                 <motion.div
                   key={theme.title}
                   className="group relative"
@@ -384,9 +341,9 @@ export default function ThemesPage() {
                       viewport={{ once: true }}
                       transition={{ delay: 0.5 }}
                     >
-                      <span className="inline-block text-indigo-600 font-medium hover:text-indigo-800 hover:translate-x-2 transition-all cursor-pointer">
+                      <Link href={`/themes/#theme-${index+1}`} className="inline-block text-indigo-600 font-medium hover:text-indigo-800 hover:translate-x-2 transition-all cursor-pointer">
                         Learn more →
-                      </span>
+                      </Link>
                     </motion.div>
                   </motion.div>
                 </motion.div>
@@ -396,9 +353,9 @@ export default function ThemesPage() {
         </section>
 
         {/* Detailed Themes */}
-        <section id="themes-overview" className="space-y-20 py-16 lg:w-[80%] mx-auto">
+        <section id="themes-overview" className="space-y-5 py-16 lg:w-[80%] mx-auto">
           {themes.map((theme, index) => (
-            <motion.div
+            <motion.section
               key={theme.id}
               id={`theme-${theme.id}`}
               initial="hidden"
@@ -411,12 +368,12 @@ export default function ThemesPage() {
                   y: 0,
                   transition: {
                     duration: 0.5,
-                    delay: index * 0.15,
+                    delay: 0.15,
                     ease: [0.16, 1, 0.3, 1]
                   }
                 }
               }}
-              className="relative"
+              className="relative py-10"
             >
 
               <div className="group relative">
@@ -428,7 +385,7 @@ export default function ThemesPage() {
                     className={`h-1 ${theme.bgColor}`}
                     initial={{ scaleX: 0 }}
                     whileInView={{ scaleX: 1 }}
-                    transition={{ delay: index * 0.15, duration: 0.5, ease: "easeOut" }}
+                    transition={{ delay:  0.15, duration: 0.5, ease: "easeOut" }}
                     viewport={{ once: true }}
                   />
 
@@ -437,7 +394,7 @@ export default function ThemesPage() {
                       className="flex flex-col sm:flex-row items-start sm:items-center gap-6 mb-6"
                       initial={{ opacity: 0 }}
                       whileInView={{ opacity: 1 }}
-                      transition={{ delay: index * 0.15 + 0.2, duration: 0.6 }}
+                      transition={{ delay:  0.15 + 0.2, duration: 0.6 }}
                       viewport={{ once: true }}
                     >
                       <div className={`p-3 ${theme.bgColor} rounded-xl shadow-sm`}>
@@ -450,7 +407,7 @@ export default function ThemesPage() {
                             className={`inline-block px-3 py-1 ${theme.bgColor}/10 text-sm font-medium ${theme.textColor} rounded-full border ${theme.borderColor}/30`}
                             initial={{ scale: 0.8, opacity: 0 }}
                             whileInView={{ scale: 1, opacity: 1 }}
-                            transition={{ delay: index * 0.15 + 0.3, duration: 0.5 }}
+                            transition={{ delay:  0.15 + 0.3, duration: 0.5 }}
                             viewport={{ once: true }}
                           >
                             Theme {theme.id}
@@ -459,7 +416,7 @@ export default function ThemesPage() {
                             className={`w-7 h-7 ${theme.bgColor} rounded-full flex items-center justify-center text-white font-bold text-xs`}
                             initial={{ rotate: -90, scale: 0 }}
                             whileInView={{ rotate: 0, scale: 1 }}
-                            transition={{ delay: index * 0.15 + 0.4, duration: 0.6 }}
+                            transition={{ delay:  0.15 + 0.4, duration: 0.6 }}
                             viewport={{ once: true }}
                           >
                             {theme.id}
@@ -470,7 +427,7 @@ export default function ThemesPage() {
                           className="text-2xl lg:text-3xl font-bold text-gray-800 leading-snug"
                           initial={{ y: 10, opacity: 0 }}
                           whileInView={{ y: 0, opacity: 1 }}
-                          transition={{ delay: index * 0.15 + 0.5, duration: 0.6 }}
+                          transition={{ delay:  0.15 + 0.5, duration: 0.6 }}
                           viewport={{ once: true }}
                         >
                           {theme.title}
@@ -480,7 +437,7 @@ export default function ThemesPage() {
                           className="text-base lg:text-lg text-gray-600 leading-relaxed mt-2"
                           initial={{ y: 10, opacity: 0 }}
                           whileInView={{ y: 0, opacity: 1 }}
-                          transition={{ delay: index * 0.15 + 0.6, duration: 0.6 }}
+                          transition={{ delay:  0.15 + 0.6, duration: 0.6 }}
                           viewport={{ once: true }}
                         >
                           {theme.description}
@@ -492,7 +449,7 @@ export default function ThemesPage() {
                       className={`${theme.bgColor}/10 rounded-xl md:p-6 py-6 px-2 border-l-4 ${theme.borderColor} shadow-sm`}
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.15 + 0.7, duration: 0.6 }}
+                      transition={{ delay:  0.15 + 0.7, duration: 0.6 }}
                       viewport={{ once: true }}
                     >
                       <h3 className={`text-lg font-semibold ${theme.textColor} mb-4 flex items-center`}>
@@ -508,7 +465,7 @@ export default function ThemesPage() {
                             initial={{ opacity: 0, x: -20 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             transition={{
-                              delay: index * 0.15 + 0.8 + (pointIndex * 0.1),
+                              delay:  0.15 + 0.8 + (pointIndex * 0.1),
                               duration: 0.5
                             }}
                             viewport={{ once: true }}
@@ -527,7 +484,7 @@ export default function ThemesPage() {
                       className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4"
                       initial={{ opacity: 0 }}
                       whileInView={{ opacity: 1 }}
-                      transition={{ delay: index * 0.15 + 0.5, duration: 0.6 }}
+                      transition={{ delay:  0.15 + 0.5, duration: 0.6 }}
                       viewport={{ once: true }}
                     >
                       {[
@@ -542,7 +499,7 @@ export default function ThemesPage() {
                           initial={{ opacity: 0, y: 20 }}
                           whileInView={{ opacity: 1, y: 0 }}
                           transition={{
-                            delay: index * 0.15 + 0.2 + (itemIndex * 0.15),
+                            delay:  0.15 + 0.2 + (itemIndex * 0.15),
                             duration: 0.5
                           }}
                           viewport={{ once: true }}
@@ -558,7 +515,7 @@ export default function ThemesPage() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </motion.section>
           ))}
         </section>
 
@@ -587,7 +544,7 @@ export default function ThemesPage() {
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.1 }}
             >
-            
+
               <div className="relative z-10">
                 {/* Header with staggered animation */}
                 <motion.div
@@ -639,22 +596,24 @@ export default function ThemesPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.5 }}
                 >
-                  <motion.button
+                  <Link 
+                  href={"/registration"}
                     className="w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 bg-white text-gray-900 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 flex items-center justify-center shadow-md hover:shadow-lg"
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.98 }}
                   >
                     Register Now
                     <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
-                  </motion.button>
+                  </Link>
 
-                  <motion.button
+                  <Link
+                  href={"/about"}
                     className="w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 bg-white/10 text-white backdrop-blur-sm rounded-full border border-white/20 font-semibold hover:bg-white/20 transition-all duration-300 shadow-sm hover:shadow-md"
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.98 }}
                   >
                     Learn More
-                  </motion.button>
+                  </Link>
                 </motion.div>
               </div>
 

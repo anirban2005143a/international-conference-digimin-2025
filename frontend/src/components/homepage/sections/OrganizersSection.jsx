@@ -97,7 +97,7 @@ const OrganizersSection = () => {
           ))}
         </motion.div>
 
-        <motion.div
+        {/* <motion.div
           className="text-center mt-16"
           initial="hidden"
           whileInView="visible"
@@ -115,7 +115,7 @@ const OrganizersSection = () => {
           >
             View Full Committee →
           </a>
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
   );

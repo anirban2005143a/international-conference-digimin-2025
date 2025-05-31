@@ -5,84 +5,117 @@ export const CONFERENCE_DATES = "September 12-13, 2025";
 export const CONFERENCE_LOCATION = "GJLT, IIT-ISM, Dhanbad, India";
 export const CONFERENCE_START_DATE = new Date('2025-09-12T09:00:00');
 
-export const ABOUT_CONFERENCE = `DIGMIN-2025 will serve as India's flagship conference at the intersection of digitalization, intelligent automation, and sustainable mining practices. The conference aims to bring together mining professionals, regulatory personnel, academic researchers, technologists, sustainability experts, policymakers, and industry leaders to deliberate on the accelerated adoption of next-generation digital technologies in mining and allied industrial ecosystems. Organized as part of the Centenary Celebrations of IIT (ISM) Dhanbad, commemorating 100 years of excellence in mining education and research.`;
+export const ABOUT_CONFERENCE = `Digital Intelligence for Green Mining and Industrial Networks (DIGMIN) – 2025 will serve as India’s flagship conference at the intersection of digitalization, intelligent automation, and sustainable mining practices. DIGMIN-2025 is envisioned as a premier conference focused on accelerating the digital transformation of the mining sector. Anchored on the pillars of Digitalization, Intelligent Systems, Green Technologies, Mining 5.0, Industrial Integration, and Next-generation Infrastructure, the conference aims to bring together mining professionals, regulatory personnel, academic researchers, technologists, sustainability experts, policymakers, and industry leaders to deliberate on the accelerated adoption of next-generation digital technologies in mining and allied industrial ecosystems. `;
 
 export const KEY_THEMES = [
   {
-    title: "AI/ML-Driven Risk Prediction",
-    description: "Advanced predictive analytics for safety and operational efficiency in mining environments",
-    icon: "ShieldAlert"
-  },
-  {
-    title: "Robotics & Automation",
-    description: "Autonomous systems and robotics solutions for hazardous mining operations",
-    icon: "Bot"
-  },
-  {
-    title: "IoT-Enabled Monitoring",
-    description: "Real-time sensor networks for environmental and equipment monitoring",
+    title: "Digital Foundations for Smart Mining",
+    description: "Integration of IoT, cloud, and edge computing in mine operations",
     icon: "Network"
   },
   {
-    title: "Green Mining Technologies",
-    description: "Sustainable approaches to minimize environmental impact of mining operations",
-    icon: "Recycle"
+    title: "Robotics & Automation in Harsh Environments",
+    description: "Autonomous systems, swarm robotics, and human-robot collaboration",
+    icon: "Bot"
   },
   {
-    title: "Mining 5.0 & Digital Twins",
-    description: "Next-generation digital representations and intelligent mining systems",
+    title: "Edge AI & Real-Time Analytics",
+    description: "Low-latency AI applications and federated learning for mine operations",
     icon: "Database"
   },
   {
-    title: "Industrial Integration",
-    description: "Connecting mining with broader industrial ecosystems through digital platforms",
-    icon: "Building"
+    title: "Geospatial Intelligence",
+    description: "AI-powered remote sensing, 3D modeling, and integrated geospatial technologies",
+    icon: "Map"
+  },
+  {
+    title: "Digital Resilience & Disaster Management",
+    description: "Intelligent operation centers with AR/VR and digital twins for remote decision-making",
+    icon: "ShieldAlert"
+  },
+  {
+    title: "Energy Efficiency & Process Optimization",
+    description: "AI-driven optimization and CPS-enabled energy monitoring strategies",
+    icon: "Recycle"
   }
 ];
 
 export const IMPORTANT_DATES = [
   {
-    title: "Abstract Submission Deadline",
-    date: "May 15, 2025",
+    title: "Call for Abstracts",
+    date: "01.06.2025",
     isHighlighted: true
   },
   {
-    title: "Notification of Abstract Acceptance",
-    date: "June 1, 2025"
-  },
-  {
-    title: "Full Paper Submission Deadline",
-    date: "July 15, 2025",
+    title: "Receipt of Abstracts",
+    date: "30.06.2025",
     isHighlighted: true
   },
   {
-    title: "Notification of Paper Acceptance",
-    date: "August 1, 2025"
+    title: "Review of Abstracts & Decision Notification",
+    date: "15.07.2025"
   },
   {
-    title: "Early Bird Registration Deadline",
-    date: "August 15, 2025",
+    title: "Receipt of Full Papers",
+    date: "15.08.2025",
     isHighlighted: true
   },
   {
-    title: "Regular Registration Deadline",
-    date: "September 1, 2025"
+    title: "Review of Full Papers & Decision Intimation",
+    date: "21.08.2025"
+  },
+  {
+    title: "Intimation of Acceptance of Papers",
+    date: "31.08.2025"
   }
 ];
 
 export const ORGANIZERS = [
   {
-    name: "Prof. Rajesh Kumar",
-    title: "Conference Convener",
-    institution: "Department of Mining Engineering, IIT-ISM Dhanbad",
-    imageUrl: "https://images.pexels.com/photos/5212320/pexels-photo-5212320.jpeg?auto=compress&cs=tinysrgb&w=300"
+    name: "Prof. Anindya Sinha",
+    title: "Convener and Chairman",
+    institution: "Department of Mining Engineering, IIT (ISM) Dhanbad – 826004",
+    contact: {
+      mobile: "7766908001",
+      email: "anindya@iitism.ac.in"
+    }
   },
   {
-    name: "Dr. Priya Sharma",
-    title: "Conference Co-Convener",
-    institution: "Department of Computer Science & Engineering, IIT-ISM Dhanbad",
-    imageUrl: "https://images.pexels.com/photos/5212317/pexels-photo-5212317.jpeg?auto=compress&cs=tinysrgb&w=300"
-  }
+    name: "Prof. Ajeet Yadav",
+    title: "Treasurer",
+    institution: "Department of Mining Engineering, IIT (ISM) Dhanbad – 826004",
+    contact: {
+      mobile: "7607222169",
+      email: "ajeet@iitism.ac.in"
+    }
+  },
+  {
+    name: "Prof. Siddhartha Agarwal",
+    title: "Co-Convener",
+    institution: "Department of Mining Engineering, IIT (ISM) Dhanbad – 826004",
+    contact: {
+      mobile: "9335536412",
+      email: "sagarwal@iitism.ac.in"
+    }
+  },
+  {
+    name: "Mr. Rajul Dwivedi",
+    title: "Student Co-Ordinators",
+    institution: "Department of Mining Engineering, IIT (ISM) Dhanbad – 826004",
+    contact: {
+      mobile: "7772969347",
+      email: "23dp0082@iitism.ac.in "
+    }
+  },
+  {
+    name: "Ms. Pratibha Sharma",
+    title: "Student Co-Ordinators",
+    institution: "Department of Mining Engineering, IIT (ISM) Dhanbad – 826004",
+    contact: {
+      mobile: "6372685665",
+      email: "23dr0280@iitism.ac.in"
+    }
+  },
 ];
 
 export const SPONSORS = [
