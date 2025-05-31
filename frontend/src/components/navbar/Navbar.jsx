@@ -42,9 +42,9 @@ const NavLink = ({ link, index }) => {
         <motion.span
           layoutId="underline"
           className="absolute left-1/2 -bottom-1 h-0.5 w-full bg-indigo-600 -translate-x-1/2 "
-          initial={{scaleX:0}}
-          animate={{scaleX : isHovered ? 1 : 0}}
-          transition={{duration:0.2 , ease:easeInOut}}
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: isHovered ? 1 : 0 }}
+          transition={{ duration: 0.2, ease: easeInOut }}
         />
       </Link>
     </motion.div>
@@ -75,13 +75,18 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', throttled);
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = `${mobileMenuOpen ? "hidden" : "auto"}`
+  }, [mobileMenuOpen])
+  
+
   return (
     <motion.header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 backdrop-blur-md `}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 `}
       animate={{ y: isVisible ? 0 : -100 }}
       transition={{ duration: 0.2, ease: "linear" }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8  backdrop-blur-md">
         <div className="flex justify-between h-16 items-center">
           {/* Logo */}
           <Link
@@ -117,10 +122,10 @@ const Navbar = () => {
           <div className="md:hidden">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className={`p-2 rounded-md text-gray-800 hover:bg-gray-100 hover:text-gray-500 transition`}
+              className={` rounded-md text-gray-800 hover:bg-gray-100 hover:text-gray-500 transition`}
               aria-label="Toggle Menu"
             >
-              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              <Menu size={24}/>
             </button>
           </div>
         </div>
@@ -130,34 +135,48 @@ const Navbar = () => {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            className="md:hidden bg-white shadow-lg"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.2 }}
+            key="mobileMenu"
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '100%' }}
+            transition={{ type: 'tween', duration: 0.3 }}
+            className="md:hidden fixed top-0 right-0 h-[100dvh] overflow-auto w-screen bg-[#000000b8] backdrop-blur-sm shadow-lg z-50"
           >
-            <div className="px-4 py-4 space-y-2">
-              {NAVIGATION_LINKS.map((link, index) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className="block text-base font-medium text-gray-800 hover:text-indigo-600"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {link.name}
-                </a>
-              ))}
-              <a
-                href="#register"
-                className="block w-full text-center px-4 py-2 rounded-md bg-indigo-700 text-white font-medium hover:bg-indigo-800"
+            <div className="px-10 pt-5 h-full">
+              <button
                 onClick={() => setMobileMenuOpen(false)}
+                className="text-white cursor-pointer focus:outline-none p-2 bg-white/5 rounded-full"
               >
-                Register Now
-              </a>
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+
+              <div className="flex flex-col items-start gap-10 py-[20px] text-white">
+
+                {NAVIGATION_LINKS.map((link, index) => (
+                  <Link onClick={() => setMobileMenuOpen(false)}
+                    href={link.href}
+                    className="hover:underline nav-menu-mobile text-sm ml-2">{link.name}</Link>
+                ))}
+                {/* Add more links as needed */}
+              </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
+
     </motion.header>
   );
 };
