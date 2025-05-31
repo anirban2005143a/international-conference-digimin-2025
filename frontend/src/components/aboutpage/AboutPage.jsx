@@ -35,9 +35,9 @@ export default function AboutPage() {
   }, [controls])
 
   return (
-    <div className=" bg-gray-50 relative overflow-hidden py-[150px]">
+    <div className=" bg-gray-50 relative overflow-hidden py-[120px]">
       {/* Hero Section */}
-      <section className="relative flex items-center justify-center bg-gradient-to-br from-gray-50 via-white to-gray-100 overflow-hidden px-6 sm:px-12 lg:px-24 ">
+      <section className="relative flex items-center justify-center  overflow-visible px-6 sm:px-12 lg:px-24 ">
 
         {/* Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
@@ -107,7 +107,7 @@ export default function AboutPage() {
         >
           {/* Badge */}
           <motion.div
-            className="inline-flex items-center px-5 py-2.5 bg-white/80 backdrop-blur-sm border border-gray-200 rounded-full text-sm font-semibold text-gray-800 shadow-sm hover:shadow-md transition-all duration-300 mb-8"
+            className="inline-flex items-center px-5 py-2.5 bg-white/80 backdrop-blur-sm border border-gray-200 rounded-full text-sm font-semibold text-gray-800 shadow-sm hover:shadow-md transition-shadow duration-300 mb-8"
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, ease: "backOut" }}
@@ -210,7 +210,7 @@ export default function AboutPage() {
         <motion.section
           id="conference-concept"
           initial="hidden"
-          whileInView="visible"
+          animate="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={sectionVariants}
           className="bg-white rounded-2xl  shadow-lg overflow-hidden border border-gray-100"

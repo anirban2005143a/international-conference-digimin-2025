@@ -93,7 +93,7 @@ const HeroSection = () => {
         <motion.div
           className="flex justify-center mb-8"
           initial="hidden"
-          whileInView="visible"
+          animate="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={scaleUp}
         >
@@ -132,7 +132,7 @@ const HeroSection = () => {
         <motion.div
           className="mb-6"
           initial="hidden"
-          whileInView="visible"
+          animate="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={fadeInUp}
         >
@@ -149,7 +149,7 @@ const HeroSection = () => {
         <motion.div
           variants={container}
           initial="hidden"
-          whileInView="visible"
+          animate="visible"
           viewport={{ once: true, margin: "-100px" }}
           className="mb-8"
         >
@@ -180,7 +180,7 @@ const HeroSection = () => {
         <motion.div
           className="flex flex-col md:flex-row justify-center items-center gap-4 mb-12"
           initial="hidden"
-          whileInView="visible"
+          animate="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={fadeInUp}
         >
@@ -200,34 +200,34 @@ const HeroSection = () => {
         <motion.div
           className="flex flex-col sm:flex-row justify-center gap-6"
           initial="hidden"
-          whileInView="visible"
+          animate="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={container}
         >
-          <motion.div
-            href="#register"
+          <Link
+            href={"/registration"}
             className="relative px-8 py-4 bg-gradient-to-r from-indigo-600 to-blue-600 text-white rounded-xl font-bold text-lg shadow-lg overflow-hidden group"
             whileHover="hover"
             initial="rest"
             variants={buttonHover}
           >
-            <Link href={"/registration"} className="relative z-10 flex items-center justify-center gap-2">
+            <span  className="relative z-10 flex items-center justify-center gap-2">
               Register Now <ArrowRight className="w-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </motion.div>
+            </span>
+          </Link>
 
-          <motion.div
-            href="#about"
+          <Link
+            href={"/about"}
             className="relative px-8 py-4 bg-white text-gray-800 border-2 border-gray-200 rounded-xl font-bold text-lg shadow-sm overflow-hidden group"
             whileHover="hover"
             initial="rest"
             variants={buttonHover}
           >
-            <Link href={"/about"} className="relative z-10 flex items-center justify-center gap-2">
+            <span  className="relative z-10 flex items-center justify-center gap-2">
               Learn More <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
+            </span>
             <span className="absolute inset-0 bg-gray-100 opacity-0 group-hover:opacity-100 transition-opacity"></span>
-          </motion.div>
+          </Link>
         </motion.div>
       </div>
       {/* Animated scroll indicator */}

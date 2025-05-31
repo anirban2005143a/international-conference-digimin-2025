@@ -3,6 +3,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { KEY_THEMES } from '@/constants/conferenceData';
 import { ShieldAlert, Bot, Network, Recycle, Database, Building } from 'lucide-react';
+import Link from 'next/link';
 
 const iconMap = {
   ShieldAlert: <ShieldAlert size={25} className="text-indigo-600" aria-hidden="true" />,
@@ -100,7 +101,7 @@ const KeyThemesSection = () => {
           viewport={{ once: true, margin: "-100px 0px -100px 0px" }}
           variants={containerVariants}
         >
-          {KEY_THEMES.map((theme) => (
+          {KEY_THEMES.map((theme , index) => (
             <motion.div
               key={theme.title}
               className="group relative"
@@ -150,17 +151,18 @@ const KeyThemesSection = () => {
                   </motion.p>
                 </div>
 
-                <motion.div
+                <Link
                   className="px-6 pb-6 md:px-7 md:pb-7"
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.5 }}
+                  href={`/themes#theme-${index+1}`}
                 >
                   <span className="inline-block text-indigo-600 font-medium hover:text-indigo-700 transition-colors cursor-pointer">
                     Learn more →
                   </span>
-                </motion.div>
+                </Link>
               </motion.div>
             </motion.div>
           ))}

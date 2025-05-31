@@ -5,6 +5,7 @@ import { motion, AnimatePresence, easeInOut } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { NAVIGATION_LINKS, CONFERENCE_ACRONYM } from '../../constants/conferenceData';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 // Framer Motion variants
 const menuVariants = {
@@ -16,10 +17,13 @@ const menuVariants = {
   }),
 };
 
-
 const NavLink = ({ link, index }) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const pathname = usePathname();
 
-  const [isHovered, setisHovered] = useState(false)
+  // Check if current path includes link name (case-insensitive)
+  const isActive = pathname.toLowerCase().includes(link.name.split(" ")[0].toLowerCase());
+
   return (
     <motion.div
       variants={menuVariants}
@@ -29,26 +33,25 @@ const NavLink = ({ link, index }) => {
       className="relative"
     >
       <Link
-        onMouseOver={() => {
-          setisHovered(true)
-        }}
-        onMouseLeave={() => {
-          setisHovered(false)
-        }}
+        onMouseOver={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
         href={link.href}
-        className="text-sm font-medium text-gray-800 hover:text-indigo-600 transition-colors"
+        className={`text-sm font-medium text-gray-800 hover:text-indigo-600 transition-colors`}
       >
         {link.name}
         <motion.span
           layoutId="underline"
-          className="absolute left-1/2 -bottom-1 h-0.5 w-full bg-indigo-600 -translate-x-1/2 "
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: isHovered ? 1 : 0 }}
+          className={`absolute left-0 bottom-0 h-0.5 bg-indigo-600`}
+          initial={{ width: isActive ? '100%' : '0%' }}
+          animate={{
+            width: isActive || isHovered ? '100%' : '0%',
+            opacity: isActive || isHovered ? 1 : 0
+          }}
           transition={{ duration: 0.2, ease: easeInOut }}
         />
       </Link>
     </motion.div>
-  )
+  );
 };
 
 
@@ -78,7 +81,7 @@ const Navbar = () => {
   useEffect(() => {
     document.body.style.overflow = `${mobileMenuOpen ? "hidden" : "auto"}`
   }, [mobileMenuOpen])
-  
+
 
   return (
     <motion.header
@@ -125,7 +128,7 @@ const Navbar = () => {
               className={` rounded-md text-gray-800 hover:bg-gray-100 hover:text-gray-500 transition`}
               aria-label="Toggle Menu"
             >
-              <Menu size={24}/>
+              <Menu size={24} />
             </button>
           </div>
         </div>

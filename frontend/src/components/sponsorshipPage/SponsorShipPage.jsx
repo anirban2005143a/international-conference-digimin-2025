@@ -17,7 +17,7 @@ export default function SponsorshipPage() {
       <div className="max-w-6xl mx-auto">
         {/* Hero Section */}
         <motion.header
-          className="text-center py-[150px]"
+          className="text-center py-[120px]"
           initial="hidden"
           animate="visible"
           viewport={{ once: true }}

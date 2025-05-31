@@ -68,11 +68,11 @@ export default function CallForPapers() {
 
   return (
     <div className="bg-gradient-to-br from-white via-blue-50 to-blue-100 text-gray-900 min-h-screen font-sans">
-      <div className="max-w-6xl mx-auto px-4 py-12 md:py-20 space-y-12 md:space-y-20">
+      <div className="max-w-6xl mx-auto px-4 py-5 space-y-12">
         {/* Hero Section */}
         <motion.section
           ref={ref}
-          className="text-center py-12 md:py-16 lg:py-20"
+          className="text-center py-20"
           variants={container}
           initial="hidden"
           animate={controls}
@@ -122,7 +122,7 @@ export default function CallForPapers() {
             className="bg-gradient-to-br from-blue-50 to-sky-50 p-3 py-5 sm:p-5 rounded-2xl shadow-md border border-blue-100 hover:shadow-lg transition-shadow mx-2 sm:mx-0"
             variants={fadeInUp}
             initial="hidden"
-            whileInView="visible"
+            animate="visible"
             viewport={{ once: true, margin: "-50px" }}
             custom={1}
           >
@@ -188,7 +188,7 @@ export default function CallForPapers() {
             className="bg-gradient-to-br from-sky-50 to-blue-50 p-3 sm:p-5 rounded-2xl shadow-md border border-blue-100 hover:shadow-lg transition-shadow mx-2 sm:mx-0 py-5"
             variants={fadeInUp}
             initial="hidden"
-            whileInView="visible"
+            animate="visible"
             viewport={{ once: true }}
             custom={2}
           >
