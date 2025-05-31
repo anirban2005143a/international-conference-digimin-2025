@@ -81,17 +81,6 @@ export const ORGANIZERS = [
     },
   },
   {
-    name: "Prof. Ajeet Yadav",
-    title: "Treasurer",
-    institution: "Department of Mining Engineering, IIT (ISM) Dhanbad – 826004",
-    contact: {
-      mobile: "7607222169",
-      email: "ajeet@iitism.ac.in"
-    },
-    linkedin : "https://www.linkedin.com/in/ajeet-yadav-2370ba180/",
-    image : "/ajeet_sir.jpg"
-  },
-  {
     name: "Prof. Siddhartha Agarwal",
     title: "Co-Convener",
     institution: "Department of Mining Engineering, IIT (ISM) Dhanbad – 826004",
@@ -99,9 +88,21 @@ export const ORGANIZERS = [
       mobile: "9335536412",
       email: "sagarwal@iitism.ac.in"
     },
-    linkedin : "https://www.linkedin.com/in/siddharth-agarwal-86179613/",
-    image:"/siddhartha_sir.jpg"
+    linkedin: "https://www.linkedin.com/in/siddharth-agarwal-86179613/",
+    image: "/siddhartha_sir.jpg"
   },
+  {
+    name: "Prof. Ajeet Yadav",
+    title: "Treasurer",
+    institution: "Department of Mining Engineering, IIT (ISM) Dhanbad – 826004",
+    contact: {
+      mobile: "7607222169",
+      email: "ajeet@iitism.ac.in"
+    },
+    linkedin: "https://www.linkedin.com/in/ajeet-yadav-2370ba180/",
+    image: "/ajeet_sir.jpg"
+  },
+
   {
     name: "Mr. Rajul Dwivedi",
     title: "Student Co-Ordinators",
@@ -110,8 +111,8 @@ export const ORGANIZERS = [
       mobile: "7772969347",
       email: "23dp0082@iitism.ac.in "
     },
-    linkedin : "https://www.linkedin.com/in/er-rajul-dwivedi-9a3387267/",
-    image:"/rajul_sir.jpeg"
+    linkedin: "https://www.linkedin.com/in/er-rajul-dwivedi-9a3387267/",
+    image: "/rajul_sir.jpeg"
   },
   {
     name: "Ms. Pratibha Sharma",
@@ -121,8 +122,8 @@ export const ORGANIZERS = [
       mobile: "6372685665",
       email: "23dr0280@iitism.ac.in"
     },
-    linkedin : "https://www.linkedin.com/in/prats0324/",
-    image:"/prativa_maam.jpg"
+    linkedin: "https://www.linkedin.com/in/prats0324/",
+    image: "/prativa_maam.jpg"
   },
 ];
 
