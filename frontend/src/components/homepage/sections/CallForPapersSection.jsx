@@ -3,6 +3,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { fadeIn, fadeInUp, buttonHover } from '@/utils/animations';
 import { FileText } from 'lucide-react';
+import Link from 'next/link';
 
 const CallForPapersSection = () => {
   return (
@@ -52,16 +53,16 @@ const CallForPapersSection = () => {
               </ul>
             </div> */}
             
-            <motion.a
-              href="#submit"
+            <Link
+              href="/registration"
               className="inline-flex items-center px-6 py-3 bg-white text-indigo-900 rounded-md font-bold text-lg hover:bg-indigo-50 transition-colors shadow-lg"
-              whileHover="hover"
+              // whileHover="hover"
               initial="rest"
               variants={buttonHover}
             >
               <FileText size={20} className="mr-2" />
               Submit Your Abstract
-            </motion.a>
+            </Link>
           </motion.div>
           
           <motion.div

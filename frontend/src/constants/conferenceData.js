@@ -78,7 +78,7 @@ export const ORGANIZERS = [
     contact: {
       mobile: "7766908001",
       email: "anindya@iitism.ac.in"
-    }
+    },
   },
   {
     name: "Prof. Ajeet Yadav",
@@ -87,7 +87,9 @@ export const ORGANIZERS = [
     contact: {
       mobile: "7607222169",
       email: "ajeet@iitism.ac.in"
-    }
+    },
+    linkedin : "https://www.linkedin.com/in/ajeet-yadav-2370ba180/",
+    image : "/ajeet_sir.jpg"
   },
   {
     name: "Prof. Siddhartha Agarwal",
@@ -96,7 +98,9 @@ export const ORGANIZERS = [
     contact: {
       mobile: "9335536412",
       email: "sagarwal@iitism.ac.in"
-    }
+    },
+    linkedin : "https://www.linkedin.com/in/siddharth-agarwal-86179613/",
+    image:"/siddhartha_sir.jpg"
   },
   {
     name: "Mr. Rajul Dwivedi",
@@ -105,7 +109,9 @@ export const ORGANIZERS = [
     contact: {
       mobile: "7772969347",
       email: "23dp0082@iitism.ac.in "
-    }
+    },
+    linkedin : "https://www.linkedin.com/in/er-rajul-dwivedi-9a3387267/",
+    image:"/rajul_sir.jpeg"
   },
   {
     name: "Ms. Pratibha Sharma",
@@ -114,7 +120,9 @@ export const ORGANIZERS = [
     contact: {
       mobile: "6372685665",
       email: "23dr0280@iitism.ac.in"
-    }
+    },
+    linkedin : "https://www.linkedin.com/in/prats0324/",
+    image:"/prativa_maam.jpg"
   },
 ];
 

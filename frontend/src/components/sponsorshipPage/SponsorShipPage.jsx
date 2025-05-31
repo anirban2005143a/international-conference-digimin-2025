@@ -13,13 +13,13 @@ const fadeIn = {
 
 export default function SponsorshipPage() {
   return (
-    <div className="bg-gray-50 max-w-5xl mx-auto sm:px-4 px-2 py-5 ">
+    <div className=" max-w-5xl mx-auto sm:px-4 px-2 py-5 ">
       <div className="max-w-6xl mx-auto">
         {/* Hero Section */}
         <motion.header
           className="text-center py-[150px]"
           initial="hidden"
-          whileInView="visible"
+          animate="visible"
           viewport={{ once: true }}
           variants={fadeIn}
         >
@@ -33,7 +33,7 @@ export default function SponsorshipPage() {
         <motion.section
           className="bg-white rounded-xl shadow-md overflow-hidden mb-12"
           initial="hidden"
-          whileInView="visible"
+          animate="visible"
           viewport={{ once: true }}
           variants={fadeIn}
         >
@@ -109,7 +109,7 @@ export default function SponsorshipPage() {
         <motion.section
           className="bg-white rounded-xl shadow-md overflow-hidden mb-12"
           initial="hidden"
-          whileInView="visible"
+          animate="visible"
           viewport={{ once: true }}
           variants={fadeIn}
         >
@@ -167,7 +167,7 @@ export default function SponsorshipPage() {
         <motion.div 
           className="grid md:grid-cols-2 gap-8 mb-12"
           initial="hidden"
-          whileInView="visible"
+          animate="visible"
           viewport={{ once: true }}
           variants={fadeIn}
         >
@@ -237,7 +237,7 @@ export default function SponsorshipPage() {
         <motion.section
           className="bg-white rounded-xl shadow-md overflow-hidden mb-12"
           initial="hidden"
-          whileInView="visible"
+          animate="visible"
           viewport={{ once: true }}
           variants={fadeIn}
         >
@@ -296,7 +296,7 @@ export default function SponsorshipPage() {
         {/* <motion.section
           className="bg-blue-700 rounded-xl shadow-md overflow-hidden text-white"
           initial="hidden"
-          whileInView="visible"
+          animate="visible"
           viewport={{ once: true }}
           variants={fadeIn}
         >

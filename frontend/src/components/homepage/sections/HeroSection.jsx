@@ -51,9 +51,9 @@ const HeroSection = () => {
 
   const buttonHover = {
     rest: { scale: 1 },
-    hover: { 
+    hover: {
       scale: 1.05,
-      transition: { 
+      transition: {
         duration: 0.3,
         type: "spring",
         stiffness: 400,
@@ -64,9 +64,9 @@ const HeroSection = () => {
 
   const floating = {
     rest: { y: 0 },
-    hover: { 
+    hover: {
       y: -5,
-      transition: { 
+      transition: {
         duration: 0.5,
         repeat: Infinity,
         repeatType: "reverse",
@@ -82,7 +82,7 @@ const HeroSection = () => {
     >
       {/* Enhanced Particle Background */}
       <HeroBackground />
-      
+
       {/* Glow Effects */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-indigo-500 rounded-full filter blur-[100px] opacity-20 mix-blend-screen"></div>
@@ -98,7 +98,7 @@ const HeroSection = () => {
           variants={scaleUp}
         >
           <div className="flex space-x-8 items-center">
-            <motion.div 
+            <motion.div
               whileHover="hover"
               variants={floating}
             >
@@ -112,7 +112,7 @@ const HeroSection = () => {
                 className="h-28 w-28 object-contain drop-shadow-lg"
               />
             </motion.div>
-            <motion.div 
+            <motion.div
               whileHover="hover"
               variants={floating}
             >
@@ -136,7 +136,7 @@ const HeroSection = () => {
           viewport={{ once: true, margin: "-100px" }}
           variants={fadeInUp}
         >
-          <motion.span 
+          <motion.span
             className="inline-flex items-center py-2 px-4 text-xs font-bold bg-indigo-600 text-white rounded-full mb-2 shadow-lg"
             whileHover={{ scale: 1.05 }}
           >
@@ -159,7 +159,7 @@ const HeroSection = () => {
           >
             {CONFERENCE_NAME}
           </motion.h1>
-          
+
           <motion.div
             className="text-2xl md:text-3xl lg:text-4xl font-bold text-indigo-600 mb-6"
             variants={fadeInUp}
@@ -188,7 +188,10 @@ const HeroSection = () => {
             <Calendar className="w-5 h-5 text-indigo-600" />
             <span className="font-medium text-gray-700">{CONFERENCE_DATES}</span>
           </div>
-          <a target='_blank' href={`https://www.google.com/maps/place/23%C2%B048'49.0%22N+86%C2%B026'25.7%22E/@23.8136887,86.4390989,672m/data=!3m1!1e3!4m4!3m3!8m2!3d23.8136111!4d86.4404722?entry=ttu&g_ep=EgoyMDI1MDUyOC4wIKXMDSoASAFQAw%3D%3D`} className="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm cursor-pointer hover:bg-white transition-colors">
+          <a
+            target='_blank'
+            href={`https://www.google.com/maps/place/23%C2%B048'49.0%22N+86%C2%B026'25.7%22E/@23.8136887,86.4390989,672m/data=!3m1!1e3!4m4!3m3!8m2!3d23.8136111!4d86.4404722?entry=ttu&g_ep=EgoyMDI1MDUyOC4wIKXMDSoASAFQAw%3D%3D`} 
+            className="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm cursor-pointer hover:bg-white transition-colors">
             <MapPin className="w-5 h-5 text-indigo-600" />
             <span className="font-medium text-gray-700">{CONFERENCE_LOCATION}</span>
           </a>
@@ -201,7 +204,7 @@ const HeroSection = () => {
           viewport={{ once: true, margin: "-100px" }}
           variants={container}
         >
-          <motion.a
+          <motion.div
             href="#register"
             className="relative px-8 py-4 bg-gradient-to-r from-indigo-600 to-blue-600 text-white rounded-xl font-bold text-lg shadow-lg overflow-hidden group"
             whileHover="hover"
@@ -211,9 +214,9 @@ const HeroSection = () => {
             <Link href={"/registration"} className="relative z-10 flex items-center justify-center gap-2">
               Register Now <ArrowRight className="w-5 group-hover:translate-x-1 transition-transform" />
             </Link>
-          </motion.a>
-          
-          <motion.a
+          </motion.div>
+
+          <motion.div
             href="#about"
             className="relative px-8 py-4 bg-white text-gray-800 border-2 border-gray-200 rounded-xl font-bold text-lg shadow-sm overflow-hidden group"
             whileHover="hover"
@@ -224,26 +227,26 @@ const HeroSection = () => {
               Learn More <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
             <span className="absolute inset-0 bg-gray-100 opacity-0 group-hover:opacity-100 transition-opacity"></span>
-          </motion.a>
+          </motion.div>
         </motion.div>
       </div>
-        {/* Animated scroll indicator */}
-       <motion.div
-      className="mt-20 flex justify-center"
-      initial={{ opacity: 0 }}
-      animate={{ 
-        opacity: [0, 1, 0],
-        y: [0, 10, 0]
-      }}
-      transition={{
-        duration: 2,
-        repeat: Infinity,
-        ease: "easeInOut",
-        delay: 1.5
-      }}
-    >
-      <ChevronDown className="w-8 h-8 text-indigo-500" />
-    </motion.div>
+      {/* Animated scroll indicator */}
+      <motion.div
+        className="mt-20 flex justify-center"
+        initial={{ opacity: 0 }}
+        animate={{
+          opacity: [0, 1, 0],
+          y: [0, 10, 0]
+        }}
+        transition={{
+          duration: 2,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 1.5
+        }}
+      >
+        <ChevronDown className="w-8 h-8 text-indigo-500" />
+      </motion.div>
     </section>
   );
 };

@@ -134,7 +134,7 @@ const themes = [
     <div className=" relative overflow-hidden">
 
       {/* Hero Section */}
-      <div className="relative py-[150px] overflow-hidden text-slate-800 bg-gradient-to-br from-slate-100 via-blue-50 to-indigo-200 ">
+      <div className="relative py-[100px] overflow-hidden text-slate-800 bg-gradient-to-br from-slate-100 via-blue-50 to-indigo-200 ">
         {/* Soft overlay for slight contrast */}
         <div className="absolute inset-0 "></div>
 
@@ -600,7 +600,7 @@ const themes = [
                   href={"/registration"}
                     className="w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 bg-white text-gray-900 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 flex items-center justify-center shadow-md hover:shadow-lg"
                     whileHover={{ scale: 1.03 }}
-                    whileTap={{ scale: 0.98 }}
+                    whiletap={{ scale: 0.98 }}
                   >
                     Register Now
                     <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
@@ -610,7 +610,7 @@ const themes = [
                   href={"/about"}
                     className="w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 bg-white/10 text-white backdrop-blur-sm rounded-full border border-white/20 font-semibold hover:bg-white/20 transition-all duration-300 shadow-sm hover:shadow-md"
                     whileHover={{ scale: 1.03 }}
-                    whileTap={{ scale: 0.98 }}
+                    whiletap={{ scale: 0.98 }}
                   >
                     Learn More
                   </Link>

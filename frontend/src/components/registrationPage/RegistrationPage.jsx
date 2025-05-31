@@ -27,15 +27,6 @@ export default function RegistrationPage() {
         useRef(null)
     ];
 
-    const controls = [
-        useAnimation(),
-        useAnimation(),
-        useAnimation(),
-        useAnimation()
-    ];
-
- 
-
     return (
         <div ref={containerRef} className=" text-gray-800 min-h-[100dvh] ">
             <div className=" space-y-16">
@@ -45,8 +36,7 @@ export default function RegistrationPage() {
                     className=" py-[120px] bg-gradient-to-br from-gray-50 to-indigo-100 px-4"
                     variants={fadeUp}
                     initial="hidden"
-                    whileInView="visible"
-                    animate={controls[0]}
+                    animate="visible"
                     custom={0}
                 >
                     <div className='max-w-7xl text-center space-y-8 mx-auto'>
@@ -89,8 +79,7 @@ export default function RegistrationPage() {
                         className="bg-gray-50 border border-gray-200 rounded-xl p-8"
                         variants={fadeUp}
                         initial="hidden"
-                        whileInView="visible"
-                        animate={controls[1]}
+                        animate="visible"
                         custom={1}
                     >
                         <div className="flex items-center gap-3 mb-6">
@@ -129,7 +118,7 @@ export default function RegistrationPage() {
                             </table>
                         </div>
                     </motion.section>
-            
+
 
 
                     {/* Bank Details */}
@@ -138,8 +127,7 @@ export default function RegistrationPage() {
                         className="bg-gray-50 border border-gray-200 rounded-xl p-8"
                         variants={fadeUp}
                         initial="hidden"
-                        whileInView="visible"
-                        animate={controls[2]}
+                        animate="visible"
                         custom={2}
                     >
                         <div className="flex items-center gap-3 mb-6">
@@ -193,8 +181,7 @@ export default function RegistrationPage() {
                         className="bg-blue-50 border border-blue-100 rounded-xl p-8 text-center"
                         variants={fadeUp}
                         initial="hidden"
-                        whileInView="visible"
-                        animate={controls[3]}
+                        animate="visible"
                         custom={3}
                     >
                         <div className="flex flex-col items-center space-y-4 max-w-md mx-auto">
@@ -224,8 +211,7 @@ export default function RegistrationPage() {
                         className="text-center text-gray-500 text-sm"
                         variants={fadeUp}
                         initial="hidden"
-                        whileInView="visible"
-                        animate={controls[3]}
+                        animate="visible"
                         custom={4}
                     >
                         <p>For any registration queries, please contact: registration@digmin2025.org</p>
