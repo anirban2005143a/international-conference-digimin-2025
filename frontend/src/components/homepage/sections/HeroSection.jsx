@@ -190,7 +190,7 @@ const HeroSection = () => {
           </div>
           <a
             target='_blank'
-            href={`https://www.google.com/maps/place/23%C2%B048'49.0%22N+86%C2%B026'25.7%22E/@23.8136887,86.4390989,672m/data=!3m1!1e3!4m4!3m3!8m2!3d23.8136111!4d86.4404722?entry=ttu&g_ep=EgoyMDI1MDUyOC4wIKXMDSoASAFQAw%3D%3D`} 
+            href={`https://maps.app.goo.gl/dAuYdJb6HSfQn3q49`} 
             className="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm cursor-pointer hover:bg-white transition-colors">
             <MapPin className="w-5 h-5 text-indigo-600" />
             <span className="font-medium text-gray-700">{CONFERENCE_LOCATION}</span>

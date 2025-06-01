@@ -213,7 +213,7 @@ const Footer = () => {
             <h3 className="text-xl font-bold mb-4 underline-offset-8 underline">Address</h3>
             <a
               target='_blank'
-              href={`https://www.google.com/maps/place/23%C2%B048'49.0%22N+86%C2%B026'25.7%22E/@23.8136887,86.4390989,672m/data=!3m1!1e3!4m4!3m3!8m2!3d23.8136111!4d86.4404722?entry=ttu&g_ep=EgoyMDI1MDUyOC4wIKXMDSoASAFQAw%3D%3D`}
+              href={`https://maps.app.goo.gl/dAuYdJb6HSfQn3q49`}
               className="flex items-start">
               <MapPin size={20} className="text-blue-400 mr-2 mt-1 flex-shrink-0" />
               <div className=' hover:underline underline-offset-4'>
