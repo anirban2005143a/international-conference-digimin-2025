@@ -79,6 +79,7 @@ export const ORGANIZERS = [
       mobile: "7766908001",
       email: "anindya@iitism.ac.in"
     },
+    image : "/aninday_sir.jpeg"
   },
   {
     name: "Prof. Siddhartha Agarwal",
