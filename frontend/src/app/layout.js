@@ -19,6 +19,9 @@ const brunoAce = Bruno_Ace({
 export const metadata = {
   title: "DIGMIN-2025 | Digital Intelligence for Green Mining and Industrial Networks",
   description: "International Conference on Digital Intelligence for Green Mining and Industrial Networks (DIGMIN-2025), September 12-13, 2025 at IIT-ISM Dhanbad",
+  icons:{
+    icon : "/ism-logo.png"
+  }
 };
 
 export default function RootLayout({ children }) {
