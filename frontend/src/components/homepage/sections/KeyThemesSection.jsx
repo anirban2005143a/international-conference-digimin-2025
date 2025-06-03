@@ -108,14 +108,14 @@ const KeyThemesSection = () => {
               initial="hidden"
               whileInView="visible"
               variants={itemVariants}
-              whileHover={{ y: -5 }}
+              whilehover={{ y: -5 }}
               transition={{ duration: 0.3 }}
             >
               <div className="absolute inset-0 bg-gradient-to-br from-indigo-100 to-indigo-50 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
 
               <motion.div
                 className="h-full  rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col"
-                whileHover="hover"
+                whilehover="hover"
                 initial="rest"
                 variants={hoverVariants}
               >

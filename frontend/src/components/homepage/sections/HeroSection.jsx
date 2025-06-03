@@ -99,7 +99,7 @@ const HeroSection = () => {
         >
           <div className="flex space-x-8 items-center">
             <motion.div
-              whileHover="hover"
+              whilehover="hover"
               variants={floating}
             >
               <Image
@@ -113,7 +113,7 @@ const HeroSection = () => {
               />
             </motion.div>
             <motion.div
-              whileHover="hover"
+              whilehover="hover"
               variants={floating}
             >
               <Image
@@ -138,7 +138,7 @@ const HeroSection = () => {
         >
           <motion.span
             className="inline-flex items-center py-2 px-4 text-xs font-bold bg-indigo-600 text-white rounded-full mb-2 shadow-lg"
-            whileHover={{ scale: 1.05 }}
+            whilehover={{ scale: 1.05 }}
           >
             <Sparkles className="w-4 h-4 mr-2" />
             INTERNATIONAL CONFERENCE
@@ -207,7 +207,7 @@ const HeroSection = () => {
           <Link
             href={"/registration"}
             className="relative px-8 py-4 bg-gradient-to-r from-indigo-600 to-blue-600 text-white rounded-xl font-bold text-lg shadow-lg overflow-hidden group"
-            whileHover="hover"
+            whilehover="hover"
             initial="rest"
             variants={buttonHover}
           >
@@ -219,7 +219,7 @@ const HeroSection = () => {
           <Link
             href={"/about"}
             className="relative px-8 py-4 bg-white text-gray-800 border-2 border-gray-200 rounded-xl font-bold text-lg shadow-sm overflow-hidden group"
-            whileHover="hover"
+            whilehover="hover"
             initial="rest"
             variants={buttonHover}
           >

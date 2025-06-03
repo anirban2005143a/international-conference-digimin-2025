@@ -54,12 +54,11 @@ const NavLink = ({ link, index }) => {
   );
 };
 
-
-
 const Navbar = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const lastScrollY = useRef(0);
+  const [width, setwidth] = useState(null)
 
   // Scroll behavior for sticky and hide/show
   useEffect(() => {
@@ -82,6 +81,10 @@ const Navbar = () => {
     document.body.style.overflow = `${mobileMenuOpen ? "hidden" : "auto"}`
   }, [mobileMenuOpen])
 
+  useEffect(() => {
+    setwidth(window.innerWidth)
+  }, [])
+
 
   return (
     <motion.header
@@ -90,7 +93,7 @@ const Navbar = () => {
       transition={{ duration: 0.2, ease: "linear" }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8  backdrop-blur-md">
-        <div className="flex justify-between h-16 items-center">
+        <nav className="flex justify-between h-16 items-center">
           {/* Logo */}
           <Link
             href="/"
@@ -105,7 +108,7 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-6 items-center">
+          {width && <div className={` ${width > 950 ? "flex" : "hidden"} space-x-6 items-center`}>
             {NAVIGATION_LINKS.map((link, index) => (
               <NavLink key={index} link={link} index={index} />
             ))}
@@ -119,10 +122,10 @@ const Navbar = () => {
             >
               Register Now
             </Link>
-          </nav>
+          </div>}
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden">
+          {width && <div className={`${width > 950 ? "hidden" : ""}`}>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className={` rounded-md text-gray-800 hover:bg-gray-100 hover:text-gray-500 transition`}
@@ -130,20 +133,20 @@ const Navbar = () => {
             >
               <Menu size={24} />
             </button>
-          </div>
-        </div>
+          </div>}
+        </nav>
       </div>
 
       {/* Mobile Navigation */}
       <AnimatePresence>
-        {mobileMenuOpen && (
+        {mobileMenuOpen && width && (
           <motion.div
             key="mobileMenu"
             initial={{ x: '100%' }}
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'tween', duration: 0.3 }}
-            className="md:hidden fixed top-0 right-0 h-[100dvh] overflow-auto w-screen bg-[#000000b8] backdrop-blur-sm shadow-lg z-50"
+            className={`${width > 950 ? "hidden" : "fixed"} top-0 right-0 h-[100dvh] overflow-auto w-screen max-w-md bg-[#000000b8] backdrop-blur-sm shadow-lg z-50`}
           >
             <div className="px-10 pt-5 h-full">
               <button
@@ -169,7 +172,9 @@ const Navbar = () => {
               <div className="flex flex-col items-start gap-10 py-[20px] text-white">
 
                 {NAVIGATION_LINKS.map((link, index) => (
-                  <Link onClick={() => setMobileMenuOpen(false)}
+                  <Link
+                    key={index}
+                    onClick={() => setMobileMenuOpen(false)}
                     href={link.href}
                     className="hover:underline nav-menu-mobile text-sm ml-2">{link.name}</Link>
                 ))}
