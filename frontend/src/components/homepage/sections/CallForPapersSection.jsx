@@ -37,7 +37,7 @@ const CallForPapersSection = () => {
             <Link
               href="/registration"
               className="inline-flex items-center px-6 py-3 bg-white text-indigo-900 rounded-md font-bold text-lg hover:bg-indigo-50 transition-colors shadow-lg"
-              // whileHover="hover"
+              whileHover="hover"
               initial="rest"
               variants={buttonHover}
             >

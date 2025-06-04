@@ -13,9 +13,9 @@ const HomePage = () => {
     <main className="overflow-hidden">
       <HeroSection />
       <CountdownTimer />
-      <AboutSection />
+      {/* <AboutSection /> */}
       <KeyThemesSection />
-      <CallForPapersSection />
+      {/* <CallForPapersSection /> */}
       <ImportantDatesSection />
       <OrganizersSection />
     </main>

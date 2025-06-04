@@ -1,6 +1,6 @@
 export const CONFERENCE_NAME = "Digital Intelligence for Green Mining and Industrial Networks";
 export const CONFERENCE_ACRONYM = "DIGMIN-2025";
-export const CONFERENCE_TAGLINE = "Accelerating Digital Transformation for Sustainable Mining Practices";
+export const CONFERENCE_TAGLINE = "Accelerating digital transformation for sustainable mining practices. Join India's flagship conference exploring the convergence of AI, IoT, and eco-friendly innovation in the mining sector.";
 export const CONFERENCE_DATES = "September 12-13, 2025";
 export const CONFERENCE_LOCATION = "GJLT, IIT-ISM, Dhanbad, India";
 export const CONFERENCE_START_DATE = new Date('2025-09-12T09:00:00');

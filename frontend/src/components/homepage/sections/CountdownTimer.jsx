@@ -94,7 +94,6 @@ const CountdownTimer = () => {
                 type: 'spring',
                 stiffness: 100
               }}
-              // whileHover={{ y: -3 }}
             >
               <div className="relative z-10 flex flex-col items-center justify-center w-full h-full p-4">
                 <AnimatePresence mode="wait">

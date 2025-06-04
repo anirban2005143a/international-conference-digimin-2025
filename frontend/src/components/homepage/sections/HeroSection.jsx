@@ -1,235 +1,226 @@
 "use client"
-import React from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { Calendar, MapPin, ArrowRight, Sparkles, ChevronDown } from 'lucide-react';
-import Image from 'next/image';
+import React, { useRef } from 'react';
+import { motion } from 'framer-motion';
+import { Calendar, MapPin, ChevronDown, } from 'lucide-react';
 import HeroBackground from './HeroBackground';
 import {
   CONFERENCE_NAME,
-  CONFERENCE_ACRONYM,
   CONFERENCE_TAGLINE,
-  CONFERENCE_DATES,
-  CONFERENCE_LOCATION
 } from '@/constants/conferenceData';
 import Link from 'next/link';
 
 const HeroSection = () => {
-  const container = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.3
-      }
-    }
-  };
 
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-        ease: [0.16, 0.77, 0.47, 0.97]
-      }
-    }
-  };
-
-  const scaleUp = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        duration: 0.6,
-        ease: "backOut"
-      }
-    }
-  };
-
-  const buttonHover = {
-    rest: { scale: 1 },
-    hover: {
-      scale: 1.05,
-      transition: {
-        duration: 0.3,
-        type: "spring",
-        stiffness: 400,
-        damping: 10
-      }
-    }
-  };
-
-  const floating = {
-    rest: { y: 0 },
-    hover: {
-      y: -5,
-      transition: {
-        duration: 0.5,
-        repeat: Infinity,
-        repeatType: "reverse",
-        ease: "easeInOut"
-      }
-    }
-  };
+  const continerRef = useRef(null)
 
   return (
     <section
+      ref={continerRef}
       id="home"
       className="relative py-25 "
     >
       {/* Enhanced Particle Background */}
-      <HeroBackground />
+      <HeroBackground continerRef={continerRef} />
 
-      {/* Glow Effects */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-indigo-500 rounded-full filter blur-[100px] opacity-20 mix-blend-screen"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-blue-400 rounded-full filter blur-[100px] opacity-20 mix-blend-screen"></div>
-      </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4  sm:px-6 lg:px-8 text-center">
-        <motion.div
-          className="flex justify-center mb-8"
-          initial="hidden"
-          animate="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={scaleUp}
-        >
-          <div className="flex space-x-8 items-center">
-            <motion.div
-              whilehover="hover"
-              variants={floating}
-            >
-              <Image
-                width={200}
-                height={200}
-                loading='lazy'
-                quality={50}
-                src="/ism-logo.png"
-                alt="IIT ISM Dhanbad Logo"
-                className="h-28 w-28 object-contain drop-shadow-lg"
-              />
-            </motion.div>
-            <motion.div
-              whilehover="hover"
-              variants={floating}
-            >
-              <Image
-                width={200}
-                height={200}
-                loading='lazy'
-                quality={50}
-                src="/digimin-logo.png"
-                alt="DIGMIN Conference Logo"
-                className="h-28 w-28 object-contain drop-shadow-lg"
-              />
-            </motion.div>
-          </div>
-        </motion.div>
-
-        <motion.div
-          className="mb-6"
-          initial="hidden"
-          animate="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={fadeInUp}
-        >
-          <motion.span
-            className="inline-flex items-center py-2 px-4 text-xs font-bold bg-indigo-600 text-white rounded-full mb-2 shadow-lg"
-            whilehover={{ scale: 1.05 }}
-          >
-            <Sparkles className="w-4 h-4 mr-2" />
-            INTERNATIONAL CONFERENCE
-            <Sparkles className="w-4 h-4 ml-2" />
-          </motion.span>
-        </motion.div>
-
-        <motion.div
-          variants={container}
-          initial="hidden"
-          animate="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="mb-8"
-        >
-          <motion.h1
-            className="max-w-[90%] mx-auto text-4xl lg:text-5xl font-bold mb-4 text-gray-900 leading-tight"
-            variants={fadeInUp}
-          >
-            {CONFERENCE_NAME}
-          </motion.h1>
-
+      <section className="px-4 md:px-10">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          {/* Left Column - Enhanced with staggered children animations */}
           <motion.div
-            className="text-2xl md:text-3xl lg:text-4xl font-bold text-indigo-600 mb-6"
-            variants={fadeInUp}
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.15,
+                  delayChildren: 0.2
+                }
+              }
+            }}
           >
-            <span className="bg-gradient-to-r from-indigo-600 to-blue-600 bg-clip-text text-transparent">
-              {CONFERENCE_ACRONYM}
-            </span>
+
+            <motion.h1
+              variants={{
+                hidden: { opacity: 0, y: 30 },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: {
+                    type: "spring",
+                    stiffness: 100,
+                    damping: 10
+                  }
+                }
+              }}
+              className="text-4xl md:text-5xl font-semibold text-gray-900 leading-tight mb-4"
+            >
+              {CONFERENCE_NAME}
+            </motion.h1>
+
+            <motion.p
+              variants={{
+                hidden: { opacity: 0, x: -20 },
+                visible: { opacity: 1, x: 0, transition: { ease: "easeOut", duration: 0.6 } }
+              }}
+              className="text-gray-700 text-base mb-6"
+            >
+              {CONFERENCE_TAGLINE}
+            </motion.p>
+
+            <motion.div
+              variants={{
+                hidden: { opacity: 0 },
+                visible: { opacity: 1, transition: { delay: 0.4 } }
+              }}
+              className="flex flex-col sm:flex-row sm:items-center gap-4 text-sm text-gray-600 mb-8"
+            >
+              <motion.span whileHover={{ scale: 1.02 }} className=' flex items-center gap-1.5 hover:text-indigo-600'>
+                <Calendar className=' w-5 h-5' />
+                September 12–13, 2025
+              </motion.span>
+              <motion.span whileHover={{ scale: 1.02 }} className=' flex items-center gap-1.5 cursor-pointer hover:text-indigo-600'>
+                <MapPin className=' w-5 h-5' />
+                GJLT, IIT-ISM Dhanbad, India
+              </motion.span>
+            </motion.div>
+
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: {
+                    type: "spring",
+                    stiffness: 300,
+                    damping: 15,
+                    delay: 0.5
+                  }
+                }
+              }}
+              className="flex  items-center flex-row gap-4"
+            >
+              <Link
+                href={"/registration"}
+                whileHover={{
+                  scale: 1.05,
+                  boxShadow: "0 10px 25px -5px rgba(79, 70, 229, 0.3)"
+                }}
+                whileTap={{ scale: 0.98 }}
+                className="bg-indigo-600 cursor-pointer text-white sm:px-6 px-3 py-3 rounded-lg font-medium hover:bg-indigo-700 "
+              >
+                Register Now
+              </Link>
+              <Link
+                href={"/about"}
+                whileHover={{
+                  scale: 1.05,
+                  backgroundColor: "rgba(79, 70, 229, 0.05)"
+                }}
+                whileTap={{ scale: 0.98 }}
+                className="border cursor-pointer border-indigo-600 text-indigo-600 sm:px-6 px-3 py-3 rounded-lg font-medium hover:bg-indigo-50 "
+              >
+                Learn More
+              </Link>
+            </motion.div>
           </motion.div>
 
-          <motion.p
-            className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed"
-            variants={fadeInUp}
+          {/* Right Column - Card with sophisticated animations */}
+          <motion.div
+            initial={{ opacity: 0, y: 50, rotateY: 5 }}
+            animate={{
+              opacity: 1,
+              y: 0,
+              rotateY: 0,
+              transition: {
+                type: "spring",
+                stiffness: 60,
+                damping: 15,
+                delay: 0.3
+              }
+            }}
+            viewport={{ once: true, margin: "-100px" }}
+            className=" backdrop-blur-sm bg-white/50 rounded-2xl shadow-xl hover:shadow-2xl p-6 md:p-8 border border-gray-100 transition-shadow"
           >
-            {CONFERENCE_TAGLINE}
-          </motion.p>
-        </motion.div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{
+                opacity: 1,
+                transition: { delay: 0.6 }
+              }}
+              className="mb-6"
+            >
+              <h2 className="text-xl font-semibold text-indigo-700 mb-3">Topics of Interest</h2>
+              <motion.ul
+                className="text-sm text-gray-700 grid grid-cols-1 sm:grid-cols-2 gap-3 list-disc list-inside"
+              >
+                {[
+                  "AI & ML: Predictive maintenance",
+                  "IoT & Connected Mining Systems",
+                  "Green Technologies & Eco-Mining",
+                  "Digital Twins & Virtual Simulations",
+                  "Automation & Safety Monitoring",
+                  "Smart Mining Infrastructure"
+                ].map((item, i) => (
+                  <motion.li
+                    key={i}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{
+                      opacity: 1,
+                      x: 0,
+                      transition: { delay: 0.7 + i * 0.1 }
+                    }}
+                    className=""
+                  >
+                    {item}
+                  </motion.li>
+                ))}
+              </motion.ul>
+            </motion.div>
 
-        <motion.div
-          className="flex flex-col md:flex-row justify-center items-center gap-4 mb-12"
-          initial="hidden"
-          animate="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={fadeInUp}
-        >
-          <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm">
-            <Calendar className="w-5 h-5 text-indigo-600" />
-            <span className="font-medium text-gray-700">{CONFERENCE_DATES}</span>
-          </div>
-          <a
-            target='_blank'
-            href={`https://maps.app.goo.gl/dAuYdJb6HSfQn3q49`} 
-            className="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm cursor-pointer hover:bg-white transition-colors">
-            <MapPin className="w-5 h-5 text-indigo-600" />
-            <span className="font-medium text-gray-700">{CONFERENCE_LOCATION}</span>
-          </a>
-        </motion.div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{
+                opacity: 1,
+                transition: { delay: 1.2 }
+              }}
+              className="border-t pt-5"
+            >
+              <h3 className="text-lg font-semibold text-indigo-700 mb-2">Call for Papers</h3>
+              <p className="text-sm text-gray-700 mb-3">
+                Submit original work on the theme of digital transformation in mining. Academicians, researchers, and industry professionals are welcome.
+              </p>
+              <Link
+                href={"/callforpapers"}
+                className="text-indigo-600 font-medium cursor-pointer text-sm hover:translate-x-1.5 flex items-center gap-1 transition-transform"
+              >
+                <motion.span
+                  animate={{ x: [0, 3, 0] }}
+                  transition={{ repeat: Infinity, duration: 1.5 }}
+                >
+                  ➤
+                </motion.span>
+                Submit Your Abstract
+              </Link>
+            </motion.div>
 
-        <motion.div
-          className="flex flex-col sm:flex-row justify-center gap-6"
-          initial="hidden"
-          animate="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={container}
-        >
-          <Link
-            href={"/registration"}
-            className="relative px-8 py-4 bg-gradient-to-r from-indigo-600 to-blue-600 text-white rounded-xl font-bold text-lg shadow-lg overflow-hidden group"
-            whilehover="hover"
-            initial="rest"
-            variants={buttonHover}
-          >
-            <span  className="relative z-10 flex items-center justify-center gap-2">
-              Register Now <ArrowRight className="w-5 group-hover:translate-x-1 transition-transform" />
-            </span>
-          </Link>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{
+                opacity: 1,
+                scale: 1,
+                transition: { delay: 1.4, type: "spring" }
+              }}
+              className="mt-6 bg-indigo-50 rounded-md p-3 text-sm text-indigo-900 shadow-sm"
+            >
+              🎉 Celebrating 100 Years of Excellence at IIT (ISM) Dhanbad with transformative discussions on the future of mining.
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
 
-          <Link
-            href={"/about"}
-            className="relative px-8 py-4 bg-white text-gray-800 border-2 border-gray-200 rounded-xl font-bold text-lg shadow-sm overflow-hidden group"
-            whilehover="hover"
-            initial="rest"
-            variants={buttonHover}
-          >
-            <span  className="relative z-10 flex items-center justify-center gap-2">
-              Learn More <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </span>
-            <span className="absolute inset-0 bg-gray-100 opacity-0 group-hover:opacity-100 transition-opacity"></span>
-          </Link>
-        </motion.div>
-      </div>
       {/* Animated scroll indicator */}
       <motion.div
         className="mt-20 flex justify-center"
