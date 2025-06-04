@@ -14,9 +14,9 @@ const HomePage = () => {
       <HeroSection />
       <CountdownTimer />
       {/* <AboutSection /> */}
-      <KeyThemesSection />
+      {/* <KeyThemesSection /> */}
       {/* <CallForPapersSection /> */}
-      <ImportantDatesSection />
+      {/* <ImportantDatesSection /> */}
       <OrganizersSection />
     </main>
   );
