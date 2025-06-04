@@ -151,7 +151,7 @@ export default function CallForPapers() {
                   <ul className="space-y-1 text-xs sm:text-sm text-gray-700">
                     <li className="flex items-start">
                       <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4 text-blue-500 mt-0.5 mr-1 flex-shrink-0" />
-                      <span>Email to: <span className="font-mono text-blue-600 break-all">sagarwal@ittism.ac.in</span></span>
+                      <span>Email to: <span className="font-mono text-blue-600 break-all">sagarwal@iitism.ac.in</span></span>
                     </li>
                     <li className="flex items-start">
                       <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4 text-blue-500 mt-0.5 mr-1 flex-shrink-0" />
