@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { X } from 'lucide-react';
+import Image from 'next/image';
 
 const GalleryPage = () => {
     const [activeImage, setActiveImage] = useState(null);
@@ -27,6 +28,12 @@ const GalleryPage = () => {
                 src: '/gallery/img3.webp',
                 alt: 'gallery image',
                 aspect: 'aspect-video'
+            },
+            {
+                id: 10,
+                src: '/gallery/img10.webp',
+                alt: 'gallery image',
+                aspect: 'aspect-[5/8]'
             }
         ],
         // Column 2 images
@@ -48,6 +55,18 @@ const GalleryPage = () => {
                 src: '/gallery/img6.webp',
                 alt: 'gallery image',
                 aspect: 'aspect-[5/8]'
+            },
+            {
+                id: 11,
+                src: '/gallery/img11.webp',
+                alt: 'gallery image',
+                aspect: 'aspect-video'
+            },
+            {
+                id: 13,
+                src: '/gallery/img13.webp',
+                alt: 'gallery image',
+                aspect: 'aspect-square'
             }
         ],
         // Column 3 images
@@ -67,6 +86,12 @@ const GalleryPage = () => {
             {
                 id: 9,
                 src: '/gallery/img9.webp',
+                alt: 'gallery image',
+                aspect: 'aspect-square'
+            },
+            {
+                id: 12,
+                src: '/gallery/img12.webp',
                 alt: 'gallery image',
                 aspect: 'aspect-square'
             }
@@ -95,7 +120,7 @@ const GalleryPage = () => {
                         initial={{ scale: 0.95 }}
                         animate={{ scale: 1 }}
                         transition={{ delay: 0.2, duration: 0.5 }}
-                        className="text-4xl font-bold text-indigo-800 mb-3"
+                        className="text-4xl font-bold text-blue-700 mb-3"
                     >
                         Our Gallery
                     </motion.h1>
@@ -104,14 +129,14 @@ const GalleryPage = () => {
                         initial={{ width: 0 }}
                         animate={{ width: '80px' }}
                         transition={{ delay: 0.4, duration: 0.6 }}
-                        className="mx-auto h-1 bg-indigo-800 mb-4"
+                        className="mx-auto h-1 bg-blue-700 mb-4"
                     />
 
                     <motion.p
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.6, duration: 0.5 }}
-                        className="text-blue-600 text-lg"
+                        className=" text-lg"
                     >
                         Beautiful moments captured
                     </motion.p>
@@ -127,7 +152,10 @@ const GalleryPage = () => {
                                     className={`relative rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 ${item.aspect}`}
                                     onClick={() => openModal(item)}
                                 >
-                                    <img
+                                    <Image
+                                        width={500}
+                                        height={500}
+                                        loading='lazy'
                                         src={item.src}
                                         alt={item.alt}
                                         className="w-full h-full object-cover cursor-pointer"
