@@ -10,16 +10,17 @@ const MemberCard = ({ member }) => {
     <div className="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg">
       <div className="relative h-60 overflow-hidden">
         <Image
-          fill={true}
+          width={200}
+          height={200}
           loading='lazy'
           src={member.image}
           alt={`Photo of ${member.name}`}
-          className="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105"
+          className="w-full h-full object-contain object-center transition-transform duration-500 hover:scale-105"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
         <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
           <h3 className="text-xl font-semibold">{member.name}</h3>
-          <p className="text-blue-100 font-medium text-sm">{member.title}</p>
+          <p className="text-gray-100 font-normal text-sm">{member.title}</p>
         </div>
       </div>
 

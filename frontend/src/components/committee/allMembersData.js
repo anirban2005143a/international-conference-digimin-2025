@@ -106,7 +106,7 @@ export const committeeMembers = [
     },
     {
         name: "Dr. H. Sebnem Düzgün",
-        title: "Professor, Fred Banfield Distinguished Chair & Associate Department Head of Mining Engineering",
+        title: "full professor and Fred Banfield Distinguished Chair at the Colorado School of Mines, where she also serves as Associate Department Head of Mining Engineering",
         affiliation: "Colorado School of Mines",
         image: "/hsdmam.jpg",
         bio: "Dr. H. Sebnem Düzgün is a full professor and Fred Banfield Distinguished Chair at the Colorado School of Mines, where she also serves as Associate Department Head of Mining Engineering and holds a joint appointment in Computer Science. She coordinates the geoscience section of the Data Science program, is associate director of the GIS and Geoinformatics program, and leads the mineral supply chain pillar of the Mines Global Future Initiative. She earned her Ph.D. from Middle East Technical University (METU), Turkey, and has held research roles at MIT, the Norwegian Geotechnical Institute, and Karlsruhe Institute of Technology. Dr. Düzgün’s expertise spans systems dynamics, safety, supply chain transparency, AI, ML, GIS, IoT, and sustainability in mining. She has authored over 300 publications, including four books, and is the author of Remote Sensing of the Mine Environment. Recognized globally, she was named among the 100 Inspiring Women in Mining (2020) and selected as a Resilience Fellow at TU Delft. She also completed the ELATES program at Drexel University and is the founder of a startup delivering AI-driven resource exploration tools."
