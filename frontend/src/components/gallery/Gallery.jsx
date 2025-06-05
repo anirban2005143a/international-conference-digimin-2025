@@ -145,11 +145,11 @@ const GalleryPage = () => {
                 {/* Gallery Columns */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 py-10">
                     {columnImages.map((column, colIndex) => (
-                        <div key={`col-${colIndex}`} className="flex flex-col gap-4">
+                        <div key={`col-${colIndex}`} className="flex flex-col gap-8">
                             {column.map((item) => (
                                 <div
                                     key={item.id}
-                                    className={`relative rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 ${item.aspect}`}
+                                    className={`relative  overflow-hidden transition-shadow duration-300 pb-3  border-b-2 border-black ${item.aspect}`}
                                     onClick={() => openModal(item)}
                                 >
                                     <Image
@@ -158,7 +158,7 @@ const GalleryPage = () => {
                                         loading='lazy'
                                         src={item.src}
                                         alt={item.alt}
-                                        className="w-full h-full object-cover cursor-pointer"
+                                        className="w-full h-full rounded-lg object-cover cursor-pointer "
                                     />
                                 </div>
                             ))}

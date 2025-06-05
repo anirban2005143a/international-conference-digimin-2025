@@ -1,11 +1,11 @@
 export const CONFERENCE_NAME = "Digital Intelligence for Green Mining and Industrial Networks";
 export const CONFERENCE_ACRONYM = "DIGMIN-2025";
-export const CONFERENCE_TAGLINE = "Accelerating digital transformation for sustainable mining practices. Join India's flagship conference exploring the convergence of AI, IoT, and eco-friendly innovation in the mining sector.";
+export const CONFERENCE_TAGLINE = `Industry 5.0, a concept emphasizing human-centric solutions and sustainability, is envisioned to build a future where industry is resilient, sustainable, and service-oriented. The "6S" refers to the principles of Safety, Security, Sustainability, Sensitivity, Service, and Smartness, which are the core values of Industry 5.0 and are being used in the framework of "6S Parallel Industries".`;
 export const CONFERENCE_DATES = "September 12-13, 2025";
 export const CONFERENCE_LOCATION = "GJLT, IIT-ISM, Dhanbad, India";
 export const CONFERENCE_START_DATE = new Date('2025-09-12T09:00:00');
 
-export const ABOUT_CONFERENCE = `Digital Intelligence for Green Mining and Industrial Networks (DIGMIN) – 2025 will serve as India’s flagship conference at the intersection of digitalization, intelligent automation, and sustainable mining practices. DIGMIN-2025 is envisioned as a premier conference focused on accelerating the digital transformation of the mining sector. Anchored on the pillars of Digitalization, Intelligent Systems, Green Technologies, Mining 5.0, Industrial Integration, and Next-generation Infrastructure, the conference aims to bring together mining professionals, regulatory personnel, academic researchers, technologists, sustainability experts, policymakers, and industry leaders to deliberate on the accelerated adoption of next-generation digital technologies in mining and allied industrial ecosystems. `;
+export const ABOUT_CONFERENCE = `Industry 5.0, a concept emphasizing human-centric solutions and sustainability, is envisioned to build a future where industry is resilient, sustainable, and service-oriented. The "6S" refers to the principles of Safety, Security, Sustainability, Sensitivity, Service, and Smartness, which are the core values of Industry 5.0 and are being used in the framework of "6S Parallel Industries".`;
 
 export const KEY_THEMES = [
   {
@@ -77,7 +77,6 @@ export const ORGANIZERS = [
     institution: "Department of Mining Engineering, IIT (ISM) Dhanbad – 826004",
     contact: {
       mobile: "7766908001",
-      email: "anindya@iitism.ac.in"
     },
     image : "/aninday_sir.jpeg"
   },
@@ -87,7 +86,6 @@ export const ORGANIZERS = [
     institution: "Department of Mining Engineering, IIT (ISM) Dhanbad – 826004",
     contact: {
       mobile: "9335536412",
-      email: "sagarwal@iitism.ac.in"
     },
     linkedin: "https://www.linkedin.com/in/siddharth-agarwal-86179613/",
     image: "/siddhartha_sir.jpg"
@@ -98,7 +96,6 @@ export const ORGANIZERS = [
     institution: "Department of Mining Engineering, IIT (ISM) Dhanbad – 826004",
     contact: {
       mobile: "7607222169",
-      email: "ajeet@iitism.ac.in"
     },
     linkedin: "https://www.linkedin.com/in/ajeet-yadav-2370ba180/",
     image: "/ajeet_sir.jpg"
@@ -110,7 +107,6 @@ export const ORGANIZERS = [
     institution: "Department of Mining Engineering, IIT (ISM) Dhanbad – 826004",
     contact: {
       mobile: "7772969347",
-      email: "23dp0082@iitism.ac.in "
     },
     linkedin: "https://www.linkedin.com/in/er-rajul-dwivedi-9a3387267/",
     image: "/rajul_sir.jpeg"
@@ -121,7 +117,6 @@ export const ORGANIZERS = [
     institution: "Department of Mining Engineering, IIT (ISM) Dhanbad – 826004",
     contact: {
       mobile: "6372685665",
-      email: "23dr0280@iitism.ac.in"
     },
     linkedin: "https://www.linkedin.com/in/prats0324/",
     image: "/prativa_maam.jpg"
@@ -170,5 +165,7 @@ export const NAVIGATION_LINKS = [
   { name: "Important Dates", href: "/importantdates" },
   // { name: "Registration", href: "/registration" },
   { name: "Sponsorship", href: "/sponsorship" },
+  { name: "Agenda", href: "/agenda" },
+  { name: "Committee", href: "/committee" },
   { name: "Contact", href: "#contact" }
 ];

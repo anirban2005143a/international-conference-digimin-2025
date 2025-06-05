@@ -97,18 +97,18 @@ const Navbar = () => {
           {/* Logo */}
           <Link
             href="/"
-            className="text-xl font-bold"
+            className="text-xl font-bold  "
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <span className={`text-indigo-900`}>
+            <span className={`text-indigo-900 md:hidden`}>
               {CONFERENCE_ACRONYM}
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          {width && <div className={` ${width > 950 ? "flex" : "hidden"} space-x-6 items-center`}>
+          {width && <div className={` ${width > 950 ? "flex" : "hidden"} space-x-4 justify-end items-center`}>
             {NAVIGATION_LINKS.map((link, index) => (
               <NavLink key={index} link={link} index={index} />
             ))}

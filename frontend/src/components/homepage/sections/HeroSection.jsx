@@ -23,7 +23,7 @@ const HeroSection = () => {
       <HeroBackground continerRef={continerRef} />
 
 
-      <section className="px-4 md:px-10">
+      <div className="px-4 md:px-10">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           {/* Left Column - Enhanced with staggered children animations */}
           <motion.div
@@ -80,10 +80,13 @@ const HeroSection = () => {
                 <Calendar className=' w-5 h-5' />
                 September 12–13, 2025
               </motion.span>
-              <motion.span whileHover={{ scale: 1.02 }} className=' flex items-center gap-1.5 cursor-pointer hover:text-indigo-600'>
+              <a
+              target='_blank'
+              href='https://maps.app.goo.gl/dAuYdJb6HSfQn3q49'
+              whileHover={{ scale: 1.02 }} className=' flex items-center gap-1.5 cursor-pointer hover:text-indigo-600'>
                 <MapPin className=' w-5 h-5' />
                 GJLT, IIT-ISM Dhanbad, India
-              </motion.span>
+              </a>
             </motion.div>
 
             <motion.div
@@ -219,7 +222,7 @@ const HeroSection = () => {
             </motion.div>
           </motion.div>
         </div>
-      </section>
+      </div>
 
       {/* Animated scroll indicator */}
       <motion.div

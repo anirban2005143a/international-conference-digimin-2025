@@ -177,12 +177,12 @@ const Footer = () => {
                 <Mail size={20} className="text-blue-400 mr-2 mt-1 flex-shrink-0" />
                 <div>
                   <p className="text-gray-400">Conference Email</p>
-                  <a href="mailto:sagarwal@iitism.ac.in" className="hover:text-blue-400 transition-colors">
-                    sagarwal@iitism.ac.in
+                  <a href="mailto:digmin2025@iitism.ac.in" className="hover:text-blue-400 transition-colors">
+                    digmin2025@iitism.ac.in
                   </a>
                 </div>
               </li>
-              <li className="flex items-start">
+              {/* <li className="flex items-start">
                 <Phone size={20} className="text-blue-400 mr-2 mt-1 flex-shrink-0" />
                 <div>
                   <p className="text-gray-400">Convener</p>
@@ -199,7 +199,7 @@ const Footer = () => {
                     Prof. Siddhartha Agarwal: +91 9335536412
                   </a>
                 </div>
-              </li>
+              </li> */}
             </ul>
           </motion.div>
 
