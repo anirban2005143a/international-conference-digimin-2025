@@ -89,7 +89,7 @@ export default function AgendaPage() {
         >
           <motion.div 
             variants={item}
-            className="bg-white p-8 rounded-xl shadow-sm border border-gray-100"
+            className="bg-white md:p-8 p-4 rounded-xl shadow-sm border border-gray-100"
           >
             <div className="flex items-start mb-6">
               <div className="flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center bg-blue-100">
@@ -165,8 +165,8 @@ export default function AgendaPage() {
           >
             <motion.div variants={item}>
               <h2 className="text-3xl font-bold text-gray-800 mb-6 flex items-center">
-                <span className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center mr-3">1</span>
-                Day 1: Thursday, September 12, 2025
+                <span className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center mr-3 text-lg translate-y-0.5">1</span>
+                <p className='w-[90%]'> Day 1: Thursday, September 12, 2025</p>
               </h2>
             </motion.div>
             
@@ -268,8 +268,8 @@ export default function AgendaPage() {
           >
             <motion.div variants={item}>
               <h2 className="text-3xl font-bold text-gray-800 mb-6 flex items-center">
-                <span className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center mr-3">2</span>
-                Day 2: Friday, September 13, 2025
+                <span className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center text-lg mr-3 translate-y-0.5">2</span>
+                <p className='w-[90%]'> Day 2: Friday, September 13, 2025</p>
               </h2>
             </motion.div>
             
@@ -373,7 +373,7 @@ export default function AgendaPage() {
           {/* General Info */}
           <motion.div 
             variants={item}
-            className="bg-white p-8 rounded-xl shadow-sm border border-gray-100"
+            className="bg-white p-4 md:p-8 rounded-xl shadow-sm border border-gray-100"
           >
             <h2 className="text-2xl font-bold text-gray-800 mb-6 flex items-center">
               <svg className="w-6 h-6 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -421,7 +421,7 @@ export default function AgendaPage() {
           {/* Key Contacts */}
           <motion.div 
             variants={item}
-            className="bg-white p-8 rounded-xl shadow-sm border border-gray-100"
+            className="bg-white p-4 md:p-8 rounded-xl shadow-sm border border-gray-100"
           >
             <h2 className="text-2xl font-bold text-gray-800 mb-6 flex items-center">
               <svg className="w-6 h-6 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

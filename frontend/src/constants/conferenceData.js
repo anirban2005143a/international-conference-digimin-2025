@@ -160,12 +160,11 @@ export const NAVIGATION_LINKS = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
   { name: "Themes", href: "/themes" },
-  { name: "Gallery", href: "/gallery" },
+  { name: "Agenda", href: "/agenda" },
   { name: "Call for Papers", href: "/callforpapers" },
   { name: "Important Dates", href: "/importantdates" },
-  // { name: "Registration", href: "/registration" },
   { name: "Sponsorship", href: "/sponsorship" },
-  { name: "Agenda", href: "/agenda" },
   { name: "Committee", href: "/committee" },
+  { name: "Gallery", href: "/gallery" },
   { name: "Contact", href: "#contact" }
 ];

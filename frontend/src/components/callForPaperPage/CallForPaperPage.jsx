@@ -151,7 +151,7 @@ export default function CallForPapers() {
                   <ul className="space-y-1 text-xs sm:text-sm text-gray-700">
                     <li className="flex items-start">
                       <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4 text-blue-500 mt-0.5 mr-1 flex-shrink-0" />
-                      <span>Email to: <span className="font-mono text-blue-600 break-all">sagarwal@iitism.ac.in</span></span>
+                      <span>Email to: <span className="font-mono text-blue-600 break-all">digmin2025@iitism.ac.in</span></span>
                     </li>
                     <li className="flex items-start">
                       <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4 text-blue-500 mt-0.5 mr-1 flex-shrink-0" />
@@ -350,7 +350,7 @@ export default function CallForPapers() {
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
           >
             <a
-              href="mailto:sagarwal@iitism.ac.in"
+              href="mailto:digmin2025@iitism.ac.in"
               className="inline-flex items-center bg-white hover:bg-gray-50 text-blue-600 font-medium px-6 py-3 rounded-lg transition-all shadow-md hover:shadow-lg"
             >
               <Send className="w-5 h-5 mr-2" />
@@ -358,7 +358,7 @@ export default function CallForPapers() {
             </a>
           </motion.div>
           <p className="text-blue-200 mt-4 text-sm">
-            Contact email: <span className="font-medium">sagarwal@iitism.ac.in</span>
+            Contact email: <span className="font-medium">digmin2025@iitism.ac.in</span>
           </p>
         </motion.section>
       </div>
