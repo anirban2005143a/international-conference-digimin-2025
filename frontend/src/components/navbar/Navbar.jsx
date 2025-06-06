@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { motion, AnimatePresence, easeInOut } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { NAVIGATION_LINKS, CONFERENCE_ACRONYM } from '../../constants/conferenceData';
@@ -21,8 +21,7 @@ const NavLink = ({ link, index }) => {
   const [isHovered, setIsHovered] = useState(false);
   const pathname = usePathname();
 
-  // Check if current path includes link name (case-insensitive)
-  const isActive = pathname.toLowerCase().includes(link.name.split(" ")[0].toLowerCase());
+  const isActive = useMemo(() => pathname.toLowerCase().includes(link.name.split(" ")[0].toLowerCase()), [])
 
   return (
     <motion.div
@@ -39,7 +38,7 @@ const NavLink = ({ link, index }) => {
         className={`text-sm font-medium text-gray-800 hover:text-indigo-600 transition-colors`}
       >
         {link.name}
-        <motion.span
+        {isActive === false && <motion.span
           layoutId="underline"
           className={`absolute left-0 bottom-0 h-0.5 bg-indigo-600`}
           initial={{ width: isActive ? '100%' : '0%' }}
@@ -48,7 +47,11 @@ const NavLink = ({ link, index }) => {
             opacity: isActive || isHovered ? 1 : 0
           }}
           transition={{ duration: 0.2, ease: easeInOut }}
-        />
+        />}
+        {isActive && <span
+          layoutId="underline"
+          className={`absolute left-0 bottom-0 h-0.5 w-full bg-indigo-600`}
+        ></span>}
       </Link>
     </motion.div>
   );

@@ -41,6 +41,38 @@ const HeroSection = () => {
             }}
           >
 
+            {/* Two small images with animation */}
+            <motion.div
+              className="flex gap-10 mb-4"
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: {
+                    type: "spring",
+                    stiffness: 100,
+                    damping: 10
+                  }
+                }
+              }}
+            >
+              <motion.img
+                src="/ism-logo.png" // Replace with your image path
+                alt="Logo 1"
+                className="w-25 h-25 object-contain"
+                whileHover={{ scale: 1.1 }}
+                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+              />
+              <motion.img
+                src="/centenry_logo.png" // Replace with your image path
+                alt="Logo 2"
+                className="w-25 h-25 object-contain"
+                whileHover={{ scale: 1.1 }}
+                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+              />
+            </motion.div>
+
             <motion.h1
               variants={{
                 hidden: { opacity: 0, y: 30 },
@@ -50,7 +82,8 @@ const HeroSection = () => {
                   transition: {
                     type: "spring",
                     stiffness: 100,
-                    damping: 10
+                    damping: 10,
+                    delay: 0.1 // Slight delay after images appear
                   }
                 }
               }}
@@ -81,9 +114,9 @@ const HeroSection = () => {
                 September 12–13, 2025
               </motion.span>
               <a
-              target='_blank'
-              href='https://maps.app.goo.gl/dAuYdJb6HSfQn3q49'
-              whileHover={{ scale: 1.02 }} className=' flex items-center gap-1.5 cursor-pointer hover:text-indigo-600'>
+                target='_blank'
+                href='https://maps.app.goo.gl/dAuYdJb6HSfQn3q49'
+                whileHover={{ scale: 1.02 }} className=' flex items-center gap-1.5 cursor-pointer hover:text-indigo-600'>
                 <MapPin className=' w-5 h-5' />
                 GJLT, IIT-ISM Dhanbad, India
               </a>

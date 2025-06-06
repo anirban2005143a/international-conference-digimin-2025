@@ -155,6 +155,36 @@ const Footer = () => {
             variants={fadeInUp}
           >
             <h3 className="text-xl font-bold mb-4 underline-offset-8 underline">DIGMIN-2025</h3>
+            <motion.div
+              className="flex gap-10 mb-4"
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: {
+                    type: "spring",
+                    stiffness: 100,
+                    damping: 10
+                  }
+                }
+              }}
+            >
+              <motion.img
+                src="/ism-logo.png" // Replace with your image path
+                alt="Logo 1"
+                className="w-25 h-25 object-contain bg-white"
+                whileHover={{ scale: 1.1 }}
+                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+              />
+              <motion.img
+                src="/centenry_logo.png" // Replace with your image path
+                alt="Logo 2"
+                className="w-25 h-25 object-contain "
+                whileHover={{ scale: 1.1 }}
+                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+              />
+            </motion.div>
             <p className="text-gray-400 mb-4">
               International Conference on "Digital Intelligence for Green Mining and Industrial Networks"
             </p>

@@ -1,6 +1,6 @@
 export const CONFERENCE_NAME = "Digital Intelligence for Green Mining and Industrial Networks";
 export const CONFERENCE_ACRONYM = "DIGMIN-2025";
-export const CONFERENCE_TAGLINE = `Industry 5.0, a concept emphasizing human-centric solutions and sustainability, is envisioned to build a future where industry is resilient, sustainable, and service-oriented. The "6S" refers to the principles of Safety, Security, Sustainability, Sensitivity, Service, and Smartness, which are the core values of Industry 5.0 and are being used in the framework of "6S Parallel Industries".`;
+export const CONFERENCE_TAGLINE = `India's Flagship Conference on digitalization, intelligent automation, and sustainable mining practices.`;
 export const CONFERENCE_DATES = "September 12-13, 2025";
 export const CONFERENCE_LOCATION = "GJLT, IIT-ISM, Dhanbad, India";
 export const CONFERENCE_START_DATE = new Date('2025-09-12T09:00:00');

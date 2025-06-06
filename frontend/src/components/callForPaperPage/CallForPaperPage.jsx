@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react';
 import { Mail, Calendar, FileText, ListChecks, ArrowRight, Send, CheckCircle, AlertCircle, Circle, Type, Info } from 'lucide-react';
 import { motion, useAnimation, useInView, stagger, delay } from 'framer-motion';
 import Link from 'next/link';
+import AbstractTemplate from './AbstractTemplate';
 
 // Animation variants
 const fadeInUp = {
@@ -259,6 +260,9 @@ export default function CallForPapers() {
             </div>
           </motion.section>
 
+          {/* abstract template  */}
+          <AbstractTemplate />
+
           {/* Section: Deadlines - Full width */}
           <motion.section
             className="bg-white md:p-6 py-6 px-3 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow lg:col-span-2"
@@ -326,7 +330,7 @@ export default function CallForPapers() {
 
         {/* Contact Section */}
         <motion.section
-          className="flex flex-col items-center bg-gradient-to-br from-blue-600 to-blue-700 p-8 md:p-10 rounded-2xl shadow-lg max-w-4xl mx-auto"
+          className="flex flex-col items-center bg-gradient-to-br from-blue-600 to-blue-700 sm:p-8 p-4 md:p-10 rounded-2xl shadow-lg max-w-4xl mx-auto"
           variants={fadeIn}
           initial="hidden"
           whileInView="visible"
