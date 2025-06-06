@@ -1,6 +1,7 @@
 "use client"
 import { motion } from 'framer-motion';
 import { Briefcase, Star, Contact2, Banknote, Calendar, Zap } from 'lucide-react';
+import Image from 'next/image';
 
 const fadeIn = {
   hidden: { opacity: 0, y: 60 },
@@ -164,7 +165,7 @@ export default function SponsorshipPage() {
         </motion.section>
 
         {/* Registration & Advertisement */}
-        <motion.div 
+        <motion.div
           className="grid md:grid-cols-2 gap-8 mb-12"
           initial="hidden"
           animate="visible"
@@ -233,64 +234,77 @@ export default function SponsorshipPage() {
           </div>
         </motion.div>
 
-        {/* Payment Details */}
-        <motion.section
-          className="bg-white rounded-xl shadow-md overflow-hidden mb-12"
-          initial="hidden"
-          animate="visible"
-          viewport={{ once: true }}
-          variants={fadeIn}
-        >
-          <div className="py-6 px-3 sm:p-8 border-b border-gray-100 bg-gradient-to-r from-blue-50 to-sky-50">
-            <div className="flex items-center gap-4 mb-4">
-              <div className="p-3 bg-blue-100 rounded-lg">
-                <Banknote className="w-6 h-6 text-blue-600" />
+        <div className='grid md:grid-cols-4 grid-cols-1 space-y-5 space-x-3'>
+          {/* Payment Details */}
+          <motion.section
+            className="bg-white rounded-xl shadow-md overflow-hidden mb-12 col-span-3"
+            initial="hidden"
+            animate="visible"
+            viewport={{ once: true }}
+            variants={fadeIn}
+          >
+            <div className="py-6 px-3 sm:p-8 border-b border-gray-100 bg-gradient-to-r from-blue-50 to-sky-50">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="p-3 bg-blue-100 rounded-lg">
+                  <Banknote className="w-6 h-6 text-blue-600" />
+                </div>
+                <h2 className="text-2xl font-bold text-gray-800">Bank Details for Payment</h2>
               </div>
-              <h2 className="text-2xl font-bold text-gray-800">Bank Details for Payment</h2>
             </div>
-          </div>
 
-          <div className="py-6 px-3 sm:p-8">
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="space-y-4">
-                <div className="bg-blue-50 p-4 rounded-lg">
-                  <h3 className="font-medium text-gray-800 mb-2">Account Information</h3>
-                  <div className="space-y-2">
-                    <p className="text-gray-700">
-                      <span className="font-medium">Name:</span> IIT(ISM) SPECIAL FUND
-                    </p>
-                    <p className="text-gray-700">
-                      <span className="font-medium">A/C No.:</span> 0986101024892
-                    </p>
-                    <p className="text-gray-700">
-                      <span className="font-medium">GSTIN:</span> 20AAAAAI0686D1ZA
-                    </p>
+            <div className="py-6 px-3 sm:p-8">
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-4">
+                  <div className="bg-blue-50 p-4 rounded-lg">
+                    <h3 className="font-medium text-gray-800 mb-2">Account Information</h3>
+                    <div className="space-y-2">
+                      <p className="text-gray-700">
+                        <span className="font-medium">Name:</span> IIT(ISM) SPECIAL FUND
+                      </p>
+                      <p className="text-gray-700">
+                        <span className="font-medium">A/C No.:</span> 0986101024892
+                      </p>
+                      <p className="text-gray-700">
+                        <span className="font-medium">GSTIN:</span> 20AAAAAI0686D1ZA
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <div className="bg-blue-50 p-4 rounded-lg">
+                    <h3 className="font-medium text-gray-800 mb-2">Bank Information</h3>
+                    <div className="space-y-2">
+                      <p className="text-gray-700">
+                        <span className="font-medium">Bank:</span> Canara Bank
+                      </p>
+                      <p className="text-gray-700">
+                        <span className="font-medium">Branch:</span> Saraidhela Branch, Dhanbad
+                      </p>
+                      <p className="text-gray-700">
+                        <span className="font-medium">IFSC:</span> CNRB0000986
+                      </p>
+                      <p className="text-gray-700">
+                        <span className="font-medium">MICR:</span> 826015003
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
-
-              <div className="space-y-4">
-                <div className="bg-blue-50 p-4 rounded-lg">
-                  <h3 className="font-medium text-gray-800 mb-2">Bank Information</h3>
-                  <div className="space-y-2">
-                    <p className="text-gray-700">
-                      <span className="font-medium">Bank:</span> Canara Bank
-                    </p>
-                    <p className="text-gray-700">
-                      <span className="font-medium">Branch:</span> Saraidhela Branch, Dhanbad
-                    </p>
-                    <p className="text-gray-700">
-                      <span className="font-medium">IFSC:</span> CNRB0000986
-                    </p>
-                    <p className="text-gray-700">
-                      <span className="font-medium">MICR:</span> 826015003
-                    </p>
-                  </div>
-                </div>
-              </div>
             </div>
+          </motion.section>
+
+          {/* qr code  */}
+          <div>
+            <Image
+              width={500}
+              height={500}
+              loading='lazy'
+              className=' col-span-1'
+              src={"/qr.png"}
+            />
           </div>
-        </motion.section>
+        </div>
 
         {/* Contact Information */}
         {/* <motion.section

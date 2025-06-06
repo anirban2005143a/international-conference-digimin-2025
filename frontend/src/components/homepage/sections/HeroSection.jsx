@@ -43,7 +43,7 @@ const HeroSection = () => {
 
             {/* Two small images with animation */}
             <motion.div
-              className="flex gap-10 mb-4"
+              className="flex sm:justify-start justify-between gap-10 mb-4"
               variants={{
                 hidden: { opacity: 0, y: 20 },
                 visible: {

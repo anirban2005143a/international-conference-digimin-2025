@@ -120,7 +120,7 @@ export default function CallForPapers() {
         <section id='submission' className="grid grid-cols-1 lg:grid-cols-2 gap-8 space-y-5  ">
           {/* Section: Paper Submission */}
           <motion.section
-            className="bg-gradient-to-br from-blue-50 to-sky-50 p-3 py-5 sm:p-5 rounded-2xl shadow-md border border-blue-100 hover:shadow-lg transition-shadow mx-2 sm:mx-0"
+            className="bg-gradient-to-br from-blue-50 to-sky-50 p-3 py-5 sm:p-5 rounded-2xl shadow-md border border-blue-100 hover:shadow-lg transition-shadow sm:mx-2 mx-0"
             variants={fadeInUp}
             initial="hidden"
             animate="visible"

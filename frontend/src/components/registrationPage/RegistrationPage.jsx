@@ -2,6 +2,7 @@
 import { useEffect, useRef } from 'react';
 import { motion, useAnimation, useInView } from 'framer-motion';
 import { DownloadCloud, Banknote, ArrowRight } from 'lucide-react';
+import Image from 'next/image';
 
 const fadeUp = {
     hidden: { opacity: 0, y: 40 },
@@ -76,7 +77,7 @@ export default function RegistrationPage() {
                     {/* Registration Fees */}
                     <motion.section
                         ref={sectionRefs[1]}
-                        className="bg-gray-50 border border-gray-200 rounded-xl p-8"
+                        className="bg-gray-50 border border-gray-200 rounded-xl md:p-8 p-4"
                         variants={fadeUp}
                         initial="hidden"
                         animate="visible"
@@ -119,66 +120,78 @@ export default function RegistrationPage() {
                         </div>
                     </motion.section>
 
+                    <div className=' grid md:grid-cols-4 grid-cols-1 space-y-5 space-x-3'>
 
-
-                    {/* Bank Details */}
-                    <motion.section
-                        ref={sectionRefs[2]}
-                        className="bg-gray-50 border border-gray-200 rounded-xl p-8"
-                        variants={fadeUp}
-                        initial="hidden"
-                        animate="visible"
-                        custom={2}
-                    >
-                        <div className="flex items-center gap-3 mb-6">
-                            <div className="bg-green-100 p-2 rounded-lg">
-                                <Banknote className="w-5 h-5 text-green-700" />
+                        {/* Bank Details */}
+                        <motion.section
+                            ref={sectionRefs[2]}
+                            className="bg-gray-50 border border-gray-200 rounded-xl md:p-8 p-4 col-span-3 overflow-x-auto"
+                            variants={fadeUp}
+                            initial="hidden"
+                            animate="visible"
+                            custom={2}
+                        >
+                            <div className="flex items-center gap-3 mb-6">
+                                <div className="bg-green-100 p-2 rounded-lg">
+                                    <Banknote className="w-5 h-5 text-green-700" />
+                                </div>
+                                <h2 className="text-2xl font-semibold text-gray-900">Payment Information</h2>
                             </div>
-                            <h2 className="text-2xl font-semibold text-gray-900">Payment Information</h2>
+
+                            <div className="grid md:grid-cols-2 gap-8">
+                                <div>
+                                    <h3 className="text-lg font-medium text-gray-800 mb-4">Bank Details</h3>
+                                    <ul className="space-y-3">
+                                        <li className="flex gap-3">
+                                            <span className="text-gray-600 font-medium min-w-[120px]">Account Name:</span>
+                                            <span>IIT(ISM) SPECIAL FUND</span>
+                                        </li>
+                                        <li className="flex gap-3">
+                                            <span className="text-gray-600 font-medium min-w-[120px]">Bank:</span>
+                                            <span>Canara Bank, Saraidhela Branch, Dhanbad</span>
+                                        </li>
+                                        <li className="flex gap-3">
+                                            <span className="text-gray-600 font-medium min-w-[120px]">Account No.:</span>
+                                            <span>0986101024892</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div >
+                                    <h3 className="text-lg font-medium text-gray-800 mb-4">Other Details</h3>
+                                    <ul className="space-y-3">
+                                        <li className="flex gap-3">
+                                            <span className="text-gray-600 font-medium min-w-[120px]">IFSC Code:</span>
+                                            <span className=' px-3'>CNRB0000986</span>
+                                        </li>
+                                        <li className="flex gap-3">
+                                            <span className="text-gray-600 font-medium min-w-[120px]">GSTIN:</span>
+                                            <span className=' px-3'>20AAAAI0686D1ZA</span>
+                                        </li>
+                                        <li className="flex gap-3">
+                                            <span className="text-gray-600 font-medium min-w-[120px]">Address:</span>
+                                            <span className=' px-3'>Dhanbad, Jharkhand, India</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </motion.section>
+
+                        {/* qr code  */}
+                        <div>
+                            <Image
+                            width={500}
+                            height={500}
+                            loading='lazy'
+                            className=' col-span-1'
+                            src={"/qr.png"}
+                            />
                         </div>
-
-                        <div className="grid md:grid-cols-2 gap-8">
-                            <div>
-                                <h3 className="text-lg font-medium text-gray-800 mb-4">Bank Details</h3>
-                                <ul className="space-y-3">
-                                    <li className="flex gap-3">
-                                        <span className="text-gray-600 font-medium min-w-[120px]">Account Name:</span>
-                                        <span>IIT(ISM) SPECIAL FUND</span>
-                                    </li>
-                                    <li className="flex gap-3">
-                                        <span className="text-gray-600 font-medium min-w-[120px]">Bank:</span>
-                                        <span>Canara Bank, Saraidhela Branch, Dhanbad</span>
-                                    </li>
-                                    <li className="flex gap-3">
-                                        <span className="text-gray-600 font-medium min-w-[120px]">Account No.:</span>
-                                        <span>0986101024892</span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h3 className="text-lg font-medium text-gray-800 mb-4">Other Details</h3>
-                                <ul className="space-y-3">
-                                    <li className="flex gap-3">
-                                        <span className="text-gray-600 font-medium min-w-[120px]">IFSC Code:</span>
-                                        <span>CNRB0000986</span>
-                                    </li>
-                                    <li className="flex gap-3">
-                                        <span className="text-gray-600 font-medium min-w-[120px]">GSTIN:</span>
-                                        <span>20AAAAI0686D1ZA</span>
-                                    </li>
-                                    <li className="flex gap-3">
-                                        <span className="text-gray-600 font-medium min-w-[120px]">Address:</span>
-                                        <span>Dhanbad, Jharkhand, India</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </motion.section>
+                    </div>
 
                     {/* Download Form (repeated at bottom for convenience) */}
                     <motion.section
                         ref={sectionRefs[3]}
-                        className="bg-blue-50 border border-blue-100 rounded-xl p-8 text-center"
+                        className="bg-blue-50 border border-blue-100 rounded-xl md:p-8 p-4 text-center"
                         variants={fadeUp}
                         initial="hidden"
                         animate="visible"

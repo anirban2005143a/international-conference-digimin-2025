@@ -368,12 +368,12 @@ export default function AgendaPage() {
           variants={container}
           initial="hidden"
           animate="show"
-          className="mt-20 grid md:grid-cols-2 gap-8"
+          className="mt-20 grid md:grid-cols-2 gap-8 "
         >
           {/* General Info */}
           <motion.div 
             variants={item}
-            className="bg-white p-4 md:p-8 rounded-xl shadow-sm border border-gray-100"
+            className="bg-white p-4 md:p-8 rounded-xl shadow-sm border border-gray-100 overflow-x-auto"
           >
             <h2 className="text-2xl font-bold text-gray-800 mb-6 flex items-center">
               <svg className="w-6 h-6 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -421,7 +421,7 @@ export default function AgendaPage() {
           {/* Key Contacts */}
           <motion.div 
             variants={item}
-            className="bg-white p-4 md:p-8 rounded-xl shadow-sm border border-gray-100"
+            className="bg-white p-4 md:p-8 rounded-xl shadow-sm border border-gray-100 overflow-x-auto"
           >
             <h2 className="text-2xl font-bold text-gray-800 mb-6 flex items-center">
               <svg className="w-6 h-6 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
