@@ -163,8 +163,9 @@ export const NAVIGATION_LINKS = [
   { name: "Agenda", href: "/agenda" },
   { name: "Call for Papers", href: "/callforpapers" },
   { name: "Important Dates", href: "/importantdates" },
-  { name: "Sponsorship", href: "/sponsorship" },
   { name: "Committee", href: "/committee" },
+  { name: "Our Sponsors", href: "/oursponsors" },
   { name: "Gallery", href: "/gallery" },
+  { name: "Sponsorship Tiers", href: "/sponsorshiptiers" },
   { name: "Contact", href: "#contact" }
 ];
