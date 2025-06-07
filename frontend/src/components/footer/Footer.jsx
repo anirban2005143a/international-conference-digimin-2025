@@ -3,12 +3,13 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { fadeInUp } from '@/utils/animations';
 import { Mail, Phone, MapPin } from 'lucide-react';
+import StayVenues from './StayValues';
 
 const Footer = () => {
   return (
     <footer id="contact" className="bg-gray-900 text-white pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 space-y-10 mb-12">
           {/* Conference Info */}
           <motion.div
             initial="hidden"
@@ -16,9 +17,9 @@ const Footer = () => {
             viewport={{ once: true }}
             variants={fadeInUp}
           >
-            <h3 className="text-xl font-bold mb-4 underline-offset-8 underline">DIGMIN-2025</h3>
+            <h3 className="text-lg font-bold mb-4 underline-offset-8 underline text-gray-300">DIGMIN-2025</h3>
             <motion.div
-              className="flex gap-10 mb-4"
+              className="flex gap-10 mb-4 "
               variants={{
                 hidden: { opacity: 0, y: 20 },
                 visible: {
@@ -35,18 +36,18 @@ const Footer = () => {
               <motion.img
                 src="/ism-logo.png" // Replace with your image path
                 alt="Logo 1"
-                className="w-25 h-25 object-contain bg-white"
+                className="w-20 h-20 object-contain bg-white"
               />
               <motion.img
                 src="/centenry_logo.png" // Replace with your image path
                 alt="Logo 2"
-                className="w-25 h-25 object-contain "
+                className="w-20 h-20 object-contain "
               />
             </motion.div>
-            <p className="text-gray-400 mb-4">
+            <p className="text-gray-400 mb-4 text-sm">
               International Conference on "Digital Intelligence for Green Mining and Industrial Networks"
             </p>
-            <p className="text-gray-400">
+            <p className="text-gray-400 text-sm">
               12-13 September 2025<br />
               Venue: GJLT, IIT-ISM, Dhanbad
             </p>
@@ -59,7 +60,7 @@ const Footer = () => {
             viewport={{ once: true }}
             variants={fadeInUp}
           >
-            <h3 className="text-xl font-bold mb-4 underline-offset-8 underline">Contact Us</h3>
+            <h3 className="text-lg font-bold mb-4 underline-offset-8 underline text-gray-300">Contact Us</h3>
             <ul className="space-y-4">
               <li className="flex items-start">
                 <Mail size={20} className="text-blue-400 mr-2 mt-1 flex-shrink-0" />
@@ -91,6 +92,17 @@ const Footer = () => {
             </ul>
           </motion.div>
 
+          {/* stay venues  */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInUp}
+          >
+            <h3 className="text-lg font-bold mb-4 underline-offset-8 underline text-gray-300">Stay Guide</h3>
+            <StayVenues />
+          </motion.div>
+
           {/* Address */}
           <motion.div
             initial="hidden"
@@ -98,7 +110,7 @@ const Footer = () => {
             viewport={{ once: true }}
             variants={fadeInUp}
           >
-            <h3 className="text-xl font-bold mb-4 underline-offset-8 underline">Address</h3>
+            <h3 className="text-lg font-bold mb-4 underline-offset-8 underline text-gray-300">Address</h3>
             <a
               target='_blank'
               href={`https://maps.app.goo.gl/dAuYdJb6HSfQn3q49`}
