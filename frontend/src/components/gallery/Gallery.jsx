@@ -30,17 +30,11 @@ const GalleryPage = () => {
                 aspect: 'aspect-video'
             },
             {
-                id: 10,
-                src: '/gallery/img10.webp',
-                alt: 'gallery image',
-                aspect: 'aspect-[5/8]'
-            },
-            {
                 id: 15,
                 src: '/gallery/img15.jpg',
                 alt: 'gallery image',
                 aspect: 'aspect-video'
-            }
+            },
         ],
         // Column 2 images
         [
@@ -49,18 +43,6 @@ const GalleryPage = () => {
                 src: '/gallery/img4.webp',
                 alt: 'gallery image',
                 aspect: 'aspect-square'
-            },
-            {
-                id: 5,
-                src: '/gallery/img5.webp',
-                alt: 'gallery image',
-                aspect: 'aspect-video'
-            },
-            {
-                id: 6,
-                src: '/gallery/img6.webp',
-                alt: 'gallery image',
-                aspect: 'aspect-[5/8]'
             },
             {
                 id: 11,
@@ -84,28 +66,16 @@ const GalleryPage = () => {
                 aspect: 'aspect-video'
             },
             {
-                id: 8,
-                src: '/gallery/img8.webp',
-                alt: 'gallery image',
-                aspect: 'aspect-[2/3]'
-            },
-            {
-                id: 9,
-                src: '/gallery/img9.webp',
-                alt: 'gallery image',
-                aspect: 'aspect-square'
-            },
-            {
-                id: 12,
-                src: '/gallery/img12.webp',
-                alt: 'gallery image',
-                aspect: 'aspect-square'
-            },
-            {
                 id: 16,
                 src: '/gallery/img16.jpg',
                 alt: 'gallery image',
                 aspect: 'aspect-square'
+            },
+            {
+                id: 10,
+                src: '/gallery/img10.webp',
+                alt: 'gallery image',
+                aspect: 'aspect-[5/8]'
             }
         ]
     ];

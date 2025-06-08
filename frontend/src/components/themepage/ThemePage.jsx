@@ -57,9 +57,9 @@ export default function ThemesPage() {
       icon: Map,
       description: "Advanced spatial analysis for mining operations",
       points: [
-        "AI-powered remote sensing and satellite imaging",
-        "3D subsurface modeling using LiDAR and hyperspectral data",
-        "Integration of GIS, drones, and ground-penetrating radar"
+        "Critical Mineral Mapping and Targeting",
+ "AI-guided exploration for rare earth elements and strategic minerals",
+"Predictive analytics for grade distribution and tonnage"
       ],
       bgColor: "bg-amber-400",
       borderColor: "border-amber-400",
