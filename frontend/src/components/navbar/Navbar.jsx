@@ -6,6 +6,7 @@ import { Menu, X } from 'lucide-react';
 import { NAVIGATION_LINKS, CONFERENCE_ACRONYM } from '../../constants/conferenceData';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import Image from 'next/image';
 
 // Framer Motion variants
 const menuVariants = {
@@ -105,9 +106,13 @@ const Navbar = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <span className={`text-indigo-900 md:hidden`}>
-              {CONFERENCE_ACRONYM}
-            </span>
+            <Image
+              width={50}
+              height={100}
+              alt='digmin logo'
+              src={"/digmin-logo.png"}
+              className='text-xs w-15 pt-5'
+            />
           </Link>
 
           {/* Desktop Navigation */}

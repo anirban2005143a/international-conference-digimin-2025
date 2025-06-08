@@ -1,3 +1,4 @@
+import { DownloadCloud } from "lucide-react";
 import Image from "next/image";
 
 const AbstractTemplate = () => {
@@ -62,7 +63,7 @@ const AbstractTemplate = () => {
                 </div>
             </div>
 
-        
+
 
             {/* Abstract Guidelines */}
             <div className="mb-8">
@@ -80,7 +81,7 @@ const AbstractTemplate = () => {
                 </ul>
             </div>
 
-                {/* Guidelines */}
+            {/* Guidelines */}
             <p className=" font-light text-sm italic mb-4 ">
                 * You can find detailed information about the conference themes in the attached brochure. To help the abstract review process and the assignment of presentations to slots in the program, we request that you prepare your abstract according to the following structure: The email address of the primary author must be provided in the footer. The email address should be double-checked, as it will be used as the primary means of contacting the authors. The abstract must be submitted in word format. At the end of abstract, two to four keywords should be provided. Keywords are a tool to help indexers and search engines find relevant papers.
             </p>
@@ -104,7 +105,7 @@ const AbstractTemplate = () => {
                         "1. Digital Foundations for Smart Mining",
                         "2. Robotics and Automation in Harsh Mining Environments",
                         "3. Edge AI and Real-Time Analytics in Mining",
-                        "4. Geospatial Intelligence and Digital Mapping",
+                        "4. AI-Driven Mineral Intelligence: Innovations in Critical Mineral Reserves Estimation",
                         "5. Digital Resilience and Disaster Management in Mining",
                         "6. Energy Efficiency and Process Optimization"
                     ].map((theme, index) => (
@@ -174,6 +175,16 @@ const AbstractTemplate = () => {
                     Submissions and queries: <span className="text-blue-600">digmin2025@iitism.ac.in</span> or <span className="text-blue-600">sagarwal@iitism.ac.in</span>
                 </p>
             </div>
+
+            {/* download template  */}
+            <a
+                target='_blank'
+                href="/Template-for-Abstract-for-DIGMIN2025-Conference.docx"
+                className="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-3 mt-4 rounded-lg transition-all shadow-md hover:shadow-lg"
+            >
+                <DownloadCloud className="w-5 h-5 mr-2" />
+                Download template for Abstract
+            </a>
         </div>
     );
 };

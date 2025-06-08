@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useRef } from 'react';
-import { Mail, Calendar, FileText, ListChecks, ArrowRight, Send, CheckCircle, AlertCircle, Circle, Type, Info } from 'lucide-react';
+import { Mail, Calendar, FileText, ListChecks, ArrowRight, Send, CheckCircle, AlertCircle, Circle, Type, Info, DownloadCloud } from 'lucide-react';
 import { motion, useAnimation, useInView, stagger, delay } from 'framer-motion';
 import Link from 'next/link';
 import AbstractTemplate from './AbstractTemplate';
@@ -99,13 +99,14 @@ export default function CallForPapers() {
             </p>
           </motion.div>
           <motion.div variants={item} className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
-            <Link
-              href="/callforpapers/#submission"
+            <a
+            target='_blank'
+              href="/Template-for-Abstract-for-DIGMIN2025-Conference.docx"
               className="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-3 rounded-lg transition-all shadow-md hover:shadow-lg"
             >
-              Submission Guidelines
-              <ArrowRight className="w-4 h-4 ml-2" />
-            </Link>
+              <DownloadCloud className="w-5 h-5 mr-2" />
+              Download template for Abstract
+            </a>
             <Link
               href="/callforpapers/#deadlines"
               className="inline-flex items-center justify-center bg-white hover:bg-gray-50 text-blue-600 font-medium px-6 py-3 rounded-lg transition-all border border-blue-200 shadow-sm hover:shadow-md"

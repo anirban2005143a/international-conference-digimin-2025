@@ -42,7 +42,7 @@ const AboutSection = () => {
                 loading='lazy'
                 width={350}
                 height={500}
-                src="/mining_evolution.png"
+                src="/digmin.jpg"
                 alt="Modern Mining Operation"
                 // fill={true}
                 className=" w-full object-contain border-2 shadow-xl"

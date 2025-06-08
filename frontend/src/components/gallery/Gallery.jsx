@@ -34,6 +34,12 @@ const GalleryPage = () => {
                 src: '/gallery/img10.webp',
                 alt: 'gallery image',
                 aspect: 'aspect-[5/8]'
+            },
+            {
+                id: 15,
+                src: '/gallery/img15.jpg',
+                alt: 'gallery image',
+                aspect: 'aspect-video'
             }
         ],
         // Column 2 images
@@ -92,6 +98,12 @@ const GalleryPage = () => {
             {
                 id: 12,
                 src: '/gallery/img12.webp',
+                alt: 'gallery image',
+                aspect: 'aspect-square'
+            },
+            {
+                id: 16,
+                src: '/gallery/img16.jpg',
                 alt: 'gallery image',
                 aspect: 'aspect-square'
             }

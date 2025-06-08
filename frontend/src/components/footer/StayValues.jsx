@@ -6,7 +6,7 @@ const venues = [
         phone: "+91-326-223-5001",
         email: "edcsah@iitism.ac.in",
         map: "https://maps.app.goo.gl/3Kcnp5JfvbkDyhLE7",
-        website: "chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/https://people.iitism.ac.in/~download/form-emp/EDC-Form.pdf",
+        website: "https://people.iitism.ac.in/~download/form-emp/EDC-Form.pdf",
     },
     {
         name: "Grand Mirage Dhanbad, a member of Radisson Individuals",

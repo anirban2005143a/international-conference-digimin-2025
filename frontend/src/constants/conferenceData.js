@@ -24,7 +24,7 @@ export const KEY_THEMES = [
     icon: "Database"
   },
   {
-    title: "Geospatial Intelligence",
+    title: "AI-Driven Mineral Intelligence: Innovations in Critical Mineral Reserves Estimation",
     description: "AI-powered remote sensing, 3D modeling, and integrated geospatial technologies",
     icon: "Map"
   },
@@ -157,7 +157,7 @@ export const SPONSORS = [
 ];
 
 export const NAVIGATION_LINKS = [
-  { name: "Home", href: "/" },
+  // { name: "Home", href: "/" },
   { name: "About", href: "/about" },
   { name: "Themes", href: "/themes" },
   { name: "Agenda", href: "/agenda" },

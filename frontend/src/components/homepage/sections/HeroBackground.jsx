@@ -28,7 +28,7 @@ const HeroBackground = ({ continerRef }) => {
     }, []);
     return (
         <>
-            {particles && <div className="absolute inset-0 overflow-hidden bg-gradient-to-br from-indigo-50 to-white -z-10">
+            {particles && <div className="absolute inset-0 overflow-hidden bg-gradient-to-br from-indigo-50 to-white -z-10 ">
                 <div className="particles-container">
                     {particles.map((p, index) => (
                         <motion.div

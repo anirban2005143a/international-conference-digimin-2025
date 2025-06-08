@@ -15,7 +15,9 @@ export default function ThemesPage() {
       icon: Cpu,
       description: "Integration of IoT, cloud, and edge computing in mine operations",
       points: [
-        "Integration of IoT, cloud, and edge computing in mine operations"
+        "Integration of IoT, cloud, and edge computing in mine operations",
+        "Blockchain in critical mineral supply chains",
+        "Pit to Port automated operations"
       ],
       bgColor: "bg-blue-400",
       borderColor: "border-blue-400",
@@ -51,7 +53,7 @@ export default function ThemesPage() {
     },
     {
       id: 4,
-      title: "Geospatial Intelligence and Digital Mapping",
+      title: "AI-Driven Mineral Intelligence: Innovations in Critical Mineral Reserves Estimation",
       icon: Map,
       description: "Advanced spatial analysis for mining operations",
       points: [
