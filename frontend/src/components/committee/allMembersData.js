@@ -14,6 +14,13 @@ export const committeeMembers = [
         bio: "Prof. Anindya Sinha, currently Professor of Practice at IIT (ISM) Dhanbad, holds over 40 years of distinguished experience in the coal mining sector. A topper in both B.Tech. (1984) and M.Tech. (1986) from ISM Dhanbad, he was awarded prestigious honors including the ISM Gold Medal and Pickering Medal of MGMI. He began his career at BCCL (1984–97), gaining wide experience in both underground and opencast mining. He earned his Ph.D. in mine ventilation from AGH University, Poland, under a Polish Government Fellowship, and co-developed ventilation software with the Polish Academy of Science. He served in CMPDIL in key leadership roles and was later deputed to the Ministry of Coal (2017–20) as Project Adviser, also acting as Govt. nominee Director (CMPDIL) and Chief Nodal Officer (SCCL). Prof. Sinha joined NCL as Director (Technical) in 2020, driving growth in production, digitization, safety, and sustainability. Post-retirement in 2023, he served as Advisor in the Trans-Mine project under ACPET and as Consultant to MoC for R&D project evaluation. He has published over 40 papers and represented India globally on coal policy and planning. His contributions earned him the MGMI Award of Excellence (2023–24) and IEI Eminent Engineer Award (2017). He is a life member of MGMI, IEI, and IMMA."
     },
     {
+        name: "Dr. Amalendu Sinha",
+        title: "A distinguished Indian mining and fuel research expert, best known for his long-standing leadership and scholarly contributions.",
+        affiliation: "Department of Mining Engineering, IIT (ISM) Dhanbad",
+        image: "/Assir.jpg",
+        bio: "As Director, Dr. Amalendu Sinha oversaw pivotal research into coal mining, fuel technologies, and mine safety under CSIR, one of India’s premier science agencies .Academic contributions: Over 90 publications, cited nearly 2,000 times, with research spanning underground coal gasification, mine fire control, rock stability, hydrogeochemistry, and methane recovery"
+    },
+    {
         name: "Dr. Gyanindra Kumar Pradhan",
         title: "Professor of Mining & Dean Faculty of Engineering & Tech, AKS University . Editorial member of The IME Journal",
         affiliation: "AKS University Satna & The Indian MIning & Engineering Journal",

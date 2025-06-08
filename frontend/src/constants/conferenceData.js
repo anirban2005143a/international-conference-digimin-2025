@@ -74,7 +74,7 @@ export const ORGANIZERS = [
   {
     name: "Prof. Anindya Sinha",
     title: "Convener and Chairman",
-    institution: "Department of Mining Engineering, IIT (ISM) Dhanbad – 826004",
+    institution: "Department of Mining Engineering, IIT (ISM) Dhanbad",
     contact: {
       mobile: "7766908001",
     },
@@ -83,7 +83,7 @@ export const ORGANIZERS = [
   {
     name: "Prof. Siddhartha Agarwal",
     title: "Co-Convener",
-    institution: "Department of Mining Engineering, IIT (ISM) Dhanbad – 826004",
+    institution: "Department of Mining Engineering, IIT (ISM) Dhanbad",
     contact: {
       mobile: "9335536412",
     },
@@ -91,9 +91,19 @@ export const ORGANIZERS = [
     image: "/siddhartha_sir.jpg"
   },
   {
+    name: "Dr. Amalendu Sinha",
+    // title: "Co-Convener",
+    institution: "Department of Mining Engineering, IIT (ISM) Dhanbad",
+    contact: {
+      // mobile: "9335536412",
+    },
+    // linkedin: "https://www.linkedin.com/in/siddharth-agarwal-86179613/",
+    image: "/Assir.jpg"
+  },
+  {
     name: "Prof. Ajeet Yadav",
     title: "Treasurer",
-    institution: "Department of Mining Engineering, IIT (ISM) Dhanbad – 826004",
+    institution: "Department of Mining Engineering, IIT (ISM) Dhanbad ",
     contact: {
       mobile: "7607222169",
     },
@@ -104,7 +114,7 @@ export const ORGANIZERS = [
   {
     name: "Mr. Rajul Dwivedi",
     title: "Student Co-Ordinators",
-    institution: "Department of Mining Engineering, IIT (ISM) Dhanbad – 826004",
+    institution: "Department of Mining Engineering, IIT (ISM) Dhanbad ",
     contact: {
       mobile: "7772969347",
     },
