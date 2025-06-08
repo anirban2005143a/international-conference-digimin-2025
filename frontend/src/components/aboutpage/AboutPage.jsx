@@ -148,7 +148,7 @@ export default function AboutPage() {
               <span className="font-medium text-indigo-500 ">
                 Digital Intelligence for Green Mining
               </span>
-              <span className="block mt-3 text-lg sm:text-xl font-medium text-gray-600">
+              <span className="block mt-3 text-lg sm:text-xl font-medium text-indigo-500">
                 and Sustainable Industrial Networks
               </span>
             </p>

@@ -2,7 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { fadeInUp } from '@/utils/animations';
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, Phone, MapPin, Download } from 'lucide-react';
 import StayVenues from './StayValues';
 
 const Footer = () => {
@@ -51,6 +51,12 @@ const Footer = () => {
               12-13 September 2025<br />
               Venue: GJLT, IIT-ISM, Dhanbad
             </p>
+            <a
+            download={"Brochure.pdf"}
+             href="/Brochure.pdf"
+              className="bg-[#d2d9f4] my-4 text-black  px-4 py-2 justify-center md:text-base text-xs rounded-lg cursor-pointer flex items-center text-center">
+              <Download /> <span className='mx-2'> Download Brochure</span>
+            </a>
           </motion.div>
 
           {/* Contact Information */}
