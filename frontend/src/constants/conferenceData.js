@@ -126,7 +126,7 @@ export const ORGANIZERS = [
     title: "Student Co-Ordinators",
     institution: "Department of Mining Engineering, IIT (ISM) Dhanbad – 826004",
     contact: {
-      mobile: "6372685665",
+      mobile: "8130524597",
     },
     linkedin: "https://www.linkedin.com/in/prats0324/",
     image: "/prativa_maam.jpg"
