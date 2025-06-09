@@ -101,6 +101,26 @@ export const ORGANIZERS = [
     image: "/Assir.jpg"
   },
   {
+    name: "Prof.Sagar Pal",
+    // title: "Co-Convener",
+    institution: "Chemistry and Chemical Biology, IIT (ISM) Dhanbad",
+    contact: {
+      mobile: "9471191529",
+    },
+    // linkedin: "https://www.linkedin.com/in/siddharth-agarwal-86179613/",
+    image: "/sagarsir.jpg"
+  },
+  {
+    name: "Prof.Dheeraj Kumar",
+    // title: "Co-Convener",
+    institution: "Department of Mining Engineering, IIT (ISM) Dhanbad",
+    contact: {
+      mobile: "3262235486",
+    },
+    linkedin: "https://www.linkedin.com/in/kdhj/",
+    image: "/dksir.jpg"
+  },
+  {
     name: "Prof. Ajeet Yadav",
     title: "Treasurer",
     institution: "Department of Mining Engineering, IIT (ISM) Dhanbad ",

@@ -21,6 +21,20 @@ export const committeeMembers = [
         bio: "As Director, Dr. Amalendu Sinha oversaw pivotal research into coal mining, fuel technologies, and mine safety under CSIR, one of India’s premier science agencies .Academic contributions: Over 90 publications, cited nearly 2,000 times, with research spanning underground coal gasification, mine fire control, rock stability, hydrogeochemistry, and methane recovery"
     },
     {
+        name: "Rashie Ratan",
+        title: "Passionate brand builder and Insights leader with significant experience in growing core CPG businesses across diverse categories globally. Experienced in new launch strategies, whitespace expansions, equity and architecture redesigns, super-premium offerings, designing consumer segmentation, packaging reinventions and business model optimization. Unafraid to challenge convention.",
+        // affiliation: "Department of Mining Engineering, IIT (ISM) Dhanbad",
+        image: "/rrmam.jpg",
+        bio: "Tvarana is a trusted Oracle NetSuite partner, known for delivering tailored ERP solutions across industries, including the mining sector, where the company is helping modernize operational and financial systems for complex, multi-entity businesses. As Chief Marketing & Growth Officer, Rashie Ratan supports Tvarana’s expansion efforts, leading marketing strategy, client engagement, and growth initiatives globally.An alumna of IIM Bangalore and an engineering graduate from NSIT Delhi, Rashie brings a rare blend of technical acumen and strategic business insight. Her experience spans Asia, Africa, Australia, Europe, and the Americas, where she has led high-impact teams and executed transformative growth strategies for multinational organizations.Before joining Tvarana, Rashie built her foundation in customer insight and brand leadership at Procter & Gamble, Coty, and General Mills, where she led market expansion and innovation across diverse consumer categories.At Tvarana, she is championing the company’s mission to make world-class NetSuite ERP solutions accessible and impactful for India’s mining sector and beyond, positioning the company as a true partner in digital transformation."
+    },
+    {
+        name: "Prakasam",
+        // title: "Passionate brand builder and Insights leader with significant experience in growing core CPG businesses across diverse categories globally. Experienced in new launch strategies, whitespace expansions, equity and architecture redesigns, super-premium offerings, designing consumer segmentation, packaging reinventions and business model optimization. Unafraid to challenge convention.",
+        // affiliation: "Department of Mining Engineering, IIT (ISM) Dhanbad",
+        image: "/psir.jpg",
+        bio: "Tvarana, with its focus on providing customer-centric digital solutions to various industries globally, offers its customised solutions to the Mining Industry in India.  Mr. Prakasam leads the India business for Tvarana and closely collaborates with multiple sectors in implementing digital transformation through Oracle NetSuite ERP.A Post Graduate in Industrial Engineering and a Fellow of the Institute of Management Accountants of India, Prakasam brings his 35 years of consulting experience across industries with a focus on Enterprise Performance Management, Business and Process Excellence, Benchmarking, and Business Strategy. At Tvarana, Mr. Prakasam guides and supports India Business in implementing ERP solutions for mining and other sectors, and works closely with clients to realize the potential benefits.  He is passionate about bringing fundamental transformation in the working of organizations and believes that change management is a crucial part of any transformative implementation."
+    },
+    {
         name: "Dr. Gyanindra Kumar Pradhan",
         title: "Professor of Mining & Dean Faculty of Engineering & Tech, AKS University . Editorial member of The IME Journal",
         affiliation: "AKS University Satna & The Indian MIning & Engineering Journal",
