@@ -17,7 +17,7 @@ const CommitteePage = () => {
           </h1>
           <div className="h-1 w-20 bg-blue-600 mx-auto mb-6"></div>
           <p className=" max-w-2xl mx-auto">
-            Meet our distinguished committee members from the Department of Mining Engineering at IIT (ISM) Dhanbad, 
+            Meet our distinguished committee members from around the world
             leading innovation and excellence in mining education and research.
           </p>
         </div>
