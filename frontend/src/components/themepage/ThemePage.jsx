@@ -15,9 +15,9 @@ export default function ThemesPage() {
       icon: Cpu,
       description: "Integration of IoT, cloud, and edge computing in mine operations",
       points: [
-        "Integration of IoT, cloud, and edge computing in mine operations",
-        "Blockchain in critical mineral supply chains",
-        "Pit to Port automated operations"
+        "Digital Foundations for Smart Mining Converging IoT, cloud, and edge for intelligent mine operations",
+        "Unified architecture bridging enterprise systems, field tech, and automated workflows",
+        "Scalable platforms enabling real-time insights and business process automation"
       ],
       bgColor: "bg-blue-400",
       borderColor: "border-blue-400",
