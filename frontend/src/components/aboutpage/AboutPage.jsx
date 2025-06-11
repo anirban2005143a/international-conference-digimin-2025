@@ -139,18 +139,16 @@ export default function AboutPage() {
 
           {/* Tagline */}
           <motion.div
-            className="mt-8 max-w-3xl mx-auto"
+            className="mt-8 max-w-2xl mx-auto"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.8 }}
           >
-            <p className="text-xl sm:text-2xl font-light text-gray-700 leading-relaxed">
-              <span className="font-medium text-indigo-500 ">
-                Digital Intelligence for Green Mining
+            <p className=" font-light text-gray-700 leading-relaxed">
+              <span className="font-medium text-base text-indigo-500 ">
+                 Landmark Event: Part of IIT (ISM) Dhanbad's Centenary Celebrations, marking 100 years of excellence in mining education and research.
               </span>
-              <span className="block mt-3 text-lg sm:text-xl font-medium text-indigo-500">
-                and Sustainable Industrial Networks
-              </span>
+           
             </p>
           </motion.div>
 

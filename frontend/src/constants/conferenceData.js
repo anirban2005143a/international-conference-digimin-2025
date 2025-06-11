@@ -199,3 +199,17 @@ export const NAVIGATION_LINKS = [
   { name: "Sponsorship Tiers", href: "/sponsorshiptiers" },
   { name: "Contact", href: "#contact" }
 ];
+
+export const universityLogos = [
+  '/university/curtin-university-logo.png',
+  '/university/Michigan-Technological-University-1-1024x1006.webp',
+  '/university/Missouri-University-of-Science-and-Technology-Top-50-Most-Affordable-Military-Friendly-Online-Colleges-or-Universities.webp',
+  '/university/New_Mexico_Institute_of_Mining_and_Technology_seal.png',
+  '/university/Southern_Illinois_University_Carbondale_old.webp',
+  '/university/unsw-logo-01.png',
+  '/university/WhatsApp Image 2025-06-10 at 23.15.56.jpeg',
+  '/university/SIU-Logo-1200x857.webp',
+  '/university/pennsylvania-state-university-seal-logo-png_seeklogo-310183.webp',
+  '/university/new-mexico-institute-of-mining-and-technology_5c879bc610ca60036e108b0b_large.webp',
+  // Add more paths as needed
+];
