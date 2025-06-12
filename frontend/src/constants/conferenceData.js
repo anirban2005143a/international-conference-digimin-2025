@@ -209,6 +209,7 @@ export const universityLogos = [
   '/university/unsw-logo-01.png',
   '/university/WhatsApp Image 2025-06-10 at 23.15.56.jpeg',
   '/university/SIU-Logo-1200x857.webp',
+  '/university/9a3273c9-8d1d-45f3-817d-ec416654ef26.jpg',
   '/university/pennsylvania-state-university-seal-logo-png_seeklogo-310183.webp',
   '/university/new-mexico-institute-of-mining-and-technology_5c879bc610ca60036e108b0b_large.webp',
   // Add more paths as needed

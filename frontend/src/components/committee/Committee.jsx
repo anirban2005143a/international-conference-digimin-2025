@@ -32,7 +32,7 @@ const CommitteePage = () => {
             whileInView="visible"
             viewport={{ once: true }}
             transition={{ staggerChildren: 0.1 }}
-            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 px-6 max-w-6xl mx-auto"
+            className=" flex flex-wrap justify-center gap-6 w-full "
           >
             {universityLogos.map((logo, index) => (
               <motion.div
@@ -47,7 +47,7 @@ const CommitteePage = () => {
                 <img
                   src={logo}
                   alt={`University Logo ${index + 1}`}
-                  className="h-16 object-contain"
+                  className="w-30 object-contain"
                 />
               </motion.div>
             ))}
