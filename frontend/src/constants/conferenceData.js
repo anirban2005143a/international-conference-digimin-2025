@@ -210,6 +210,7 @@ export const universityLogos = [
   '/university/WhatsApp Image 2025-06-10 at 23.15.56.jpeg',
   '/university/SIU-Logo-1200x857.webp',
   '/university/6fde685d-2f3f-4e19-b973-a8c61ce8b429.jpg',
+  '/university/2bdebf4d-e61c-46d4-87ab-8ebf3f26d4b1.jpg',
   '/university/9a3273c9-8d1d-45f3-817d-ec416654ef26.jpg',
   '/university/pennsylvania-state-university-seal-logo-png_seeklogo-310183.webp',
   '/university/new-mexico-institute-of-mining-and-technology_5c879bc610ca60036e108b0b_large.webp',
