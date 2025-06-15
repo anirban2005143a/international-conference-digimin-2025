@@ -119,7 +119,7 @@ export default function AboutPage() {
 
           {/* Title */}
           <motion.h1
-            className="mt-6 font-bold tracking-tight text-5xl md:text-6xl  text-gray-900"
+            className=" font-bold tracking-tight text-5xl md:text-6xl  text-gray-900"
             initial={{ y: 40, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, ease: [0.16, 0.77, 0.47, 0.97] }}
@@ -139,16 +139,18 @@ export default function AboutPage() {
 
           {/* Tagline */}
           <motion.div
-            className="mt-8 max-w-2xl mx-auto"
+            className="mt-8 "
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.8 }}
           >
-            <p className=" font-light text-gray-700 leading-relaxed">
-              <span className="font-medium text-base text-indigo-500 ">
-                 Landmark Event: Part of IIT (ISM) Dhanbad's Centenary Celebrations, marking 100 years of excellence in mining education and research.
+            <p className=" leading-relaxed">
+              <span className=" text-gray-700 italic text-xl font-normal">International Conference On</span>
+             <br/>
+              <span className="font-bold text-2xl text-red-800 ">
+                 Digital Intelligence for Green Mining and Industrial Networks <br/>
+                 (DIGMIN)
               </span>
-           
             </p>
           </motion.div>
 
