@@ -187,7 +187,7 @@ export const SPONSORS = [
 ];
 
 export const NAVIGATION_LINKS = [
-  // { name: "Home", href: "/" },
+  { name: "Home", href: "/" },
   { name: "About", href: "/about" },
   { name: "Themes", href: "/themes" },
   { name: "Agenda", href: "/agenda" },

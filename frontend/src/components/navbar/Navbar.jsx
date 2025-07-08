@@ -96,7 +96,7 @@ const Navbar = () => {
       animate={{ y: isVisible ? 0 : -100 }}
       transition={{ duration: 0.2, ease: "linear" }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8  backdrop-blur-md">
+      <div className="max-w-7xl mx-auto px-4 xl:px-6 backdrop-blur-md">
         <nav className="flex justify-between h-16 items-center">
           {/* Logo */}
           <Link
