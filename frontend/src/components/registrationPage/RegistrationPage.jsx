@@ -59,7 +59,7 @@ export default function RegistrationPage() {
                 Download Registration Form
               </a>
               <p className="text-sm text-gray-500 mt-3">
-                Early registration deadline: October 15, 2025
+                Early registration deadline: August 15, 2025
               </p>
             </motion.div>
           </div>
