@@ -11,8 +11,6 @@ const CountdownTimer = () => {
     seconds: 0,
   });
 
-  // const [isMounted, setIsMounted] = useState(false);
-
   useEffect(() => {
     // setIsMounted(true);
     const calculateTimeLeft = () => {
