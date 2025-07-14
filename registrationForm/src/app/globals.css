@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+:root {
+  --font-ubuntu: "Ubuntu", sans-serif;
+}
+
+* {
+  font-family: var(--font-ubuntu) , "antialiased";
+}
