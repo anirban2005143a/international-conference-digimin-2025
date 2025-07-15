@@ -5,6 +5,7 @@ export async function POST(request) {
 
     try {
         const data = await request.json()
+        console.log(process.env.SEND_MAIL_TO.split(","))
         await sendMail( process.env.SEND_MAIL_TO.split(","), data.formData )
         
         return new NextResponse(JSON.stringify({ msg: "Mail send successfully" }), {

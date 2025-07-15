@@ -6,8 +6,8 @@ export default function Home() {
     <>
       {/* <iframe
         src="https://registration-form-digimin-2025.vercel.app"
-        width="50%"
-        height="250"
+        width="75%" // change accordingly as needed
+        height="450" // change accordingly as needed
         className="border-none"
       ></iframe> */}
 
