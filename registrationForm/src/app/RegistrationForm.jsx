@@ -86,6 +86,8 @@ export const RegistrationForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setisSending(true);
+
     const values = Object.values(formData);
     const isFormValid = values.every((val, idx) => {
       if (formData.abstractSubmitted === "no" && (idx === 5 || idx === 6)) {
@@ -95,7 +97,8 @@ export const RegistrationForm = () => {
     });
 
     if (!isFormValid) {
-      alert("Please fill in all required fields.");
+      showToast(1, "Please fill in all required fields.");
+      setisSending(false);
       return;
     }
 
@@ -105,6 +108,7 @@ export const RegistrationForm = () => {
     } catch (error) {
       console.log(error);
       showToast(1, "Please enter a valid email id");
+      setisSending(false);
       return;
     }
 
