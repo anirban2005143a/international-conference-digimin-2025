@@ -1,8 +1,9 @@
 "use client";
 import { useEffect, useRef } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
-import { DownloadCloud, Banknote, ArrowRight } from "lucide-react";
+import { DownloadCloud, Banknote, ArrowRight, UserPlus } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -49,15 +50,15 @@ export default function RegistrationPage() {
             </p>
             {/* Hero Download Button */}
             <motion.div variants={fadeUp} custom={1}>
-              <a
-                href="/registration-form.pdf"
+              <Link
+                href="/registration/newRegistration"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-blue-700 hover:bg-blue-800 text-white px-6 py-3 rounded-lg transition-colors font-medium shadow-md hover:shadow-lg"
               >
-                <DownloadCloud className="w-5 h-5" />
-                Download Registration Form
-              </a>
+                <UserPlus className="w-5 h-5" />
+                Register for DIGMIN-2025
+              </Link>
               <p className="text-sm text-gray-500 mt-3">
                 Early registration deadline: August 15, 2025
               </p>
