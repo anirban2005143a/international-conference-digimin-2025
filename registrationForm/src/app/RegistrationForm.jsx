@@ -73,7 +73,18 @@ export const RegistrationForm = () => {
     setIsDropdownOpen((prev) => ({ ...prev, [dropdown]: !prev[dropdown] }));
   };
 
-  const handleSubmit = (e) => {
+  const checkIsEmailValid = async (email) => {
+    // Step 1: Optional syntax check before API call
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!regex.test(email)) {
+      return { valid: false, reason: "Invalid email format" };
+    }
+
+    // Step 2: Call server API
+    const res = await axios.post("/api/validateEmail", { email });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const values = Object.values(formData);
     const isFormValid = values.every((val, idx) => {
@@ -85,6 +96,15 @@ export const RegistrationForm = () => {
 
     if (!isFormValid) {
       alert("Please fill in all required fields.");
+      return;
+    }
+
+    //check email validation
+    try {
+      await checkIsEmailValid(formData?.email || "");
+    } catch (error) {
+      console.log(error);
+      showToast(1, "Please enter a valid email id");
       return;
     }
 
@@ -128,7 +148,7 @@ export const RegistrationForm = () => {
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-      theme: "dark",
+      theme: "light",
     };
     err ? toast.error(msg, opts) : toast.success(msg, opts);
   };
@@ -154,10 +174,22 @@ export const RegistrationForm = () => {
           className="grid grid-cols-2 gap-2 items-start"
         >
           {[
-            ["fullName", "Full Name", <User className="w-5 h-5 text-blue-800" />],
-            ["affiliation", "Affiliation", <Building className="w-5 h-5 text-blue-800" />],
+            [
+              "fullName",
+              "Full Name",
+              <User className="w-5 h-5 text-blue-800" />,
+            ],
+            [
+              "affiliation",
+              "Affiliation",
+              <Building className="w-5 h-5 text-blue-800" />,
+            ],
             ["email", "Email", <Mail className="w-5 h-5 text-blue-800" />],
-            ["phone", "Phone Number", <Phone className="w-5 h-5 text-blue-800" />],
+            [
+              "phone",
+              "Phone Number",
+              <Phone className="w-5 h-5 text-blue-800" />,
+            ],
           ].map(([name, label, icon]) => (
             <div className="mb-4 col-span-1" key={name}>
               <label className="mb-2 font-medium text-blue-800 flex items-center gap-2">
@@ -177,7 +209,7 @@ export const RegistrationForm = () => {
           {/* Abstract Submitted Dropdown */}
           <div className="mb-4 col-span-1">
             <label className="block mb-2 font-medium text-blue-800 flex items-center gap-2">
-               Abstract Submitted? *
+              Abstract Submitted? *
             </label>
             <div className="relative">
               <button
@@ -263,7 +295,7 @@ export const RegistrationForm = () => {
           {/* Category Dropdown */}
           <div className="mb-4 col-span-1">
             <label className="block mb-2 font-medium text-blue-800 flex items-center gap-2">
-               Registration Category *
+              Registration Category *
             </label>
             <div className="relative">
               <button
@@ -276,7 +308,8 @@ export const RegistrationForm = () => {
                     ? "Select Registration Category"
                     : {
                         student: "Student/Research Scholar (₹3,000/$50)",
-                        academic: "Academic/Research Organization (₹7,000/$150)",
+                        academic:
+                          "Academic/Research Organization (₹7,000/$150)",
                         industry: "Industry/Govt. Agency (₹10,000/$200)",
                       }[formData.registrationCategory]}
                 </span>
@@ -308,11 +341,14 @@ export const RegistrationForm = () => {
                         }}
                         className="px-4 py-2.5 cursor-pointer hover:bg-blue-50"
                       >
-                        {{
-                          student: "Student/Research Scholar (₹3,000/$50)",
-                          academic: "Academic/Research Organization (₹7,000/$150)",
-                          industry: "Industry/Govt. Agency (₹10,000/$200)",
-                        }[value]}
+                        {
+                          {
+                            student: "Student/Research Scholar (₹3,000/$50)",
+                            academic:
+                              "Academic/Research Organization (₹7,000/$150)",
+                            industry: "Industry/Govt. Agency (₹10,000/$200)",
+                          }[value]
+                        }
                       </li>
                     ))}
                   </motion.ul>
@@ -325,12 +361,19 @@ export const RegistrationForm = () => {
           {["paymentId", "paymentDate"].map((name) => (
             <div className="mb-4 col-span-1" key={name}>
               <label className="block mb-2 font-medium text-blue-800 flex items-center gap-2">
-                 {name === "paymentId" ? "Payment Confirmation ID" : "Payment Date"} *
+                {name === "paymentId"
+                  ? "Payment Confirmation ID"
+                  : "Payment Date"}{" "}
+                *
               </label>
               <input
                 type={name === "paymentDate" ? "date" : "text"}
                 name={name}
-                max={name === "paymentDate" ? new Date().toISOString().split("T")[0] : undefined}
+                max={
+                  name === "paymentDate"
+                    ? new Date().toISOString().split("T")[0]
+                    : undefined
+                }
                 value={formData[name]}
                 onChange={handleChange}
                 required
