@@ -31,6 +31,13 @@ const SponsorsPage = () => {
       logo: "/sponsors/Tvarana.png",
       description: "Award-winning Oracle NetSuite Consulting Firm and SDN partner specializing in innovative SuiteApps.",
       link: "https://www.tvarana.com"
+    },
+    {
+      id: 1,
+      name: "Tvarana",
+      logo: "/sponsors/nlcIndiaLimited.jpg",
+      description: "NLC India Limited, established in November 1956 and headquartered in Neyveli, Tamil Nadu, is a Navratna Central Public Sector Undertaking under the Ministry of Coal, engaged in lignite and coal mining as well as thermal and renewable power generation across India.",
+      link: "https://www.nlcindia.in/website/en/"
     }
   ];
 
