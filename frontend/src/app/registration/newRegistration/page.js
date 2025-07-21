@@ -29,7 +29,7 @@ const page = () => {
             <p>
               <span className="font-medium">SWIFT Code:</span>{" "}
               <code className="bg-white px-1 py-0.5 rounded border text-gray-800">
-                CNRBINBB
+                CNRBINBBBFD
               </code>
             </p>
             <p className="text-xs mt-1 text-gray-500">
