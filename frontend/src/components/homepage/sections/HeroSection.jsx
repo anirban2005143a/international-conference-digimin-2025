@@ -193,12 +193,12 @@ const HeroSection = () => {
                 className="text-sm text-gray-700 grid grid-cols-1 sm:grid-cols-2 gap-3 list-disc list-inside"
               >
                 {[
-                  "AI & ML: Predictive maintenance",
-                  "IoT & Connected Mining Systems",
-                  "Green Technologies & Eco-Mining",
-                  "Digital Twins & Virtual Simulations",
-                  "Automation & Safety Monitoring",
-                  "Smart Mining Infrastructure"
+                  "Digital Foundations for Smart Mining",
+                  "Robotics & Automation in Harsh Environments",
+                  "Edge AI & Real-Time Analytics",
+                  "AI-Driven Mineral Intelligence: Innovations in Critical Mineral Reserves Estimation",
+                  "Digital Resilience & Disaster Management",
+                  "Energy Efficiency & Process Optimization"
                 ].map((item, i) => (
                   <motion.li
                     key={i}
