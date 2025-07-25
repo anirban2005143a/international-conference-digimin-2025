@@ -7,11 +7,13 @@ import KeyThemesSection from './sections/KeyThemesSection';
 import CallForPapersSection from './sections/CallForPapersSection';
 import ImportantDatesSection from './sections/ImportantDatesSection';
 import OrganizersSection from './sections/OrganizersSection';
+import { SponsorsSection } from './sections/SponsorsSection';
 
 const HomePage = () => {
   return (
     <main className="overflow-hidden">
       <HeroSection />
+      <SponsorsSection/>
       <CountdownTimer />
       <AboutSection />
       {/* <KeyThemesSection /> */}

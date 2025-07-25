@@ -1,9 +1,34 @@
-"use client";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
-const SponsorsPage = () => {
-  const fadeIn = (direction, type, delay, duration) => {
+ const sponsors = [
+  {
+    id: 1,
+    name: "Tvarana",
+    logo: "/sponsors/Tvarana.png",
+    description:
+      "Award-winning Oracle NetSuite Consulting Firm and SDN partner specializing in innovative SuiteApps.",
+    link: "https://www.tvarana.com",
+    category: "Silver",
+  },
+  {
+    id: 1,
+    name: "NLC India Limited",
+    logo: "/sponsors/nlcIndiaLimited.jpg",
+    description:
+      "NLC India Limited, established in November 1956 and headquartered in Neyveli, Tamil Nadu, is a Navratna Central Public Sector Undertaking under the Ministry of Coal, engaged in lignite and coal mining as well as thermal and renewable power generation across India.",
+    link: "https://www.nlcindia.in/website/en/",
+    category: "Bronze",
+  },
+];
+const badgeColors = {
+  Diamond: "bg-gradient-to-r from-purple-500 to-pink-500 text-white",
+  Gold: "bg-yellow-400 text-black",
+  Silver: "bg-gray-300 text-black",
+  Bronze: "bg-orange-400 text-white",
+};
+
+const fadeIn = (direction, type, delay, duration) => {
     return {
       hidden: {
         x: direction === "left" ? 100 : direction === "right" ? -100 : 0,
@@ -23,66 +48,10 @@ const SponsorsPage = () => {
       },
     };
   };
-  const sponsors = [
-    {
-      id: 1,
-      name: "Tvarana",
-      logo: "/sponsors/Tvarana.png",
-      description:
-        "Award-winning Oracle NetSuite Consulting Firm and SDN partner specializing in innovative SuiteApps.",
-      link: "https://www.tvarana.com",
-      category: "Silver",
-    },
-    {
-      id: 1,
-      name: "Tvarana",
-      logo: "/sponsors/nlcIndiaLimited.jpg",
-      description:
-        "NLC India Limited, established in November 1956 and headquartered in Neyveli, Tamil Nadu, is a Navratna Central Public Sector Undertaking under the Ministry of Coal, engaged in lignite and coal mining as well as thermal and renewable power generation across India.",
-      link: "https://www.nlcindia.in/website/en/",
-      category: "Bronze",
-    },
-  ];
 
-  const badgeColors = {
-    Diamond: "bg-gradient-to-r from-purple-500 to-pink-500 text-white",
-    Gold: "bg-yellow-400 text-black",
-    Silver: "bg-gray-300 text-black",
-    Bronze: "bg-orange-400 text-white",
-  };
-
+export const SponsorsSection = () => {
   return (
-    <div className="bg-gray-50 min-h-screen">
-      {/* Hero Section */}
-      <motion.section
-        viewport={{ once: true, amount: 0.25 }}
-        className="relative bg-gradient-to-br from-slate-100 via-blue-50 to-indigo-200    py-30 px-4"
-      >
-        <div className="max-w-7xl mx-auto text-center">
-          <motion.h1
-            variants={fadeIn("up", "spring", 0.1, 1)}
-            className="text-4xl md:text-5xl font-bold mb-6 text-blue-700"
-          >
-            Our Valued Partners
-          </motion.h1>
-          <motion.p
-            variants={fadeIn("up", "spring", 0.2, 1)}
-            className="text-base text-gray-600  max-w-3xl mx-auto mb-8"
-          >
-            We gratefully acknowledge the organizations supporting DIGMIN 2025
-            and the future of digital mining.
-          </motion.p>
-          <motion.div variants={fadeIn("up", "spring", 0.3, 1)}>
-            <a
-              href="#sponsors"
-              className="inline-block bg-white text-blue-700 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition duration-300"
-            >
-              View All Sponsors
-            </a>
-          </motion.div>
-        </div>
-      </motion.section>
-
+    <>
       {/* Sponsors Grid */}
       <section id="sponsors" className="py-16 px-4 max-w-7xl mx-auto">
         <motion.div
@@ -166,39 +135,8 @@ const SponsorsPage = () => {
           ))}
         </motion.div>
 
-        {/* CTA Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          viewport={{ once: true }}
-          className="mt-16 bg-gradient-to-r from-blue-600 to-blue-800 rounded-xl p-8 text-center text-white"
-        >
-          <h2 className="text-2xl md:text-3xl font-bold mb-4">
-            Join Our Sponsors
-          </h2>
-          <p className="text-lg mb-6 max-w-2xl mx-auto">
-            Become part of DIGMIN 2025 and connect with leaders in digital
-            mining innovation.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link
-              href="/sponsorshiptiers"
-              className="inline-block bg-white text-blue-700 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition"
-            >
-              Sponsorship Opportunities
-            </Link>
-            <a
-              href="#contact"
-              className="inline-block border-2 border-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-700 transition"
-            >
-              Contact Our Team
-            </a>
-          </div>
-        </motion.div>
+      
       </section>
-    </div>
+    </>
   );
 };
-
-export default SponsorsPage;

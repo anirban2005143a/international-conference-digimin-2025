@@ -1,13 +1,13 @@
 import Footer from '@/components/footer/Footer'
 import Navbar from '@/components/navbar/Navbar'
-import SponsorsPage from '@/components/oursponsors/OurSponsors'
+import SpeakersPage from '@/components/speakers/Speakers'
 import React from 'react'
 
 const page = () => {
     return (
         <>
             <Navbar />
-            <SponsorsPage />
+            <SpeakersPage />
             <Footer />
         </>
     )

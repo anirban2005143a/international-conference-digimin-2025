@@ -194,7 +194,7 @@ export const NAVIGATION_LINKS = [
   { name: "Call for Papers", href: "/callforpapers" },
   { name: "Important Dates", href: "/importantdates" },
   { name: "Committee", href: "/committee" },
-  { name: "Our Sponsors", href: "/oursponsors" },
+  { name: "Speakers", href: "/speakers" },
   { name: "Gallery", href: "/gallery" },
   { name: "Sponsorship Tiers", href: "/sponsorshiptiers" },
   { name: "Contact", href: "#contact" }
