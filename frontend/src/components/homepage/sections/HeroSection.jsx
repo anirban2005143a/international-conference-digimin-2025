@@ -1,27 +1,23 @@
-"use client"
-import React, { useRef } from 'react';
-import { motion } from 'framer-motion';
-import { Calendar, MapPin, ChevronDown, } from 'lucide-react';
-import HeroBackground from './HeroBackground';
+"use client";
+import React, { useRef } from "react";
+import { motion } from "framer-motion";
+import { Calendar, MapPin, ChevronDown } from "lucide-react";
+import HeroBackground from "./HeroBackground";
 import {
   CONFERENCE_NAME,
   CONFERENCE_TAGLINE,
-} from '@/constants/conferenceData';
-import Link from 'next/link';
+} from "@/constants/conferenceData";
+import Link from "next/link";
+import { sponsors } from "./SponsorsSection";
+import Image from "next/image";
 
 const HeroSection = () => {
-
-  const continerRef = useRef(null)
+  const continerRef = useRef(null);
 
   return (
-    <section
-      ref={continerRef}
-      id="home"
-      className="relative py-25 "
-    >
+    <section ref={continerRef} id="home" className="relative pt-25 pb-6 ">
       {/* Enhanced Particle Background */}
       <HeroBackground continerRef={continerRef} />
-
 
       <div className="px-4 md:px-10">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -35,12 +31,11 @@ const HeroSection = () => {
                 opacity: 1,
                 transition: {
                   staggerChildren: 0.15,
-                  delayChildren: 0.2
-                }
-              }
+                  delayChildren: 0.2,
+                },
+              },
             }}
           >
-
             {/* Two small images with animation */}
             <motion.div
               className="flex sm:justify-start justify-between gap-10 mb-4"
@@ -52,9 +47,9 @@ const HeroSection = () => {
                   transition: {
                     type: "spring",
                     stiffness: 100,
-                    damping: 10
-                  }
-                }
+                    damping: 10,
+                  },
+                },
               }}
             >
               <motion.img
@@ -83,9 +78,9 @@ const HeroSection = () => {
                     type: "spring",
                     stiffness: 100,
                     damping: 10,
-                    delay: 0.1 // Slight delay after images appear
-                  }
-                }
+                    delay: 0.1, // Slight delay after images appear
+                  },
+                },
               }}
               className="text-4xl md:text-5xl font-semibold text-gray-900 leading-tight mb-4"
             >
@@ -95,7 +90,11 @@ const HeroSection = () => {
             <motion.p
               variants={{
                 hidden: { opacity: 0, x: -20 },
-                visible: { opacity: 1, x: 0, transition: { ease: "easeOut", duration: 0.6 } }
+                visible: {
+                  opacity: 1,
+                  x: 0,
+                  transition: { ease: "easeOut", duration: 0.6 },
+                },
               }}
               className="text-gray-700 text-base mb-6"
             >
@@ -105,19 +104,24 @@ const HeroSection = () => {
             <motion.div
               variants={{
                 hidden: { opacity: 0 },
-                visible: { opacity: 1, transition: { delay: 0.4 } }
+                visible: { opacity: 1, transition: { delay: 0.4 } },
               }}
               className="flex flex-col sm:flex-row sm:items-center gap-4 text-sm text-gray-600 mb-8"
             >
-              <motion.span whileHover={{ scale: 1.02 }} className=' flex items-center gap-1.5 hover:text-indigo-600'>
-                <Calendar className=' w-5 h-5' />
+              <motion.span
+                whileHover={{ scale: 1.02 }}
+                className=" flex items-center gap-1.5 hover:text-indigo-600"
+              >
+                <Calendar className=" w-5 h-5" />
                 September 12–13, 2025
               </motion.span>
               <a
-                target='_blank'
-                href='https://maps.app.goo.gl/dAuYdJb6HSfQn3q49'
-                whileHover={{ scale: 1.02 }} className=' flex items-center gap-1.5 cursor-pointer hover:text-indigo-600'>
-                <MapPin className=' w-5 h-5' />
+                target="_blank"
+                href="https://maps.app.goo.gl/dAuYdJb6HSfQn3q49"
+                whileHover={{ scale: 1.02 }}
+                className=" flex items-center gap-1.5 cursor-pointer hover:text-indigo-600"
+              >
+                <MapPin className=" w-5 h-5" />
                 GJLT, IIT-ISM Dhanbad, India
               </a>
             </motion.div>
@@ -132,9 +136,9 @@ const HeroSection = () => {
                     type: "spring",
                     stiffness: 300,
                     damping: 15,
-                    delay: 0.5
-                  }
-                }
+                    delay: 0.5,
+                  },
+                },
               }}
               className="flex  items-center flex-row gap-4"
             >
@@ -142,7 +146,7 @@ const HeroSection = () => {
                 href={"/registration"}
                 whileHover={{
                   scale: 1.05,
-                  boxShadow: "0 10px 25px -5px rgba(79, 70, 229, 0.3)"
+                  boxShadow: "0 10px 25px -5px rgba(79, 70, 229, 0.3)",
                 }}
                 whileTap={{ scale: 0.98 }}
                 className="bg-indigo-600 cursor-pointer text-white sm:px-6 px-3 py-3 rounded-lg font-medium hover:bg-indigo-700 "
@@ -153,7 +157,7 @@ const HeroSection = () => {
                 href={"/about"}
                 whileHover={{
                   scale: 1.05,
-                  backgroundColor: "rgba(79, 70, 229, 0.05)"
+                  backgroundColor: "rgba(79, 70, 229, 0.05)",
                 }}
                 whileTap={{ scale: 0.98 }}
                 className="border cursor-pointer border-indigo-600 text-indigo-600 sm:px-6 px-3 py-3 rounded-lg font-medium hover:bg-indigo-50 "
@@ -161,6 +165,45 @@ const HeroSection = () => {
                 Learn More
               </Link>
             </motion.div>
+
+            {/* sponsors  */}
+            <div className=" space-y-2 mt-5">
+              <h4 className=" w-fit xl:text-2xl lg:text-xl md:text-lg text-base font-semibold text-blue-700">
+                Our Sponsors
+                {/* <motion.div
+                  initial={{ width: 0 }}
+                  whileInView={{
+                    width: "70%",
+                    transition: {
+                      duration: 0.5,
+                      ease: "easeOut",
+                    },
+                  }}
+                  className=" h-0.5 bg-blue-800 rounded-full"
+                /> */}
+              </h4>
+              <div className="flex flex-wrap justify-start items-center gap-6 ">
+                {sponsors.map((sponsor, index) => (
+                  <motion.a
+                    key={index}
+                    href={sponsor.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.05 }}
+                    className="flex items-center justify-center w-33 h-15 px-2 py-1 bg-gray-50 rounded-md shadow-sm hover:shadow-md transition"
+                  >
+                    <Image
+                      width={200}
+                      height={200}
+                      loading="lazy"
+                      src={sponsor.logo}
+                      alt={sponsor.name}
+                      className="max-h-full max-w-full text-xs object-contain"
+                    />
+                  </motion.a>
+                ))}
+              </div>
+            </div>
           </motion.div>
 
           {/* Right Column - Card with sophisticated animations */}
@@ -174,8 +217,8 @@ const HeroSection = () => {
                 type: "spring",
                 stiffness: 60,
                 damping: 15,
-                delay: 0.3
-              }
+                delay: 0.3,
+              },
             }}
             viewport={{ once: true, margin: "-100px" }}
             className=" backdrop-blur-sm bg-white/50 rounded-2xl shadow-xl hover:shadow-2xl p-6 md:p-8 border border-gray-100 transition-shadow"
@@ -184,21 +227,21 @@ const HeroSection = () => {
               initial={{ opacity: 0 }}
               animate={{
                 opacity: 1,
-                transition: { delay: 0.6 }
+                transition: { delay: 0.6 },
               }}
               className="mb-6"
             >
-              <h2 className="text-xl font-semibold text-indigo-700 mb-3">Topics of Interest</h2>
-              <motion.ul
-                className="text-sm text-gray-700 grid grid-cols-1 sm:grid-cols-2 gap-3 list-disc list-inside"
-              >
+              <h2 className="text-xl font-semibold text-indigo-700 mb-3">
+                Topics of Interest
+              </h2>
+              <motion.ul className="text-sm text-gray-700 grid grid-cols-1 sm:grid-cols-2 gap-3 list-disc list-inside">
                 {[
                   "Digital Foundations for Smart Mining",
                   "Robotics & Automation in Harsh Environments",
                   "Edge AI & Real-Time Analytics",
                   "AI-Driven Mineral Intelligence: Innovations in Critical Mineral Reserves Estimation",
                   "Digital Resilience & Disaster Management",
-                  "Energy Efficiency & Process Optimization"
+                  "Energy Efficiency & Process Optimization",
                 ].map((item, i) => (
                   <motion.li
                     key={i}
@@ -206,7 +249,7 @@ const HeroSection = () => {
                     animate={{
                       opacity: 1,
                       x: 0,
-                      transition: { delay: 0.7 + i * 0.1 }
+                      transition: { delay: 0.7 + i * 0.1 },
                     }}
                     className=""
                   >
@@ -220,13 +263,17 @@ const HeroSection = () => {
               initial={{ opacity: 0 }}
               animate={{
                 opacity: 1,
-                transition: { delay: 1.2 }
+                transition: { delay: 1.2 },
               }}
               className="border-t pt-5"
             >
-              <h3 className="text-lg font-semibold text-indigo-700 mb-2">Call for Papers</h3>
+              <h3 className="text-lg font-semibold text-indigo-700 mb-2">
+                Call for Papers
+              </h3>
               <p className="text-sm text-gray-700 mb-3">
-                Submit original work on the theme of digital transformation in mining. Academicians, researchers, and industry professionals are welcome.
+                Submit original work on the theme of digital transformation in
+                mining. Academicians, researchers, and industry professionals
+                are welcome.
               </p>
               <Link
                 href={"/callforpapers"}
@@ -247,11 +294,12 @@ const HeroSection = () => {
               animate={{
                 opacity: 1,
                 scale: 1,
-                transition: { delay: 1.4, type: "spring" }
+                transition: { delay: 1.4, type: "spring" },
               }}
               className="mt-6 bg-indigo-50 rounded-md p-3 text-sm text-indigo-900 shadow-sm"
             >
-              🎉 Celebrating 100 Years of Excellence at IIT (ISM) Dhanbad with transformative discussions on the future of mining.
+              🎉 Celebrating 100 Years of Excellence at IIT (ISM) Dhanbad with
+              transformative discussions on the future of mining.
             </motion.div>
           </motion.div>
         </div>
@@ -263,13 +311,13 @@ const HeroSection = () => {
         initial={{ opacity: 0 }}
         animate={{
           opacity: [0, 1, 0],
-          y: [0, 10, 0]
+          y: [0, 10, 0],
         }}
         transition={{
           duration: 2,
           repeat: Infinity,
           ease: "easeInOut",
-          delay: 1.5
+          delay: 1.5,
         }}
       >
         <ChevronDown className="w-8 h-8 text-indigo-500" />

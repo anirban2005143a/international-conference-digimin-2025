@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 
- const sponsors = [
+export const sponsors = [
   {
     id: 1,
     name: "Tvarana",
@@ -21,6 +21,7 @@ import Link from "next/link";
     category: "Bronze",
   },
 ];
+
 const badgeColors = {
   Diamond: "bg-gradient-to-r from-purple-500 to-pink-500 text-white",
   Gold: "bg-yellow-400 text-black",

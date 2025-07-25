@@ -17,7 +17,7 @@ import Link from "next/link";
     department: "International Resources Holding, UAE",
     description: "Expertise: Global mineral exploration and resource strategy.",
     linkedIn: "https://www.linkedin.com/in/ACoAAAJZIeoB5vscDNFyHGFOZlb4kachWh2yqRk",
-    image: "/speakers/sssir.gif"
+    image: "/speakers/sssir.jpg"
   },
   {
     name: "Prof. D.C. Panigrahi",
