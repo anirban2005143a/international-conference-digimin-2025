@@ -1,12 +1,15 @@
-'use client';
+"use client";
 
-import React, { useState, useEffect, useRef, useMemo } from 'react';
-import { motion, AnimatePresence, easeInOut } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
-import { NAVIGATION_LINKS, CONFERENCE_ACRONYM } from '../../constants/conferenceData';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import Image from 'next/image';
+import React, { useState, useEffect, useRef, useMemo } from "react";
+import { motion, AnimatePresence, easeInOut } from "framer-motion";
+import { Menu, X } from "lucide-react";
+import {
+  NAVIGATION_LINKS,
+  CONFERENCE_ACRONYM,
+} from "../../constants/conferenceData";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 // Framer Motion variants
 const menuVariants = {
@@ -14,7 +17,7 @@ const menuVariants = {
   visible: (i) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: 0.3 + i * 0.1 }
+    transition: { delay: 0.3 + i * 0.1 },
   }),
 };
 
@@ -22,7 +25,11 @@ const NavLink = ({ link, index }) => {
   const [isHovered, setIsHovered] = useState(false);
   const pathname = usePathname();
 
-  const isActive = useMemo(() => pathname.toLowerCase().includes(link.name.split(" ")[0].toLowerCase()), [])
+  const isActive = useMemo(
+    () =>
+      pathname.toLowerCase().includes(link.name.split(" ")[0].toLowerCase()),
+    []
+  );
 
   return (
     <motion.div
@@ -39,20 +46,24 @@ const NavLink = ({ link, index }) => {
         className={`text-sm font-medium text-gray-800 hover:text-indigo-600 transition-colors`}
       >
         {link.name}
-        {isActive === false && <motion.span
-          layoutId="underline"
-          className={`absolute left-0 bottom-0 h-0.5 bg-indigo-600`}
-          initial={{ width: isActive ? '100%' : '0%' }}
-          animate={{
-            width: isActive || isHovered ? '100%' : '0%',
-            opacity: isActive || isHovered ? 1 : 0
-          }}
-          transition={{ duration: 0.2, ease: easeInOut }}
-        />}
-        {isActive && <span
-          layoutId="underline"
-          className={`absolute left-0 bottom-0 h-0.5 w-full bg-indigo-600`}
-        ></span>}
+        {isActive === false && (
+          <motion.span
+            layoutId="underline"
+            className={`absolute left-0 bottom-0 h-0.5 bg-indigo-600`}
+            initial={{ width: isActive ? "100%" : "0%" }}
+            animate={{
+              width: isActive || isHovered ? "100%" : "0%",
+              opacity: isActive || isHovered ? 1 : 0,
+            }}
+            transition={{ duration: 0.2, ease: easeInOut }}
+          />
+        )}
+        {isActive && (
+          <span
+            layoutId="underline"
+            className={`absolute left-0 bottom-0 h-0.5 w-full bg-indigo-600`}
+          ></span>
+        )}
       </Link>
     </motion.div>
   );
@@ -62,7 +73,7 @@ const Navbar = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const lastScrollY = useRef(0);
-  const [width, setwidth] = useState(null)
+  const [width, setwidth] = useState(null);
 
   // Scroll behavior for sticky and hide/show
   useEffect(() => {
@@ -77,18 +88,17 @@ const Navbar = () => {
       requestAnimationFrame(handleScroll);
     };
 
-    window.addEventListener('scroll', throttled);
-    return () => window.removeEventListener('scroll', throttled);
+    window.addEventListener("scroll", throttled);
+    return () => window.removeEventListener("scroll", throttled);
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = `${mobileMenuOpen ? "hidden" : "auto"}`
-  }, [mobileMenuOpen])
+    document.body.style.overflow = `${mobileMenuOpen ? "hidden" : "auto"}`;
+  }, [mobileMenuOpen]);
 
   useEffect(() => {
-    setwidth(window.innerWidth)
-  }, [])
-
+    setwidth(window.innerWidth);
+  }, []);
 
   return (
     <motion.header
@@ -109,39 +119,47 @@ const Navbar = () => {
             <Image
               width={50}
               height={100}
-              alt='digmin logo'
+              alt="digmin logo"
               src={"/digmin-logo.png"}
-              className='text-xs w-18 h-23 pt-5'
+              className="text-xs w-18 h-23 pt-5"
             />
           </Link>
 
           {/* Desktop Navigation */}
-          {width && <div className={` ${width > 950 ? "flex" : "hidden"} space-x-4 justify-end items-center`}>
-            {NAVIGATION_LINKS.map((link, index) => (
-              <NavLink key={index} link={link} index={index} />
-            ))}
-            <Link
-              href="/registration"
-              className="px-4 py-2 rounded-md bg-indigo-700 text-white text-sm font-medium hover:bg-indigo-800 transition-colors"
-              variants={menuVariants}
-              initial="hidden"
-              animate="visible"
-              custom={NAVIGATION_LINKS.length}
+          {width && (
+            <div
+              className={` ${
+                width > 950 ? "flex" : "hidden"
+              } space-x-4 justify-end items-center`}
             >
-              Register Now
-            </Link>
-          </div>}
+              {NAVIGATION_LINKS.map((link, index) => (
+                <NavLink key={index} link={link} index={index} />
+              ))}
+              <Link
+                href="/registration"
+                className="px-4 py-2 rounded-md bg-indigo-700 text-white text-sm font-medium hover:bg-indigo-800 transition-colors"
+                variants={menuVariants}
+                initial="hidden"
+                animate="visible"
+                custom={NAVIGATION_LINKS.length}
+              >
+                Register Now
+              </Link>
+            </div>
+          )}
 
           {/* Mobile Menu Button */}
-          {width && <div className={`${width > 950 ? "hidden" : ""}`}>
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className={` rounded-md text-gray-800 hover:bg-gray-100 hover:text-gray-500 transition`}
-              aria-label="Toggle Menu"
-            >
-              <Menu size={24} />
-            </button>
-          </div>}
+          {width && (
+            <div className={`${width > 950 ? "hidden" : ""}`}>
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className={` rounded-md text-gray-800 hover:bg-gray-100 hover:text-gray-500 transition`}
+                aria-label="Toggle Menu"
+              >
+                <Menu size={24} />
+              </button>
+            </div>
+          )}
         </nav>
       </div>
 
@@ -150,11 +168,13 @@ const Navbar = () => {
         {mobileMenuOpen && width && (
           <motion.div
             key="mobileMenu"
-            initial={{ x: '100%' }}
+            initial={{ x: "100%" }}
             animate={{ x: 0 }}
-            exit={{ x: '100%' }}
-            transition={{ type: 'tween', duration: 0.3 }}
-            className={`${width > 950 ? "hidden" : "fixed"} top-0 right-0 h-[100dvh] overflow-auto w-screen max-w-md bg-[#000000b8] backdrop-blur-sm shadow-lg z-50`}
+            exit={{ x: "100%" }}
+            transition={{ type: "tween", duration: 0.3 }}
+            className={`${
+              width > 950 ? "hidden" : "fixed"
+            } top-0 right-0 h-[100dvh] overflow-auto w-screen max-w-md bg-[#000000b8] backdrop-blur-sm shadow-lg z-50`}
           >
             <div className="px-10 pt-5 h-full">
               <button
@@ -178,13 +198,15 @@ const Navbar = () => {
               </button>
 
               <div className="flex flex-col items-start gap-10 py-[20px] text-white">
-
                 {NAVIGATION_LINKS.map((link, index) => (
                   <Link
                     key={index}
                     onClick={() => setMobileMenuOpen(false)}
                     href={link.href}
-                    className="hover:underline nav-menu-mobile text-sm ml-2">{link.name}</Link>
+                    className="hover:underline nav-menu-mobile text-sm ml-2"
+                  >
+                    {link.name}
+                  </Link>
                 ))}
                 {/* Add more links as needed */}
               </div>
@@ -192,7 +214,6 @@ const Navbar = () => {
           </motion.div>
         )}
       </AnimatePresence>
-
     </motion.header>
   );
 };

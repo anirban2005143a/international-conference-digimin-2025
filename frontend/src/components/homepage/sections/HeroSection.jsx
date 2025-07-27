@@ -168,19 +168,8 @@ const HeroSection = () => {
 
             {/* sponsors  */}
             <div className=" space-y-2 mt-5">
-              <h4 className=" w-fit xl:text-2xl lg:text-xl md:text-lg text-base font-semibold text-blue-700">
+              <h4 className=" w-fit xl:text-3xl lg:text-2xl md:text-xl text-lg font-semibold text-indigo-800">
                 Our Sponsors
-                {/* <motion.div
-                  initial={{ width: 0 }}
-                  whileInView={{
-                    width: "70%",
-                    transition: {
-                      duration: 0.5,
-                      ease: "easeOut",
-                    },
-                  }}
-                  className=" h-0.5 bg-blue-800 rounded-full"
-                /> */}
               </h4>
               <div className="flex flex-wrap justify-start items-center gap-6 ">
                 {sponsors.map((sponsor, index) => (
@@ -190,7 +179,7 @@ const HeroSection = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.05 }}
-                    className="flex items-center justify-center w-33 h-15 px-2 py-1 bg-gray-50 rounded-md shadow-sm hover:shadow-md transition"
+                    className="flex items-center justify-center w-40 h-20 px-2 py-1 bg-gray-50 rounded-md shadow-sm hover:shadow-md transition"
                   >
                     <Image
                       width={200}
