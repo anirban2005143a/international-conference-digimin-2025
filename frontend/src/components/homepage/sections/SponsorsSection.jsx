@@ -4,6 +4,14 @@ import Link from "next/link";
 export const sponsors = [
   {
     id: 1,
+    name: "BCCL",
+    logo: "/sponsors/bccl.jpeg", // Replace with actual logo path if available
+    description: "BCCL is a leading coal mining company in India and a subsidiary of Coal India Limited, playing a key role in energy generation and national development.",
+    link: "https://www.bcclweb.in",
+    category: "Gold",
+  },
+  {
+    id: 2,
     name: "Tvarana",
     logo: "/sponsors/Tvarana.png",
     description:
@@ -12,7 +20,7 @@ export const sponsors = [
     category: "Silver",
   },
   {
-    id: 1,
+    id: 3,
     name: "NLC India Limited",
     logo: "/sponsors/nlcIndiaLimited.jpg",
     description:
@@ -20,7 +28,35 @@ export const sponsors = [
     link: "https://www.nlcindia.in/website/en/",
     category: "Bronze",
   },
+  {
+    id: 4,
+    name: "DVC",
+    logo: "/sponsors/dvc.png", // Replace with actual logo path if available
+    description:
+      "Damodar Valley Corporation (DVC) is one of the premier power utilities in India involved in power generation, transmission, and distribution.",
+    link: "https://www.dvc.gov.in",
+    category: "Bronze",
+  },
+  {
+    id: 5,
+    name: "Tata Steel",
+    logo: "/sponsors/tataSteel.svg", // Replace with actual logo path if available
+    description:
+      "Tata Steel is among the top global steel companies, known for its high-quality products, innovation, and commitment to sustainability.",
+    link: "https://www.tatasteel.com",
+    category: "Bronze",
+  },
+  {
+    id: 6,
+    name: "Jindal Steel & Power",
+    logo: "/sponsors/Jindal_Steel_and_power.png", // Replace with actual logo path if available
+    description:
+      "Jindal Steel and Power is a leading Indian steel and energy company, driving innovation and sustainable growth in infrastructure and manufacturing.",
+    link: "https://www.jindalsteelpower.com",
+    category: "Bronze",
+  },
 ];
+
 
 const badgeColors = {
   Diamond: "bg-gradient-to-r from-purple-500 to-pink-500 text-white",
