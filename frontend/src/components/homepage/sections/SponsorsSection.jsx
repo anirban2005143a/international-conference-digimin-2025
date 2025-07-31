@@ -58,11 +58,11 @@ export const sponsors = [
 ];
 
 
-const badgeColors = {
+export const badgeColors = {
   Diamond: "bg-gradient-to-r from-purple-500 to-pink-500 text-white",
   Gold: "bg-yellow-400 text-black",
   Silver: "bg-gray-300 text-black",
-  Bronze: "bg-orange-400 text-white",
+  Bronze: "bg-[#CD7F32] text-white",
 };
 
 const fadeIn = (direction, type, delay, duration) => {

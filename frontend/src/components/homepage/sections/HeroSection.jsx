@@ -8,7 +8,7 @@ import {
   CONFERENCE_TAGLINE,
 } from "@/constants/conferenceData";
 import Link from "next/link";
-import { sponsors } from "./SponsorsSection";
+import { badgeColors, sponsors, SponsorsSection } from "./SponsorsSection";
 import Image from "next/image";
 
 const HeroSection = () => {
@@ -165,34 +165,6 @@ const HeroSection = () => {
                 Learn More
               </Link>
             </motion.div>
-
-            {/* sponsors  */}
-            <div className=" space-y-2 mt-5">
-              <h4 className=" w-fit xl:text-3xl lg:text-2xl md:text-xl text-lg font-semibold text-indigo-800">
-                Our Sponsors
-              </h4>
-              <div className="flex flex-wrap justify-start items-center gap-6 ">
-                {sponsors.map((sponsor, index) => (
-                  <motion.a
-                    key={index}
-                    href={sponsor.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.05 }}
-                    className="flex items-center justify-center w-40 h-20 px-2 py-1 bg-gray-50 rounded-md shadow-sm hover:shadow-md transition"
-                  >
-                    <Image
-                      width={200}
-                      height={200}
-                      loading="lazy"
-                      src={sponsor.logo}
-                      alt={sponsor.name}
-                      className="max-h-full max-w-full text-xs object-contain"
-                    />
-                  </motion.a>
-                ))}
-              </div>
-            </div>
           </motion.div>
 
           {/* Right Column - Card with sophisticated animations */}
@@ -212,7 +184,7 @@ const HeroSection = () => {
             viewport={{ once: true, margin: "-100px" }}
             className=" backdrop-blur-sm bg-white/50 rounded-2xl shadow-xl hover:shadow-2xl p-6 md:p-8 border border-gray-100 transition-shadow"
           >
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0 }}
               animate={{
                 opacity: 1,
@@ -289,7 +261,49 @@ const HeroSection = () => {
             >
               🎉 Celebrating 100 Years of Excellence at IIT (ISM) Dhanbad with
               transformative discussions on the future of mining.
-            </motion.div>
+            </motion.div> */}
+            {/* sponsors  */}
+            <div className="  space-y-2 ">
+              <div>
+                <h4 className=" w-fit xl:text-3xl lg:text-2xl md:text-xl text-lg font-semibold text-indigo-800">
+                  Our Sponsors
+                </h4>
+                <motion.div
+                  initial={{ width: 0 }}
+                  animate={{ width: "100px" }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                  className=" h-[3px] bg-indigo-800 rounded-full mt-2"
+                />
+              </div>
+              <div className="grid grid-cols-2 gap-6 ">
+                {sponsors.map((sponsor, index) => (
+                  <motion.a
+                    key={index}
+                    href={sponsor.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.05 }}
+                    className="flex relative pt-8 items-center w-full justify-center h-25 px-2 py-1 bg-gray-50 rounded-md shadow-sm hover:shadow-md transition"
+                  >
+                    <div
+                      className={`absolute -top-2 right-2 px-3 py-1 text-xs font-semibold rounded-full ${
+                        badgeColors[sponsor.category]
+                      }`}
+                    >
+                      {sponsor.category} sponsor
+                    </div>
+                    <Image
+                      width={200}
+                      height={200}
+                      loading="lazy"
+                      src={sponsor.logo}
+                      alt={sponsor.name}
+                      className="max-h-full max-w-full text-xs object-contain"
+                    />
+                  </motion.a>
+                ))}
+              </div>
+            </div>
           </motion.div>
         </div>
       </div>
