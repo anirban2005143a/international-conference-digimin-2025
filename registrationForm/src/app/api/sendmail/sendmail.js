@@ -56,7 +56,7 @@ export const sendMail = async (mail, data) => {
         ${abstractTitleText}
         <li><strong>Registration Category:</strong> ${registrationCategory}</li>
         <li><strong>Payment ID:</strong> ${paymentId}</li>
-        <li><strong>Payment Date:</strong> ${paymentDate}</li>
+        <li><strong>Payment Date:</strong> ${paymentDate.split("-").reverse().join("-")}</li>
       </ul>
     `,
   };

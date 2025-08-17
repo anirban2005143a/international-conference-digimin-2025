@@ -373,11 +373,6 @@ export const RegistrationForm = () => {
               <input
                 type={name === "paymentDate" ? "date" : "text"}
                 name={name}
-                max={
-                  name === "paymentDate"
-                    ? new Date().toISOString().split("T")[0]
-                    : undefined
-                }
                 value={formData[name]}
                 onChange={handleChange}
                 required
