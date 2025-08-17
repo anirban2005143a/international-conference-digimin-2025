@@ -3,7 +3,7 @@ import React from "react";
 
 const page = () => {
   return (
-    <div className="lg:p-6 p-2 h-screen flex md:gap-4 gap-2 md:flex-row flex-col pt-10">
+    <div className="max-w-5xl mx-auto lg:p-6 p-2 h-screen flex md:gap-4 gap-2 md:flex-row flex-col pt-10">
       {/* Left Side - QR + International Info */}
       <div className="md:w-[20%]  w-full flex md:flex-col sm:flex-row flex-col items-center gap-4 md:order-1 order-2 pb-4">
         {/* QR Code */}
