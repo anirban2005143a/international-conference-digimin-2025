@@ -121,7 +121,7 @@ const Navbar = () => {
               height={100}
               alt="digmin logo"
               src={"/digmin-logo.png"}
-              className="text-xs w-18 h-23 pt-5"
+              className="text-xs w-25 pt-5"
             />
           </Link>
 
