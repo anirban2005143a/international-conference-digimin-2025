@@ -11,7 +11,7 @@ const GalleryPage = () => {
     const columnImages = [
         // Column 1 images
         [
-            {
+            { 
                 id: 'digmin1',
                 src: '/gallery/digmin1.jpeg',
                 alt: 'gallery image',
