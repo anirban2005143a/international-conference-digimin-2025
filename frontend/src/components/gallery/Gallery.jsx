@@ -11,47 +11,53 @@ const GalleryPage = () => {
     const columnImages = [
         // Column 1 images
         [
+            { 
+                id: 'digmin1',
+                src: '/gallery/digmin1.jpeg',
+                alt: 'gallery image',
+                aspect: 'aspect-video'
+            },
             {
-                id: 1,
+                id: 'img1',
                 src: '/gallery/img1.webp',
                 alt: 'gallery image',
                 aspect: 'aspect-video'
             },
             {
-                id: 2,
-                src: '/gallery/img2.webp',
-                alt: 'gallery image',
-                aspect: 'aspect-[3/4]'
-            },
-            {
-                id: 3,
+                id: 'img3',
                 src: '/gallery/img3.webp',
                 alt: 'gallery image',
                 aspect: 'aspect-video'
             },
             {
-                id: 15,
+                id: 'img15',
                 src: '/gallery/img15.jpg',
                 alt: 'gallery image',
                 aspect: 'aspect-video'
-            },
+            }
         ],
         // Column 2 images
         [
             {
-                id: 4,
-                src: '/gallery/img4.webp',
+                id: 'digmin2',
+                src: '/gallery/digmin2.jpeg',
                 alt: 'gallery image',
-                aspect: 'aspect-square'
+                aspect: 'aspect-video'
             },
             {
-                id: 11,
+                id: 'img2',
+                src: '/gallery/img2.webp',
+                alt: 'gallery image',
+                aspect: 'aspect-[3/4]'
+            },
+            {
+                id: 'img11',
                 src: '/gallery/img11.webp',
                 alt: 'gallery image',
                 aspect: 'aspect-video'
             },
             {
-                id: 13,
+                id: 'img13',
                 src: '/gallery/img13.webp',
                 alt: 'gallery image',
                 aspect: 'aspect-square'
@@ -60,19 +66,19 @@ const GalleryPage = () => {
         // Column 3 images
         [
             {
-                id: 7,
+                id: 'img7',
                 src: '/gallery/img7.webp',
                 alt: 'gallery image',
                 aspect: 'aspect-video'
             },
             {
-                id: 16,
+                id: 'img16',
                 src: '/gallery/img16.jpg',
                 alt: 'gallery image',
                 aspect: 'aspect-square'
             },
             {
-                id: 10,
+                id: 'img10',
                 src: '/gallery/img10.webp',
                 alt: 'gallery image',
                 aspect: 'aspect-[5/8]'
